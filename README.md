@@ -23,29 +23,16 @@ Much of the code here was inspired by, if not copied outright from posts to PRIM
 
 ### Icons for Material Types
 
-The material type icons included in the img directory were designed by @dtaylor4444.  His [PrimoIcons](https://github.com/dtaylor4444/PrimoIcons) repository includes an AI file for the icons as well as the pngs included here.
+The material type icons included in the img directory were designed by @dtaylor4444.  His [PrimoIcons](https://github.com/dtaylor4444/PrimoIcons) repository includes an Adobe Illustrator file for the icons as well as the pngs included here.
 
 
-### Access Link in Item View
+### Additional Actions
 
-By default, there is a "Full text available" message that appears both in results-list view and near the top of the item view. In the former case, it is a link; in the latter it is not. This seemed like bad UI, so we wrote code on the `prmSearchResultAvailabilityLineAfter` directive to rebuild the item view instance as a link.
+We added three new actions (or "Send To" items) using the `prmSearchResultAvailabilityLineAfter` directive. Each of these links to a form on the library web site. The code in this repository provides no functionality, just the links.
 
-
-### "Not on Shelf" Link
-
-For physical items in open-stack areas, we provide a "Not on shelf" link that autopopulates a trace form on the library's web site. The JavaScript code collects data for title, author, and call number and uses those values to construct the link. As with the access link above, this is implemented on the `prmSearchResultAvailabilityLineAfter` directive.
-
-
-### "Text This Record" Link
-
-This is the third and final customization implemented on the `prmSearchResultAvailabilityLineAfter` directive. As with the "Not on Shelf" link, the JavaScript collects some data elements and uses them to construct a link to a form on the library's site. The actual sending of the SMS message is done by PHP on the library's server, not by any code in this front-end repository.
-
-
-### Bitly Permalinks
-
-This feature uses the [Bitly API](https://dev.bitly.com/) to create short bitlinks, which are displayed instead of the default, very long, permalinks. It uses the `prmCopyClipboardBtnAfter` directive. To use this feature, you will need to register with Bitly and get an access token. Once you have your access token, you can either add it directly into the `get_bitlink()` function or put it in a separate JS file as follows:
-
-```const access_token = your_access_token_goes_here;```
+* SMS - physical items only
+* Not on Shelf - physical items in open stacks only
+* Report a Problem - electronic items only
 
 
 ### Stack Maps
