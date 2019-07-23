@@ -1,0 +1,376 @@
+body {
+	font-family: Verdana, sans-serif;
+	font-size: 14px;
+}
+
+body.md-dialog-is-showing  {
+    overflow-x:visible !important;
+}
+
+#banner > a:hover {
+	background-color: #012949;
+	outline: none;
+	box-shadow: none;
+}
+prm-logo .product-logo {
+	padding: 0 !important;
+}
+prm-search-result-list .pages-separated-with-gaps .results-title:not(.results-title-favorites) {
+    padding-left: 100px;
+}
+
+md-list-item {
+	border-left: 3px solid #fff !important;
+}
+md-list-item:hover {
+	border-left: 3px solid #FFC533 !important; /* IC gold */
+}
+
+prm-brief-result-container {
+	background-color: #fff !important;
+}
+
+#full-view-container {
+	outline: none !important;
+}
+.ic-links-area {
+	color: #666;
+}
+.ic-trace-link, .ic-sms-link, .ic-notify-link, .ic-report-problem-link {
+	color: #666 !important;
+}
+.ic-notify-link:hover, .ic-notify-link:active, .ic-notify-link:focus,
+.ic-trace-link:hover, .ic-trace-link:active, .ic-trace-link:focus,
+.ic-sms-link:hover, .ic-sms-link:active, .ic-sms-link:focus,
+.ic-report-problem-link:hover, .ic-report-problem-link:active, .ic-report-problem-link:focus {
+	color: #000;
+	text-decoration: underline;
+	background-color: #fff;
+	box-shadow: none;
+}
+
+.ic-more-actions {
+	display: flex;
+	justify-content: center;
+}
+.ic-more-actions button {
+	display: flex;
+	justify-content: center;
+}
+.ic-more-actions .button-text {
+	font-size: 10px;
+	font-weight: 600;
+}
+
+/* Hide Tabs for RefWorks, EndNote, EasyBib */
+
+/*prm-action-list li[name="RefWorks"],
+prm-action-list li[name="EndNote"],
+prm-action-list li[name="EasyBib"] {
+	display: none;
+}*/
+
+prm-action-list md-nav-bar ul._md-nav-bar-list li.md-nav-item {
+	margin: 0 10px;
+}
+
+prm-topbar {
+	height: 60px;
+}
+
+
+.ic-map-div {
+	position:relative;
+	min-height: 500px;
+}
+
+/* these make sure that the map doesn't get cut off */
+@media (min-width: 800px) {
+	.ic-map-div {
+		min-height: 380px;
+	}
+}
+@media (min-width: 1100px) {
+	.ic-map-div {
+		min-height: 420px;
+	}
+}
+@media (min-width: 1400px) {
+	.ic-map-div {
+		min-height: 560px;
+	}
+}
+
+.ic-map-img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-left: 1em;
+}
+.ic-map-canvas {
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin-left: 1em;
+	z-index: 50;
+}
+.ic-loc-message {
+	font-weight: bold;
+	margin-left: 1em;
+}
+
+.ic-debug {
+	background-color: blue;
+	color: white;
+}
+
+.full-view-inner-container {
+	background-color: #fff !important;
+}
+.alert-bar {
+	background-color: #FFD11A; /* gold */
+	border-color: #FFD11A;
+}
+
+h3.light-text {
+	font-size: medium;
+	padding-left: 1em;
+}
+
+prm-icon.giant-icon {
+	display: none;
+}
+
+
+/* Make animated pin icon match the static pin color */
+.pinDummy prm-icon {
+	color: #4DB8FF;
+}
+
+/* Hide most of the default availability line for online resources */
+/*prm-search-result-availability-line prm-icon[icon-definition="link"], 
+prm-search-result-availability-line prm-icon[icon-definition="link"] + button,
+prm-search-result-availability-line prm-icon[icon-definition="link"] + span
+ {
+	display: none;
+}
+prm-search-result-availability-line prm-search-result-availability-line-after prm-icon[icon-definition="link"]{
+	display: inline;
+}
+prm-search-result-availability-line-after a {
+	color: green;
+}
+prm-search-result-availability-line-after a:hover, prm-search-result-availability-line-after a:focus {
+	color: green;
+	background-color: #fff;
+}
+prm-search-result-availability-line-after prm-icon {
+	color: #bbb;
+}
+prm-search-result-availability-line-after prm-icon[icon-definition="open-in-new"] {
+	color: #666;
+}
+prm-search-result-availability-line-after prm-icon[icon-definition="open-in-new"] md-icon {
+	transform: scale(0.65);
+}
+prm-search-result-availability-line-after prm-icon md-icon {
+	transform: scale(0.7);
+}*/
+
+prm-facet-group strong {
+	color: #000 !important;
+}
+
+prm-search-bar, prm-browse-search-bar, prm-atoz-search-bar {
+	background-color: #013158;
+}
+.advanced-search-backdrop {
+	background-color: #013158;
+}
+
+.available-facets {
+	background-color: #F3F3F3;
+}
+.available-facets button h3 {
+	color: #008dc6;
+}
+
+md-checkbox[aria-label="Expand My Results"] {
+	display: none;
+}
+
+#item-details > div > div {
+	border-bottom: 1px solid #ddd;
+	padding-bottom: 4px;
+}
+/*.media-delimiter::before {
+	content: ' |';
+}*/
+
+prm-static[section="homepage"] md-card.default-card {
+	visibility: hidden;
+}
+
+#tags, #getit_link2 {display:none;} 
+button[aria-label="Tags"], button[aria-label="More"] {display:none;} 
+
+/*Correct overlapping link in periodical records*/
+prm-location-items > .tab-content-header {
+	position: relative;
+	padding-bottom: 2em;
+}
+prm-location-items .layout-column .text-link {
+	position: absolute;
+	bottom: -1em;
+	display: block;
+	padding-bottom: 1em;
+}
+
+/* Citation Tab */
+prm-citation prm-copy-clipboard-btn-after {
+	display: none;
+}
+
+/* Permalink Tab */
+/* Hide the default features to be replaced with bitly info */
+/*prm-permalink div.form-focus {
+	display: none;
+}
+prm-permalink .form-focus.ic-bitly-outer-wrapper {
+	display: block !important;
+}
+prm-copy-clipboard-btn > button {
+	display: none !important;
+}
+.ic-bitly-inner-wrapper {
+	text-align: center;
+}*/
+.short-permalink {
+	text-align: center;
+}
+
+/* Image isn't clickable, so don't show a pointer. */
+prm-full-view-service-container .media-thumbnail > a {
+	cursor: default;
+}
+
+/* Make the floating select boxes appear *inside* the facets box */ 
+prm-facet-group .md-chips > .md-chip {
+	margin-left: 1.2em;
+}
+
+/* Hide "Ithaca College Library" in the location area */
+.best-location-library-code.locations-link {
+    display: none !important;
+}
+
+/* Hide map-related stuff */
+/* This prevents ugly AngularJS template stuff from
+showing up if the JS doesn't load in time. */
+.ic-map-container {
+	display: none;
+}
+.ic-map-error {
+	color: red;
+}
+
+/* Newspaper stuff */
+/*.results-title {
+	height: 100px;
+	align-items: flex-start;
+}
+.results-title > .results-count {
+	align-self: center;
+}
+.results-container prm-newspapers-spotlight {
+	display: none;
+}*/
+button.section-title svg {
+	color: red;
+}
+/*h3.section-title-header > span {
+	color: #3A3A3A;
+}*/
+.results-title {
+	display: flex;
+	justify-content: space-between;
+}
+
+
+/* Re-ordering facets */
+/* set to flex for ordering purposes */
+
+.sidebar-section.available-facets.multiselect-facet-group.multiselect-inactive .md-chips.md-chips-wrap {
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-section.available-facets.multiselect-facet-group.multiselect-inactive .md-chip.animate-opacity-and-scale.facet-element-marker-tlevel:nth-child(1) {
+    order: 2;
+}
+
+.sidebar-section.available-facets.multiselect-facet-group.multiselect-inactive .md-chip.animate-opacity-and-scale.facet-element-marker-tlevel:nth-child(2) {
+    order: 3;
+}
+
+.sidebar-section.available-facets.multiselect-facet-group.multiselect-inactive .md-chip.animate-opacity-and-scale.facet-element-marker-tlevel:nth-child(3) {
+    order: 1;
+    margin-bottom: 0.4em;
+}
+
+.sidebar-section.available-facets.multiselect-facet-group.multiselect-inactive .md-chip.animate-opacity-and-scale.facet-element-marker-tlevel:nth-child(4) {
+    order: 4;
+}
+
+/*.ic-back-to-normal {
+	text-align: center;
+	padding-top: 1em;
+}
+.ic-back-to-normal-link,
+.ic-back-to-normal-link:visited, 
+.ic-back-to-normal-link:link {
+	color: white;
+	font-weight: bold;
+}
+
+.ic-back-to-normal-link:active,
+.ic-back-to-normal-link:hover {
+	color: white;
+	font-weight: bold;
+	text-decoration: underline;
+}*/
+
+/*prm-back-to-library-search > md-toolbar {
+	display: none;
+}*/
+
+/*prm-newspapers-facet > button {
+	padding-top: 8px !important;
+	padding-right: 1.2em !important;
+}
+prm-newspapers-facet > button > span {
+	color: #008dc6;
+	font-size: 0.9em;
+}
+prm-newspapers-facet {
+	margin-left: 2em;
+}
+
+prm-newspapers-search-bar {
+	background-color: #008dc6;
+}
+
+.ic-newspapers-message {
+	margin: 1em 10em;
+	font-weight: bold;
+}*/
+
+/* Moves newspaper pseudo-facet */
+/*prm-newspapers-facet {
+	display: none;
+}
+prm-newspapers-facet.vis {
+	display: block;
+	clear: both;
+}*/
+
