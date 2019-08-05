@@ -773,11 +773,11 @@ prm-search-result-availability-line-after prm-icon[icon-definition="open-in-new"
 }
 prm-search-result-availability-line-after prm-icon md-icon {
 	transform: scale(0.7);
-}*/
+}
 
 prm-facet-group strong {
 	color: #000 !important;
-}
+}*/
 
 prm-search-bar, prm-browse-search-bar, prm-atoz-search-bar {
 	background-color: #013158;
@@ -831,7 +831,7 @@ prm-citation prm-copy-clipboard-btn-after {
 
 /* Permalink Tab */
 /* Hide the default features to be replaced with bitly info */
-/*prm-permalink div.form-focus {
+prm-permalink div.form-focus {
 	display: none;
 }
 prm-permalink .form-focus.ic-bitly-outer-wrapper {
@@ -842,10 +842,20 @@ prm-copy-clipboard-btn > button {
 }
 .ic-bitly-inner-wrapper {
 	text-align: center;
-}*/
-.short-permalink {
+}
+.long-permalink {
 	text-align: center;
 }
+.send-actions-content-item > md-content > .layout-column > .long-permalink {
+    display: block;
+}
+.send-actions-content-item > md-content > .layout-column > .long-permalink:first-of-type {
+    display: none;
+}
+.short-permalink {
+    display: none !important;
+}
+
 
 /* Image isn't clickable, so don't show a pointer. */
 prm-full-view-service-container .media-thumbnail > a {
