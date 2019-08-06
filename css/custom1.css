@@ -908,7 +908,7 @@ button.section-title svg {
 /* Re-ordering facets */
 /* set to flex for ordering purposes */
 
-.sidebar-section.available-facets.multiselect-facet-group.multiselect-inactive .md-chips.md-chips-wrap {
+/*.sidebar-section.available-facets.multiselect-facet-group.multiselect-inactive .md-chips.md-chips-wrap {
     display: flex;
     flex-direction: column;
 }
@@ -928,7 +928,7 @@ button.section-title svg {
 
 .sidebar-section.available-facets.multiselect-facet-group.multiselect-inactive .md-chip.animate-opacity-and-scale.facet-element-marker-tlevel:nth-child(4) {
     order: 4;
-}
+}*/
 
 /*.ic-back-to-normal {
 	text-align: center;
