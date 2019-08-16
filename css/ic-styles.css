@@ -233,7 +233,7 @@ prm-citation prm-copy-clipboard-btn-after {
 
 /* Permalink Tab */
 /* Hide the default features to be replaced with bitly info */
-prm-permalink div.form-focus {
+/*prm-permalink div.form-focus {
 	display: none;
 }
 prm-permalink .form-focus.ic-bitly-outer-wrapper {
@@ -256,7 +256,7 @@ prm-copy-clipboard-btn > button {
 }
 .short-permalink {
     display: none !important;
-}
+}*/
 
 
 /* Image isn't clickable, so don't show a pointer. */
@@ -305,6 +305,12 @@ button.section-title svg {
 	display: flex;
 	justify-content: space-between;
 }
+
+
+/* Hides the first of the "Source" facets */
+/*.sidebar-inner-wrapper > .sidebar-section:nth-of-type(3) .md-chip:nth-of-type(1) {
+	display: none !important;
+}*/
 
 
 /* Re-ordering facets */

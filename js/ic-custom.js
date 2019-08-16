@@ -7,66 +7,66 @@ app.filter('encode', function() {
 
 
 // Bitly permalink
-app.controller('prmCopyClipboardBtnAfterController', [function() {
+// app.controller('prmCopyClipboardBtnAfterController', [function() {
 
- var vm = this;
- vm.ajax_promise = ajax_promise;
- vm.get_bitlink = get_bitlink;
+//  var vm = this;
+//  vm.ajax_promise = ajax_promise;
+//  vm.get_bitlink = get_bitlink;
 
- function ajax_promise(requestUrl) {
-   return new Promise(function(resolve, reject) {
-     var xhr = new XMLHttpRequest();
-     xhr.open('GET', requestUrl);
-     xhr.send();
-     xhr.onload = function() {
-       if (xhr.readyState === 4){
-         if (xhr.status === 200){
-           var resp = xhr.responseText;
-           var respJson = JSON.parse(resp);
-           resolve(respJson);
-         } else {
-           reject(xhr.status);
-         }
-       }
-     };
-   });
- }
+//  function ajax_promise(requestUrl) {
+//    return new Promise(function(resolve, reject) {
+//      var xhr = new XMLHttpRequest();
+//      xhr.open('GET', requestUrl);
+//      xhr.send();
+//      xhr.onload = function() {
+//        if (xhr.readyState === 4){
+//          if (xhr.status === 200){
+//            var resp = xhr.responseText;
+//            var respJson = JSON.parse(resp);
+//            resolve(respJson);
+//          } else {
+//            reject(xhr.status);
+//          }
+//        }
+//      };
+//    });
+//  }
 
- function get_bitlink() {
+//  function get_bitlink() {
 
-   var long_url = encodeURIComponent(vm.parentCtrl.text);
+//    var long_url = encodeURIComponent(vm.parentCtrl.text);
   
-   // ignore the "short" link from ExLibris
-   if (long_url !== 'undefined' && !long_url.match(/permalink/)) {
+//    // ignore the "short" link from ExLibris
+//    if (long_url !== 'undefined' && !long_url.match(/permalink/)) {
    
-     // access_token is defined externally
-     var requestUrl = 'https://api-ssl.bitly.com/v3/shorten?callback=?&format=json&access_token=' + access_token + '&login=iclibrary&longUrl=' + long_url;
+//      // access_token is defined externally
+//      var requestUrl = 'https://api-ssl.bitly.com/v3/shorten?callback=?&format=json&access_token=' + access_token + '&login=iclibrary&longUrl=' + long_url;
 
-     ajax_promise(requestUrl).then(function(result) {
-       if (result.data.url !== undefined) {
-         vm.bitlink = result.data.url;
-         var theLink = document.getElementById('ic-bitly');
-         theLink.innerHTML = vm.bitlink;
-         theLink.href = vm.bitlink;
-       } else {
-         vm.bitlink = decodeURIComponent(long_url); // not really a bitlink
-         var theLink = document.getElementById('ic-bitly');
-         theLink.innerHTML = vm.bitlink;
-         theLink.href = vm.bitlink;
-       }
-     }).catch(function(e) {
-       console.log('Ajax Problem: ' + e);
-     });
-   }
- }
+//      ajax_promise(requestUrl).then(function(result) {
+//        if (result.data.url !== undefined) {
+//          vm.bitlink = result.data.url;
+//          var theLink = document.getElementById('ic-bitly');
+//          theLink.innerHTML = vm.bitlink;
+//          theLink.href = vm.bitlink;
+//        } else {
+//          vm.bitlink = decodeURIComponent(long_url); // not really a bitlink
+//          var theLink = document.getElementById('ic-bitly');
+//          theLink.innerHTML = vm.bitlink;
+//          theLink.href = vm.bitlink;
+//        }
+//      }).catch(function(e) {
+//        console.log('Ajax Problem: ' + e);
+//      });
+//    }
+//  }
 
-}]);
+// }]);
 
-app.component('prmCopyClipboardBtnAfter', {
- bindings: { parentCtrl: '<' },
- controller: 'prmCopyClipboardBtnAfterController',
- template: '<div class="form-focus layout-padding layout-row ic-bitly-outer-wrapper" layout="row" layout-padding=""><div layout-margin layout-fill class="word-break-all layout-fill ic-bitly-inner-wrapper"><span layout-fill="layout-fill" class="layout-fill"><a href="#" id="ic-bitly">{{$ctrl.get_bitlink()}}</a></span></div></div><br /><button ng-click="$ctrl.saveOffset()" text="$ctrl.bitlink" clipboard="" ng-hide="$ctrl.copySuccessful" type="button" class="button-confirm button-with-icon md-button md-primoExplore-theme md-ink-ripple" on-copied="$ctrl.clipboardSuccess() | translate" on-error="$ctrl.clipboardFailure(err) | translate" id="copy-citation-button" aria-label="nui.permalink.button" aria-hidden="false" style=""><prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="clipboard"></prm-icon><prm-icon-after parent-ctrl="$ctrl"></prm-icon-after><span translate="nui.permalink.button">Copy the Permalink to Clipboard</span><div class="md-ripple-container"></div></button>'
-});
+// app.component('prmCopyClipboardBtnAfter', {
+//  bindings: { parentCtrl: '<' },
+//  controller: 'prmCopyClipboardBtnAfterController',
+//  template: '<div class="form-focus layout-padding layout-row ic-bitly-outer-wrapper" layout="row" layout-padding=""><div layout-margin layout-fill class="word-break-all layout-fill ic-bitly-inner-wrapper"><span layout-fill="layout-fill" class="layout-fill"><a href="#" id="ic-bitly">{{$ctrl.get_bitlink()}}</a></span></div></div><br /><button ng-click="$ctrl.saveOffset()" text="$ctrl.bitlink" clipboard="" ng-hide="$ctrl.copySuccessful" type="button" class="button-confirm button-with-icon md-button md-primoExplore-theme md-ink-ripple" on-copied="$ctrl.clipboardSuccess() | translate" on-error="$ctrl.clipboardFailure(err) | translate" id="copy-citation-button" aria-label="nui.permalink.button" aria-hidden="false" style=""><prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="clipboard"></prm-icon><prm-icon-after parent-ctrl="$ctrl"></prm-icon-after><span translate="nui.permalink.button">Copy the Permalink to Clipboard</span><div class="md-ripple-container"></div></button>'
+// });
 
 
 
@@ -304,18 +304,20 @@ app.component('prmFullViewServiceContainerAfter', {
 
 
 
-// Links for SMS, trace, 'report a problem'
 app.controller('prmActionContainerAfterController', [function() {
+
+  console.log(this);
 
   // build a permalink (for 'report a problem')
   try {
     let recordid = this.parentCtrl.item.pnx.control.recordid[0];
-    if (recordid.match(/^01ITHACACOL/)) {
-      this.url = 'https://ithaca-primo.hosted.exlibrisgroup.com/permalink/f/vj27p3/' + recordid;
-    } else {
-      this.url = 'https://ithaca-primo.hosted.exlibrisgroup.com/permalink/f/1cgqes2/' + recordid;
-    }
+    // const start = 'https://ithaca-primo.hosted.exlibrisgroup.com/primo-explore/fulldisplay?docid=01ITHACACOL_';
+    // const end = '&vid=01ITHACACOL_V1&search_scope=01ITHACACOL_EVERYTHING&tab=default_tab&lang=en_US&context=L';
+    const start = 'https://ithaca.primo.exlibrisgroup.com/discovery/fulldisplay?docid=';
+    const end = '&context=PC&vid=01ITHACACOL_INST:01ITHACACOL_V1&search_scope=MyInst_and_CI&tab=Everything&lang=en';
+    this.url = encodeURIComponent(start + recordid + end);
   } catch(e) {
+    this.recordid = '';
     this.url = '';
   }
 
@@ -350,18 +352,11 @@ app.controller('prmActionContainerAfterController', [function() {
     this.location = '';
   }
 
-  // is full text available?
-  try {
-    this.fullTextAvailability = this.parentCtrl.result.delivery.availability[0];
-  } catch(e) {
-    this.fullTextAvailability = '';
-  }
-
   // get all PNX addata (for 'report a problem')
   try {
     const addata = this.parentCtrl.item.pnx.addata;
     let addataString = '';
-    this.reportFormUrl = 'https://library.ithaca.edu/forms/primo_problem.php?';
+    this.reportFormUrl = 'https://library.ithaca.edu/forms/primo_problems.php?origin=primo&';
     const addataFields = Object.keys(addata);
     for (const addataField of addataFields) {
       if (addataField !== 'abstract') {
@@ -369,34 +364,30 @@ app.controller('prmActionContainerAfterController', [function() {
       }
     }
     addataString = encodeURI(addataString.substring(1));
-    addataString += '&permalink=' + encodeURI(this.url);
+    // addataString += '&permalink=' + encodeURI(this.url);
     this.reportFormUrl += addataString;
+
+    // Add the call number for traces
+    this.reportFormUrl += '&callNumber=' + encodeURI(this.callNumber);
+    this.reportFormUrl += '&permalink=' + encodeURI(this.url);
     // console.log(this.reportFormUrl);
   } catch(e) {
     this.reportFormUrl = '';
   }
 
-  // what is it?
   try {
-    this.category = this.parentCtrl.item.delivery.GetIt1[0].category;
+    this.getit = this.parentCtrl.item.delivery.GetIt1;
   } catch(e) {
-    this.category = '';
+    this.getit = [];
+    console.log(e.message);
   }
 
-  this.showSMSLink = Boolean(this.category === 'Alma-P');
-
-  this.showNotOnShelfLink = Boolean(this.category === 'Alma-P' && this.location !== 'multimedia' && this.location != 'reserves');
-
-  this.showReportAProblemLink = Boolean(this.category !== 'Alma-P');
-
 }]);
-
 app.component('prmActionContainerAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'prmActionContainerAfterController',
-  template: '<div class="ic-more-actions"><button class="_md-nav-button md-accent md-button md-primoExplore-theme md-ink-ripple md-primary" ng-show="$ctrl.showSMSLink"><span class="_md-nav-button-text"><a ng-href="https://library.ithaca.edu/services/sms_me.php?title={{$ctrl.title | encode}}&cn={{$ctrl.callNumber | encode}}&loc={{$ctrl.location | encode}}" class="ic-sms-link" target="_blank"><div class="layout-column" layout="column"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="#616161" d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg><span class="button-text">SMS</span></div></a></span></button><button class="_md-nav-button md-accent md-button md-primoExplore-theme md-ink-ripple md-primary" ng-show="$ctrl.showNotOnShelfLink"><span class="_md-nav-button-text"><a ng-href="https://library.ithaca.edu/forms/traceform.php?title={{$ctrl.title | encode}}&author={{$ctrl.author | encode}}&cn={{$ctrl.callNumber | encode}}" class="ic-trace-link" target="_blank"><div class="layout-column" layout="column"><prm-icon icon-definition="help-circle-outline" icon-type="svg" svg-icon-set="primo-ui"></prm-icon><span class="button-text">NOT ON SHELF</span></div></a></span></button><button class="_md-nav-button md-accent md-button md-primoExplore-theme md-ink-ripple md-primary" ng-show={{$ctrl.showReportAProblemLink}}><span class="_md-nav-button-text"><a ng-href={{$ctrl.reportFormUrl}} class="ic-report-problem-link" target="_blank"><div class="layout-column" layout="column"><prm-icon icon-definition="error-attention" icon-type="svg" svg-icon-set="primo-ui"></prm-icon><span class="button-text">REPORT A PROBLEM</span></div></a></span></button></div>',
+  template: '<div class="ic-more-actions"><button class="_md-nav-button md-accent md-button md-primoExplore-theme md-ink-ripple md-primary" ng-show="$ctrl.getit[0].category===\'Alma-P\' || $ctrl.getit[1].category===\'Alma-P\'"><span class="_md-nav-button-text"><a ng-href="https://library.ithaca.edu/services/sms_me.php?title={{$ctrl.title | encode}}&cn={{$ctrl.callNumber | encode}}&loc={{$ctrl.location | encode}}" class="ic-sms-link" target="_blank"><div class="layout-column" layout="column"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="#616161" d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg><span class="button-text">SMS</span></div></a></span></button><button class="_md-nav-button md-accent md-button md-primoExplore-theme md-ink-ripple md-primary"><span class="_md-nav-button-text"><a ng-href={{$ctrl.reportFormUrl}} class="ic-report-problem-link" target="_blank"><div class="layout-column" layout="column"><prm-icon icon-definition="error-attention" icon-type="svg" svg-icon-set="primo-ui"></prm-icon><span class="button-text">REPORT A PROBLEM</span></div></a></span></button></div>',
 });
-
 
 // LibAnswers chat widget
 (function() {
