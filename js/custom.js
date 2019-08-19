@@ -84,7 +84,9 @@ app.filter('encode', function () {
 });
 
 // Map stuff
+
 app.controller('mapController', [function () {
+    console.log(this);
 
     function drawIndicator(mapHeight, mapWidth, x, y, h, w) {
         // not sure why, but works best if we draw on ALL the possible canvases
@@ -100,11 +102,8 @@ app.controller('mapController', [function () {
         }
     }
 
-    // We only care about one instance of this directive
-    // There's probably a better way to do this.
-
     try {
-        this.needsMap = this.parentCtrl.item.delivery.GetIt1[0].category === 'Alma-P';
+        this.needsMap = Boolean(this.parentCtrl.item.delivery.GetIt1[0].category === 'Alma-P' || this.parentCtrl.item.delivery.GetIt1[1].category === 'Alma-P');
     } catch (e) {
         this.needsMap = false;
     }
@@ -116,9 +115,7 @@ app.controller('mapController', [function () {
     }
 
     if (this.needsMap) {
-        this.magicNumber = 1; // which instance
-        this.showMapHere = this.parentCtrl.index === this.magicNumber;
-
+        // shouldn't need magic number stuff
         if (this.holding && this.holding.length > 1) {
             this.multipleHoldings = true;
             this.holdingsLocations = [];
@@ -160,6 +157,7 @@ app.controller('mapController', [function () {
             this.callNumber = '';
             this.mapError = true;
         }
+        console.log(this.callNumber);
 
         // location
         try {
@@ -168,6 +166,7 @@ app.controller('mapController', [function () {
             this.location = '';
             this.mapError = true;
         }
+        console.log(this.location);
 
         // availability
         try {
@@ -176,8 +175,9 @@ app.controller('mapController', [function () {
             this.availability = '';
             this.mapError = true;
         }
+        console.log(this.availability);
 
-        // We only need a map if it's available and
+        // We only need a map if the item is available and 
         // has a location OR is a periodical
         if ((this.availability === 'available' || this.availability === 'check_holdings') && this.callNumber || this.location === 'periodical') {
 
@@ -189,7 +189,7 @@ app.controller('mapController', [function () {
             } else {
                 this.mapAreaRatio = 0.83;
             }
-            // console.log(this.mapAreaRatio);
+
             this.mapWidth = this.containerWidth * this.mapAreaRatio;
             this.mapHeight = 0.58666666667 * this.mapWidth;
 
@@ -211,8 +211,6 @@ app.controller('mapController', [function () {
             }
 
             if (this.locationType !== 'static') {
-
-                // didn't match anything in "for" loop, so
                 this.locationType = 'dynamic';
 
                 // where should we look for the item?
@@ -230,7 +228,6 @@ app.controller('mapController', [function () {
                         this.lookupArray = null;
                         break;
                 }
-                // console.log(this.lookupArray);
 
                 for (var _i3 = 0; _i3 < this.lookupArray.length; _i3++) {
                     var start = this.lookupArray[_i3].start;
@@ -260,6 +257,8 @@ app.controller('mapController', [function () {
                 } else {
                     this.showMap = false;
                 }
+
+                console.log(this.locMessage);
             }
 
             if (this.multipleHoldings) {
@@ -304,17 +303,16 @@ app.controller('mapController', [function () {
 
             drawIndicator(this.mapHeight, this.mapWidth, this.x, this.y, this.height, this.width);
         }
-    }
+    } // end if(needMap)
 }]);
-app.component('prmFullViewServiceContainerAfter', {
+
+app.component('prmOpacAfter', {
     bindings: { parentCtrl: '<' },
     controller: 'mapController',
-    template: '<div class="ic-map-error" ng-show="$ctrl.needsMap && $ctrl.mapError">SYSTEM ERROR: TRY REFRESHING THE PAGE</div><div class="ic-map-container" ng-show="$ctrl.showMapHere" ng-style="$ctrl.display"><p ng-show="$ctrl.showLocMessage" class="ic-loc-message">{{$ctrl.locMessage}}</p><div ng-show="$ctrl.showMap" class="ic-map-div"><img class="ic-map-img" ng-src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png" ng-style="$ctrl.mapDimensions" ng-show="$ctrl.showMap"><canvas ng-show="$ctrl.showMap" class="ic-map-canvas"></canvas></div></div>'
+    template: '<div class="ic-map-error" ng-show="$ctrl.needsMap && $ctrl.mapError">SYSTEM ERROR: TRY REFRESHING THE PAGE</div><div class="ic-map-container" ng-style="$ctrl.display"><p ng-show="$ctrl.showLocMessage" class="ic-loc-message">{{$ctrl.locMessage}}</p><div ng-show="$ctrl.showMap" class="ic-map-div"><img class="ic-map-img" ng-src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png" ng-style="$ctrl.mapDimensions" ng-show="$ctrl.showMap"><canvas ng-show="$ctrl.showMap" class="ic-map-canvas"></canvas></div></div>'
 });
 
 app.controller('prmActionContainerAfterController', [function () {
-
-    console.log(this);
 
     // build a permalink (for 'report a problem')
     try {

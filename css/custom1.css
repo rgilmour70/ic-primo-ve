@@ -875,9 +875,9 @@ prm-facet-group .md-chips > .md-chip {
 /* Hide map-related stuff */
 /* This prevents ugly AngularJS template stuff from
 showing up if the JS doesn't load in time. */
-.ic-map-container {
+/*.ic-map-container {
 	display: none;
-}
+}*/
 .ic-map-error {
 	color: red;
 }
