@@ -83,69 +83,6 @@ app.filter('encode', function () {
     return encodeURIComponent;
 });
 
-// Bitly permalink
-// app.controller('prmCopyClipboardBtnAfterController', [function() {
-
-//  var vm = this;
-//  vm.ajax_promise = ajax_promise;
-//  vm.get_bitlink = get_bitlink;
-
-//  function ajax_promise(requestUrl) {
-//    return new Promise(function(resolve, reject) {
-//      var xhr = new XMLHttpRequest();
-//      xhr.open('GET', requestUrl);
-//      xhr.send();
-//      xhr.onload = function() {
-//        if (xhr.readyState === 4){
-//          if (xhr.status === 200){
-//            var resp = xhr.responseText;
-//            var respJson = JSON.parse(resp);
-//            resolve(respJson);
-//          } else {
-//            reject(xhr.status);
-//          }
-//        }
-//      };
-//    });
-//  }
-
-//  function get_bitlink() {
-
-//    var long_url = encodeURIComponent(vm.parentCtrl.text);
-
-//    // ignore the "short" link from ExLibris
-//    if (long_url !== 'undefined' && !long_url.match(/permalink/)) {
-
-//      // access_token is defined externally
-//      var requestUrl = 'https://api-ssl.bitly.com/v3/shorten?callback=?&format=json&access_token=' + access_token + '&login=iclibrary&longUrl=' + long_url;
-
-//      ajax_promise(requestUrl).then(function(result) {
-//        if (result.data.url !== undefined) {
-//          vm.bitlink = result.data.url;
-//          var theLink = document.getElementById('ic-bitly');
-//          theLink.innerHTML = vm.bitlink;
-//          theLink.href = vm.bitlink;
-//        } else {
-//          vm.bitlink = decodeURIComponent(long_url); // not really a bitlink
-//          var theLink = document.getElementById('ic-bitly');
-//          theLink.innerHTML = vm.bitlink;
-//          theLink.href = vm.bitlink;
-//        }
-//      }).catch(function(e) {
-//        console.log('Ajax Problem: ' + e);
-//      });
-//    }
-//  }
-
-// }]);
-
-// app.component('prmCopyClipboardBtnAfter', {
-//  bindings: { parentCtrl: '<' },
-//  controller: 'prmCopyClipboardBtnAfterController',
-//  template: '<div class="form-focus layout-padding layout-row ic-bitly-outer-wrapper" layout="row" layout-padding=""><div layout-margin layout-fill class="word-break-all layout-fill ic-bitly-inner-wrapper"><span layout-fill="layout-fill" class="layout-fill"><a href="#" id="ic-bitly">{{$ctrl.get_bitlink()}}</a></span></div></div><br /><button ng-click="$ctrl.saveOffset()" text="$ctrl.bitlink" clipboard="" ng-hide="$ctrl.copySuccessful" type="button" class="button-confirm button-with-icon md-button md-primoExplore-theme md-ink-ripple" on-copied="$ctrl.clipboardSuccess() | translate" on-error="$ctrl.clipboardFailure(err) | translate" id="copy-citation-button" aria-label="nui.permalink.button" aria-hidden="false" style=""><prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="clipboard"></prm-icon><prm-icon-after parent-ctrl="$ctrl"></prm-icon-after><span translate="nui.permalink.button">Copy the Permalink to Clipboard</span><div class="md-ripple-container"></div></button>'
-// });
-
-
 // Map stuff
 app.controller('mapController', [function () {
 
