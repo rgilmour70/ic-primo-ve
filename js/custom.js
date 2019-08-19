@@ -102,10 +102,11 @@ app.controller('mapController', [function () {
         }
     }
 
+    // Gather a bunch of information from the current directive.
     try {
-        this.needsMap = Boolean(this.parentCtrl.item.delivery.GetIt1[0].category === 'Alma-P' || this.parentCtrl.item.delivery.GetIt1[1].category === 'Alma-P');
+        this.physical = Boolean(this.parentCtrl.item.delivery.GetIt1[0].category === 'Alma-P' || this.parentCtrl.item.delivery.GetIt1[1].category === 'Alma-P');
     } catch (e) {
-        this.needsMap = false;
+        this.physical = false;
     }
 
     try {
@@ -114,8 +115,36 @@ app.controller('mapController', [function () {
         this.holding = false;
     }
 
+    try {
+        var theCallNumber = this.parentCtrl.item.delivery.bestlocation.callNumber;
+        theCallNumber = theCallNumber.replace(/^[(\s]+/, '');
+        theCallNumber = theCallNumber.replace(/[)\s]+$/, '');
+        this.callNumber = theCallNumber;
+    } catch (e) {
+        this.callNumber = '';
+        this.mapError = true;
+    }
+
+    try {
+        this.location = this.parentCtrl.item.delivery.bestlocation.subLocationCode;
+    } catch (e) {
+        this.location = '';
+        this.mapError = true;
+    }
+
+    try {
+        this.availability = this.parentCtrl.item.delivery.bestlocation.availabilityStatus;
+    } catch (e) {
+        this.availability = '';
+        this.mapError = true;
+    }
+
+    // Do we need to display a map?
+    this.needsMap = Boolean((this.availability === 'available' || this.availability === 'check_holdings') && this.callNumber && this.physical) || this.location === 'periodical';
+
     if (this.needsMap) {
-        // shouldn't need magic number stuff
+
+        // are there multiple holdings?
         if (this.holding && this.holding.length > 1) {
             this.multipleHoldings = true;
             this.holdingsLocations = [];
@@ -124,11 +153,7 @@ app.controller('mapController', [function () {
             }
         }
 
-        this.callNumber = '';
-        this.location = '';
-        this.availability = '';
         this.floor = 0;
-        this.showMap = false;
         this.showLocMessage = false;
         this.locationType = '';
         this.x = 0;
@@ -143,173 +168,133 @@ app.controller('mapController', [function () {
         this.debug = false;
         this.display = { display: 'block' };
         this.mapError = false;
-        this.needsMap = false;
         this.normalizeLC = normalizeLC;
         this.sortLC = sortLC;
 
-        // call number
-        try {
-            var theCallNumber = this.parentCtrl.item.delivery.bestlocation.callNumber;
-            theCallNumber = theCallNumber.replace(/^[(\s]+/, '');
-            theCallNumber = theCallNumber.replace(/[)\s]+$/, '');
-            this.callNumber = theCallNumber;
-        } catch (e) {
-            this.callNumber = '';
-            this.mapError = true;
+        this.containerWidth = document.getElementById('full-view-container').offsetWidth;
+
+        this.mapAreaRatio = 1; // amount of containerWidth map will occupy
+        if (this.containerWidth > 600) {
+            this.mapAreaRatio = 0.6;
+        } else {
+            this.mapAreaRatio = 0.83;
         }
-        console.log(this.callNumber);
 
-        // location
-        try {
-            this.location = this.parentCtrl.item.delivery.bestlocation.subLocationCode;
-        } catch (e) {
-            this.location = '';
-            this.mapError = true;
-        }
-        console.log(this.location);
+        this.mapWidth = this.containerWidth * this.mapAreaRatio;
+        this.mapHeight = 0.58666666667 * this.mapWidth;
 
-        // availability
-        try {
-            this.availability = this.parentCtrl.item.delivery.bestlocation.availabilityStatus;
-        } catch (e) {
-            this.availability = '';
-            this.mapError = true;
-        }
-        console.log(this.availability);
+        this.showLocMessage = true;
 
-        // We only need a map if the item is available and 
-        // has a location OR is a periodical
-        if ((this.availability === 'available' || this.availability === 'check_holdings') && this.callNumber || this.location === 'periodical') {
-
-            this.containerWidth = document.getElementById('full-view-container').offsetWidth;
-
-            this.mapAreaRatio = 1; // amount of containerWidth map will occupy
-            if (this.containerWidth > 600) {
-                this.mapAreaRatio = 0.6;
+        // is it in a static location?
+        for (var loc in staticLocations) {
+            if (loc === this.location) {
+                this.locationType = 'static';
+                this.floor = staticLocations[loc].floor;
+                this.x = staticLocations[loc].x;
+                this.y = staticLocations[loc].y;
+                this.width = staticLocations[loc].width;
+                this.height = staticLocations[loc].height;
+                this.locMessage = staticLocations[loc].message;
             } else {
-                this.mapAreaRatio = 0.83;
-            }
-
-            this.mapWidth = this.containerWidth * this.mapAreaRatio;
-            this.mapHeight = 0.58666666667 * this.mapWidth;
-
-            this.showLocMessage = true;
-            this.showMap = false;
-
-            // is it in a static location?
-            for (var loc in staticLocations) {
-                if (loc === this.location) {
-                    this.showMap = true;
-                    this.locationType = 'static';
-                    this.floor = staticLocations[loc].floor;
-                    this.x = staticLocations[loc].x;
-                    this.y = staticLocations[loc].y;
-                    this.width = staticLocations[loc].width;
-                    this.height = staticLocations[loc].height;
-                    this.locMessage = staticLocations[loc].message;
-                }
-            }
-
-            if (this.locationType !== 'static') {
                 this.locationType = 'dynamic';
-
-                // where should we look for the item?
-                switch (this.location) {
-                    case 'music':
-                        this.lookupArray = musicStacks;
-                        break;
-                    case 'periodical':
-                        this.lookupArray = perStacks;
-                        break;
-                    case 'general':
-                        this.lookupArray = stacks;
-                        break;
-                    default:
-                        this.lookupArray = null;
-                        break;
-                }
-
-                for (var _i3 = 0; _i3 < this.lookupArray.length; _i3++) {
-                    var start = this.lookupArray[_i3].start;
-                    var end = this.lookupArray[_i3].end;
-                    var test = this.sortLC(start, end, this.callNumber);
-                    if (this.normalizeLC(test[1]) === this.normalizeLC(this.callNumber) || test.length === 2) {
-                        this.coordinates = this.lookupArray[_i3];
-                    }
-                }
-
-                if (this.coordinates) {
-                    this.showMap = true;
-                    this.floor = this.coordinates.id.split('.')[0];
-                    this.stack = this.coordinates.id.split('.')[1];
-                    this.side = this.coordinates.id.split('.')[2];
-                    if (this.side === 'e') {
-                        this.sideLong = 'east';
-                    } else {
-                        this.sideLong = 'west';
-                    }
-                    this.locMessage = 'This item is available at stack ' + this.stack + ', ' + this.sideLong + ' side.';
-
-                    this.x = this.coordinates.x;
-                    this.y = this.coordinates.y;
-                    this.width = this.coordinates.width;
-                    this.height = this.coordinates.height;
-                } else {
-                    this.showMap = false;
-                }
-
-                console.log(this.locMessage);
             }
-
-            if (this.multipleHoldings) {
-
-                this.locMessage += ' It may also be available in ';
-
-                // what locations are there that aren't the "bestlocation"?
-                for (var i = 0; i < this.holdingsLocations.length; i++) {
-
-                    if (this.holdingsLocations[i] !== this.location) {
-                        var hl = this.holdingsLocations[i];
-                        // console.log("hl: " + hl);
-                        this.staticLocations = "";
-
-                        if (staticLocations[hl]) {
-                            this.locMessage += staticLocations[hl].english;
-                        } else {
-                            this.locMessage += hl; // cases where secondary loc isn't static
-                        }
-
-                        // this.locMessage += staticLocations[hl].english;
-                        if (i === this.holdingsLocations.length - 1) {
-                            this.locMessage += '.';
-                        } else {
-                            this.locMessage += ', ';
-                        }
-                    }
-                }
-            }
-
-            // determine dimensions for the map image
-            var mapImage = document.getElementsByClassName('ic-map-img').item(this.magicNumber);
-            if (mapImage) {
-                this.mapDimensions = { height: this.mapHeight + 'px', width: this.mapWidth + 'px' };
-            }
-
-            // make highlighted area proportional
-            this.x = this.x * this.mapWidth / 600;
-            this.y = this.y * this.mapHeight / 352;
-            this.width = this.width * this.mapWidth / 600;
-            this.height = this.height * this.mapHeight / 352;
-
-            drawIndicator(this.mapHeight, this.mapWidth, this.x, this.y, this.height, this.width);
         }
-    } // end if(needMap)
+
+        if (this.locationType === 'dynamic') {
+
+            // where should we look for the item?
+            switch (this.location) {
+                case 'music':
+                    this.lookupArray = musicStacks;
+                    break;
+                case 'periodical':
+                    this.lookupArray = perStacks;
+                    break;
+                case 'general':
+                    this.lookupArray = stacks;
+                    break;
+                default:
+                    this.lookupArray = null;
+                    break;
+            }
+
+            for (var _i3 = 0; _i3 < this.lookupArray.length; _i3++) {
+                var start = this.lookupArray[_i3].start;
+                var end = this.lookupArray[_i3].end;
+                var test = this.sortLC(start, end, this.callNumber);
+                if (this.normalizeLC(test[1]) === this.normalizeLC(this.callNumber) || test.length === 2) {
+                    this.coordinates = this.lookupArray[_i3];
+                }
+            }
+
+            if (this.coordinates) {
+                this.floor = this.coordinates.id.split('.')[0];
+                this.stack = this.coordinates.id.split('.')[1];
+                this.side = this.coordinates.id.split('.')[2];
+                if (this.side === 'e') {
+                    this.sideLong = 'east';
+                } else {
+                    this.sideLong = 'west';
+                }
+                this.locMessage = 'This item is available at stack ' + this.stack + ', ' + this.sideLong + ' side.';
+
+                this.x = this.coordinates.x;
+                this.y = this.coordinates.y;
+                this.width = this.coordinates.width;
+                this.height = this.coordinates.height;
+            } else {
+                this.needsMap = false;
+            }
+        }
+
+        if (this.multipleHoldings) {
+
+            this.locMessage += ' It may also be available in ';
+
+            // what locations are there that aren't the "bestlocation"?
+            for (var i = 0; i < this.holdingsLocations.length; i++) {
+
+                if (this.holdingsLocations[i] !== this.location) {
+                    var hl = this.holdingsLocations[i];
+                    // console.log("hl: " + hl);
+                    this.staticLocations = "";
+
+                    if (staticLocations[hl]) {
+                        this.locMessage += staticLocations[hl].english;
+                    } else {
+                        this.locMessage += hl; // cases where secondary loc isn't static
+                    }
+
+                    // this.locMessage += staticLocations[hl].english;
+                    if (i === this.holdingsLocations.length - 1) {
+                        this.locMessage += '.';
+                    } else {
+                        this.locMessage += ', ';
+                    }
+                }
+            }
+        }
+
+        // determine dimensions for the map image
+        var mapImage = document.getElementsByClassName('ic-map-img').item(this.magicNumber);
+        if (mapImage) {
+            this.mapDimensions = { height: this.mapHeight + 'px', width: this.mapWidth + 'px' };
+        }
+
+        // make highlighted area proportional
+        this.x = this.x * this.mapWidth / 600;
+        this.y = this.y * this.mapHeight / 352;
+        this.width = this.width * this.mapWidth / 600;
+        this.height = this.height * this.mapHeight / 352;
+
+        drawIndicator(this.mapHeight, this.mapWidth, this.x, this.y, this.height, this.width);
+    }
 }]);
 
 app.component('prmOpacAfter', {
     bindings: { parentCtrl: '<' },
     controller: 'mapController',
-    template: '<div class="ic-map-error" ng-show="$ctrl.needsMap && $ctrl.mapError">SYSTEM ERROR: TRY REFRESHING THE PAGE</div><div class="ic-map-container" ng-style="$ctrl.display"><p ng-show="$ctrl.showLocMessage" class="ic-loc-message">{{$ctrl.locMessage}}</p><div ng-show="$ctrl.showMap" class="ic-map-div"><img class="ic-map-img" ng-src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png" ng-style="$ctrl.mapDimensions" ng-show="$ctrl.showMap"><canvas ng-show="$ctrl.showMap" class="ic-map-canvas"></canvas></div></div>'
+    template: '<div class="ic-map-error" ng-show="$ctrl.needsMap && $ctrl.mapError">SYSTEM ERROR: TRY REFRESHING THE PAGE</div><div class="ic-map-container" ng-style="$ctrl.display"><p ng-show="$ctrl.showLocMessage" class="ic-loc-message">{{$ctrl.locMessage}}</p><div ng-show="$ctrl.needsMap" class="ic-map-div"><img class="ic-map-img" ng-src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png" ng-style="$ctrl.mapDimensions" ng-show="$ctrl.needsMap"><canvas ng-show="$ctrl.needsMap" class="ic-map-canvas"></canvas></div></div>'
 });
 
 app.controller('prmActionContainerAfterController', [function () {
