@@ -64,7 +64,7 @@ app.controller ('mapController', [function() {
   }
 
   // Do we need to display a map?
-  this.needsMap = Boolean( (this.availability === 'available' || this.availability === 'check_holdings') && this.callNumber && this.physical) || this.location === 'periodical';
+  this.needsMap = Boolean(( (this.availability === 'available' || this.availability === 'check_holdings') && this.callNumber && this.physical) || this.location === 'periodical');
 
   if (this.needsMap) {
 
@@ -79,7 +79,7 @@ app.controller ('mapController', [function() {
 
     this.floor = 0;
     this.showLocMessage = false;
-    this.locationType = '';
+    this.staticLocation = false;
     this.x = 0;
     this.y = 0;
     this.width = 0; // width of highlight box
@@ -109,22 +109,22 @@ app.controller ('mapController', [function() {
 
     this.showLocMessage = true;
 
+    console.log(this.location);
+
     // is it in a static location?
     for (var loc in staticLocations) {
       if (loc === this.location) {
-        this.locationType = 'static';
+        this.staticLocation = true;
         this.floor = staticLocations[loc].floor;
         this.x = staticLocations[loc].x;
         this.y = staticLocations[loc].y;
         this.width = staticLocations[loc].width;
         this.height = staticLocations[loc].height;
         this.locMessage = staticLocations[loc].message;
-      } else {
-        this.locationType = 'dynamic';
       }
     }
 
-    if (this.locationType === 'dynamic') {
+    if (!this.staticLocation) {
 
       // where should we look for the item?
       switch(this.location) {
