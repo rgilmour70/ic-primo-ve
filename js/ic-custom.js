@@ -1,8 +1,68 @@
 /* eslint-disable */
-var app = angular.module('viewCustom', ['angularLoad']);
+var app = angular.module('viewCustom', ['angularLoad', 'ui.router']);
 
 app.filter('encode', function() {
   return encodeURIComponent;
+});
+
+
+// EBSCO link (experimental)
+app.controller ('ebscoLinkController', [function($stateParams, $state) {
+
+  function convertToEbsco(str) {
+    let ebscoSearchString = '';
+    const primoSearchArray = str.split(/,\s*/);
+      const conjunction = primoSearchArray[3] || '';
+
+      const searchTerms = primoSearchArray[2].replace(/\s/g, '+');
+
+      switch (primoSearchArray[0]) {
+        case 'title':
+          ebscoSearchString = 'TI+' + searchTerms;
+          break;
+        case 'creator':
+          ebscoSearchString = 'AU+' + searchTerms;
+          break;
+        case 'sub':
+          ebscoSearchString = 'SU+' + searchTerms;
+          break;
+        default: // handles 'any' case
+          ebscoSearchString = '' + searchTerms;
+      }
+    if (conjunction) { ebscoSearchString += '+' + conjunction + '+'; }
+    return ebscoSearchString;
+  }
+
+  // this.primoSearchString = document.getElementById('searchBar').value;
+  const primoSearch = this.parentCtrl.$stateParams.query; // can be a string OR array!
+  console.log('primoSearch', primoSearch);
+
+  let ebscoSearchString = '';
+
+  if (!Array.isArray(primoSearch)) {
+    // simple search
+    console.log('simple');
+    ebscoSearchString = convertToEbsco(primoSearch);
+  } else {
+    // compound search
+    console.log('compound');
+    for (let i=0; i<primoSearch.length; i++) {
+      ebscoSearchString += convertToEbsco(primoSearch[i]);
+    }
+    ebscoSearchString = ebscoSearchString.replace(/\+[A-Z]+\+$/, '');
+  }
+  console.log('ebscoSearchString', ebscoSearchString);
+
+  this.label = 'Try this search in EBSCO!';
+  const proxyString = 'http://ezproxy.ithaca.edu:2048/login?qurl=';
+  const baseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&db=aph&db=gnh&db=apn&db=ahl&db=aft&db=air&db=ami&db=rfh&db=bvh&db=bxh&db=boh&db=buh&db=cin20&db=cms&db=nlebk&db=eric&db=hev&db=8gh&db=hch&db=hia&db=ibh&db=qth&db=lxh&db=lfh&db=cmedm&db=mah&db=msn&db=nfh&db=phl&db=tfh&db=rgr&db=bwh&db=rft&db=sih&db=s3h&db=trh&db=ser&type=1&searchMode=Standard&site=ehost-live&scope=site';
+  this.searchUrl = encodeURIComponent(baseUrl + '&bquery=' + ebscoSearchString);
+  this.proxiedSearchUrl = proxyString + this.searchUrl;
+}]);
+app.component('prmPersonalizeResultsButtonAfter', {
+  bindings: { parentCtrl: '<' },
+  controller: 'ebscoLinkController',
+  template: '<div><a href="{{$ctrl.proxiedSearchUrl}}" target="_blank">{{$ctrl.label}} <prm-icon icon-type="svg" svg-icon-set="primo-ui" icon-definition="open-in-new"></prm-icon></a></div>'
 });
 
 
@@ -90,15 +150,17 @@ app.controller ('mapController', [function() {
     this.side = '';
     this.sideLong = '';
     this.debug = false;
-    this.display = { display: 'block' };
+    // this.display = { display: 'block' };
     this.mapError = false;
     this.normalizeLC = normalizeLC;
     this.sortLC = sortLC;
 
     this.containerWidth = document.getElementById('full-view-container').offsetWidth;
     
-    this.mapAreaRatio = 1; // amount of containerWidth map will occupy
-    if (this.containerWidth > 600) {
+    this.mapAreaRatio; // amount of containerWidth map will occupy
+    if (this.containerWidth > 1400) {
+      this.mapAreaRatio = 0.5;
+    } else if (this.containerWidth > 600) {
       this.mapAreaRatio = 0.6;
     } else {
       this.mapAreaRatio = 0.83;
@@ -203,7 +265,7 @@ app.controller ('mapController', [function() {
     }
 
     // determine dimensions for the map image
-    var mapImage = document.getElementsByClassName('ic-map-img').item(this.magicNumber);
+    var mapImage = document.getElementsByClassName('ic-map-img').item(0);
     if (mapImage) {
       this.mapDimensions = { height: this.mapHeight + 'px', width: this.mapWidth + 'px' };
     }
@@ -223,7 +285,7 @@ app.controller ('mapController', [function() {
 app.component('prmOpacAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'mapController',
-  template: '<div class="ic-map-error" ng-show="$ctrl.needsMap && $ctrl.mapError">SYSTEM ERROR: TRY REFRESHING THE PAGE</div><div class="ic-map-container" ng-style="$ctrl.display"><p ng-show="$ctrl.showLocMessage" class="ic-loc-message">{{$ctrl.locMessage}}</p><div ng-show="$ctrl.needsMap" class="ic-map-div"><img class="ic-map-img" ng-src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png" ng-style="$ctrl.mapDimensions" ng-show="$ctrl.needsMap"><canvas ng-show="$ctrl.needsMap" class="ic-map-canvas"></canvas></div></div>'
+  template: '<div class="ic-map-error" ng-show="$ctrl.needsMap && $ctrl.mapError">SYSTEM ERROR: TRY REFRESHING THE PAGE</div><div class="ic-map-container" ng-style="$ctrl.mapDimensions"><p ng-show="$ctrl.showLocMessage" class="ic-loc-message">{{$ctrl.locMessage}}</p><div ng-show="$ctrl.needsMap" class="ic-map-div"><img class="ic-map-img" ng-src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png" ng-style="$ctrl.mapDimensions" ng-show="$ctrl.needsMap"><canvas ng-show="$ctrl.needsMap" class="ic-map-canvas"></canvas></div></div>'
 });
 
 

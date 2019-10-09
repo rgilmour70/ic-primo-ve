@@ -904,6 +904,11 @@ button.section-title svg {
 	justify-content: space-between;
 }
 
+/* Hide facet Open access */ 
+/*[translate="facets.facet.tlevel.open_access"] {display:none;}*/
+[data-facet-value="tlevel-open_access"] {
+	display: none !important;
+}
 
 /* Hides the first of the "Source" facets */
 /*.sidebar-inner-wrapper > .sidebar-section:nth-of-type(3) .md-chip:nth-of-type(1) {
