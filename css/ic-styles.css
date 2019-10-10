@@ -62,14 +62,6 @@ prm-brief-result-container {
 	font-weight: 600;
 }
 
-/* Hide Tabs for RefWorks, EndNote, EasyBib */
-
-/*prm-action-list li[name="RefWorks"],
-prm-action-list li[name="EndNote"],
-prm-action-list li[name="EasyBib"] {
-	display: none;
-}*/
-
 prm-action-list md-nav-bar ul._md-nav-bar-list li.md-nav-item {
 	margin: 0 10px;
 }
@@ -141,45 +133,14 @@ prm-icon.giant-icon {
 	display: none;
 }
 
-
+.ic-ebsco-link svg {
+	height: 16px;
+	width: 16px;
+}
 /* Make animated pin icon match the static pin color */
 .pinDummy prm-icon {
 	color: #4DB8FF;
 }
-
-/* Hide most of the default availability line for online resources */
-/*prm-search-result-availability-line prm-icon[icon-definition="link"], 
-prm-search-result-availability-line prm-icon[icon-definition="link"] + button,
-prm-search-result-availability-line prm-icon[icon-definition="link"] + span
- {
-	display: none;
-}
-prm-search-result-availability-line prm-search-result-availability-line-after prm-icon[icon-definition="link"]{
-	display: inline;
-}
-prm-search-result-availability-line-after a {
-	color: green;
-}
-prm-search-result-availability-line-after a:hover, prm-search-result-availability-line-after a:focus {
-	color: green;
-	background-color: #fff;
-}
-prm-search-result-availability-line-after prm-icon {
-	color: #bbb;
-}
-prm-search-result-availability-line-after prm-icon[icon-definition="open-in-new"] {
-	color: #666;
-}
-prm-search-result-availability-line-after prm-icon[icon-definition="open-in-new"] md-icon {
-	transform: scale(0.65);
-}
-prm-search-result-availability-line-after prm-icon md-icon {
-	transform: scale(0.7);
-}
-
-prm-facet-group strong {
-	color: #000 !important;
-}*/
 
 prm-search-bar, prm-browse-search-bar, prm-atoz-search-bar {
 	background-color: #013158;
@@ -203,9 +164,6 @@ md-checkbox[aria-label="Expand My Results"] {
 	border-bottom: 1px solid #ddd;
 	padding-bottom: 4px;
 }
-/*.media-delimiter::before {
-	content: ' |';
-}*/
 
 prm-static[section="homepage"] md-card.default-card {
 	visibility: hidden;
@@ -230,34 +188,6 @@ prm-location-items .layout-column .text-link {
 prm-citation prm-copy-clipboard-btn-after {
 	display: none;
 }
-
-/* Permalink Tab */
-/* Hide the default features to be replaced with bitly info */
-/*prm-permalink div.form-focus {
-	display: none;
-}
-prm-permalink .form-focus.ic-bitly-outer-wrapper {
-	display: block !important;
-}
-prm-copy-clipboard-btn > button {
-	display: none !important;
-}
-.ic-bitly-inner-wrapper {
-	text-align: center;
-}
-.long-permalink {
-	text-align: center;
-}
-.send-actions-content-item > md-content > .layout-column > .long-permalink {
-    display: block;
-}
-.send-actions-content-item > md-content > .layout-column > .long-permalink:first-of-type {
-    display: none;
-}
-.short-permalink {
-    display: none !important;
-}*/
-
 
 /* Image isn't clickable, so don't show a pointer. */
 prm-full-view-service-container .media-thumbnail > a {
@@ -284,114 +214,17 @@ showing up if the JS doesn't load in time. */
 	color: red;
 }
 
-/* Newspaper stuff */
-/*.results-title {
-	height: 100px;
-	align-items: flex-start;
-}
-.results-title > .results-count {
-	align-self: center;
-}
-.results-container prm-newspapers-spotlight {
-	display: none;
-}*/
 button.section-title svg {
 	color: red;
 }
-/*h3.section-title-header > span {
-	color: #3A3A3A;
-}*/
+
 .results-title {
 	display: flex;
 	justify-content: space-between;
 }
 
 /* Hide facet Open access */ 
-/*[translate="facets.facet.tlevel.open_access"] {display:none;}*/
 [data-facet-value="tlevel-open_access"] {
 	display: none !important;
 }
-
-/* Hides the first of the "Source" facets */
-/*.sidebar-inner-wrapper > .sidebar-section:nth-of-type(3) .md-chip:nth-of-type(1) {
-	display: none !important;
-}*/
-
-
-/* Re-ordering facets */
-/* set to flex for ordering purposes */
-
-/*.sidebar-section.available-facets.multiselect-facet-group.multiselect-inactive .md-chips.md-chips-wrap {
-    display: flex;
-    flex-direction: column;
-}
-
-.sidebar-section.available-facets.multiselect-facet-group.multiselect-inactive .md-chip.animate-opacity-and-scale.facet-element-marker-tlevel:nth-child(1) {
-    order: 2;
-}
-
-.sidebar-section.available-facets.multiselect-facet-group.multiselect-inactive .md-chip.animate-opacity-and-scale.facet-element-marker-tlevel:nth-child(2) {
-    order: 3;
-}
-
-.sidebar-section.available-facets.multiselect-facet-group.multiselect-inactive .md-chip.animate-opacity-and-scale.facet-element-marker-tlevel:nth-child(3) {
-    order: 1;
-    margin-bottom: 0.4em;
-}
-
-.sidebar-section.available-facets.multiselect-facet-group.multiselect-inactive .md-chip.animate-opacity-and-scale.facet-element-marker-tlevel:nth-child(4) {
-    order: 4;
-}*/
-
-/*.ic-back-to-normal {
-	text-align: center;
-	padding-top: 1em;
-}
-.ic-back-to-normal-link,
-.ic-back-to-normal-link:visited, 
-.ic-back-to-normal-link:link {
-	color: white;
-	font-weight: bold;
-}
-
-.ic-back-to-normal-link:active,
-.ic-back-to-normal-link:hover {
-	color: white;
-	font-weight: bold;
-	text-decoration: underline;
-}*/
-
-/*prm-back-to-library-search > md-toolbar {
-	display: none;
-}*/
-
-/*prm-newspapers-facet > button {
-	padding-top: 8px !important;
-	padding-right: 1.2em !important;
-}
-prm-newspapers-facet > button > span {
-	color: #008dc6;
-	font-size: 0.9em;
-}
-prm-newspapers-facet {
-	margin-left: 2em;
-}
-
-prm-newspapers-search-bar {
-	background-color: #008dc6;
-}
-
-.ic-newspapers-message {
-	margin: 1em 10em;
-	font-weight: bold;
-}*/
-
-/* Moves newspaper pseudo-facet */
-/*prm-newspapers-facet {
-	display: none;
-}
-prm-newspapers-facet.vis {
-	display: block;
-	clear: both;
-}*/
 

@@ -35,25 +35,21 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
 
   // this.primoSearchString = document.getElementById('searchBar').value;
   const primoSearch = this.parentCtrl.$stateParams.query; // can be a string OR array!
-  console.log('primoSearch', primoSearch);
 
   let ebscoSearchString = '';
 
   if (!Array.isArray(primoSearch)) {
     // simple search
-    console.log('simple');
     ebscoSearchString = convertToEbsco(primoSearch);
   } else {
     // compound search
-    console.log('compound');
     for (let i=0; i<primoSearch.length; i++) {
       ebscoSearchString += convertToEbsco(primoSearch[i]);
     }
     ebscoSearchString = ebscoSearchString.replace(/\+[A-Z]+\+$/, '');
   }
-  console.log('ebscoSearchString', ebscoSearchString);
 
-  this.label = 'Try this search in EBSCO!';
+  this.label = 'Try this search in EBSCO';
   const proxyString = 'http://ezproxy.ithaca.edu:2048/login?qurl=';
   const baseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&db=aph&db=gnh&db=apn&db=ahl&db=aft&db=air&db=ami&db=rfh&db=bvh&db=bxh&db=boh&db=buh&db=cin20&db=cms&db=nlebk&db=eric&db=hev&db=8gh&db=hch&db=hia&db=ibh&db=qth&db=lxh&db=lfh&db=cmedm&db=mah&db=msn&db=nfh&db=phl&db=tfh&db=rgr&db=bwh&db=rft&db=sih&db=s3h&db=trh&db=ser&type=1&searchMode=Standard&site=ehost-live&scope=site';
   this.searchUrl = encodeURIComponent(baseUrl + '&bquery=' + ebscoSearchString);
@@ -62,7 +58,7 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
 app.component('prmPersonalizeResultsButtonAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'ebscoLinkController',
-  template: '<div><a href="{{$ctrl.proxiedSearchUrl}}" target="_blank">{{$ctrl.label}} <svg height="16px" width="16px"  fill="#000000" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" version="1.1" x="0px" y="0px"><title>Link external</title><desc>Created with Sketch.</desc><g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd"><g><rect x="0" y="0" width="24" height="24"></rect><path fill="#3F729B" d="M20.2928932,3 L15.5,3 C15.2238576,3 15,2.77614237 15,2.5 C15,2.22385763 15.2238576,2 15.5,2 L21.5,2 C21.7761424,2 22,2.22385763 22,2.5 L22,8.5 C22,8.77614237 21.7761424,9 21.5,9 C21.2238576,9 21,8.77614237 21,8.5 L21,3.70710678 L11.3535534,13.3535534 C11.1582912,13.5488155 10.8417088,13.5488155 10.6464466,13.3535534 C10.4511845,13.1582912 10.4511845,12.8417088 10.6464466,12.6464466 L20.2928932,3 Z M19,11.6277704 C19,11.351628 19.2238576,11.1277704 19.5,11.1277704 C19.7761424,11.1277704 20,11.351628 20,11.6277704 L20,15.3722296 C20,17.0733452 19.8468648,17.8663442 19.4066412,18.6894908 C19.0114271,19.4284769 18.4284769,20.0114271 17.6894908,20.4066412 C16.8663442,20.8468648 16.0733452,21 14.3722296,21 L8.6277704,21 C6.92665479,21 6.1336558,20.8468648 5.31050916,20.4066412 C4.57152307,20.0114271 3.98857289,19.4284769 3.59335881,18.6894908 C3.15313517,17.8663442 3,17.0733452 3,15.3722296 L3,9.6277704 C3,7.92665479 3.15313517,7.1336558 3.59335881,6.31050916 C3.98857289,5.57152307 4.57152307,4.98857289 5.31050916,4.59335881 C6.1336558,4.15313517 6.92665479,4 8.6277704,4 L12.3722296,4 C12.648372,4 12.8722296,4.22385763 12.8722296,4.5 C12.8722296,4.77614237 12.648372,5 12.3722296,5 L8.6277704,5 C7.0776195,5 6.44057806,5.12301838 5.78210802,5.47517201 C5.21739041,5.77718629 4.77718629,6.21739041 4.47517201,6.78210802 C4.12301838,7.44057806 4,8.0776195 4,9.6277704 L4,15.3722296 C4,16.9223805 4.12301838,17.5594219 4.47517201,18.217892 C4.77718629,18.7826096 5.21739041,19.2228137 5.78210802,19.524828 C6.44057806,19.8769816 7.0776195,20 8.6277704,20 L14.3722296,20 C15.9223805,20 16.5594219,19.8769816 17.217892,19.524828 C17.7826096,19.2228137 18.2228137,18.7826096 18.524828,18.217892 C18.8769816,17.5594219 19,16.9223805 19,15.3722296 L19,11.6277704 Z" fill="#000000" fill-rule="nonzero"></path></g></g></svg></a></div>'
+  template: '<div class="ic-ebsco-link"><a href="{{$ctrl.proxiedSearchUrl}}" target="_blank">{{$ctrl.label}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div>'
 });
 
 
