@@ -58,7 +58,7 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
 app.component('prmPersonalizeResultsButtonAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'ebscoLinkController',
-  template: '<div class="ic-ebsco-link"><a href="{{$ctrl.proxiedSearchUrl}}" target="_blank">{{$ctrl.label}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div>'
+  template: '<div class="ic-ebsco-link" id="ic-ebsco-link"><a href="{{$ctrl.proxiedSearchUrl}}" target="_blank">{{$ctrl.label}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div>'
 });
 
 
@@ -167,8 +167,8 @@ app.controller ('mapController', [function() {
 
     this.showLocMessage = true;
 
-    console.log(this.location);
-
+    console.log('location: ', this.location);
+    console.log(staticLocations);
     // is it in a static location?
     for (var loc in staticLocations) {
       if (loc === this.location) {
@@ -385,3 +385,15 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 
 ga('create', 'UA-114536289-1', 'auto');  // Replace with your property ID.
 ga('send', 'pageview');
+
+(function(){
+  const ebscoLink = document.getElementById('ic-ebsco-link');
+  ebscoLink.addEventListener('click', function(event) {
+    ga('send', 'event', 'primo_to_ebsco_link_clicked', 'click', {
+      hitCallback: function() {
+        ebscoLink.click();
+      }
+    });
+  });
+})();
+

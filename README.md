@@ -35,6 +35,11 @@ We added three new actions (or "Send To" items) using the `prmSearchResultAvaila
 * Report a Problem - electronic items only
 
 
+### EBSCO Link
+
+We added a "Try this search in EBSCO" button to the search results page. This opens in a new window.
+
+
 ### Stack Maps
 
 This is by far the most complex of the customizations. The code relating to the maps is anything but plug-and-play. Some of the details and challenges of implementing a stack map system in Primo are addressed [here](http://rgilmour70.github.io/stackMaps/). The functions for manipulating LC call numbers in `js/call_number_functions.js` are JavaScript translations of [sortLC](https://rocky.uta.edu/doran/sortlc/) by @michaeldoran. These functions in turn depend on [sprintf-js](https://github.com/alexei/sprintf.js) by @alexei.
