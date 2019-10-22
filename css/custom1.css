@@ -730,8 +730,10 @@ h3.light-text {
 prm-icon.giant-icon {
 	display: none;
 }
-
-.ic-ebsco-link svg {
+#ic-ebsco-link {
+	color: #44707b;
+}
+#ic-ebsco-link svg {
 	height: 16px;
 	width: 16px;
 }
@@ -802,16 +804,6 @@ prm-facet-group .md-chips > .md-chip {
     display: none !important;
 }
 
-/* Hide map-related stuff */
-/* This prevents ugly AngularJS template stuff from
-showing up if the JS doesn't load in time. */
-/*.ic-map-container {
-	display: none;
-}*/
-.ic-map-error {
-	color: red;
-}
-
 button.section-title svg {
 	color: red;
 }
@@ -824,5 +816,9 @@ button.section-title svg {
 /* Hide facet Open access */ 
 [data-facet-value="tlevel-open_access"] {
 	display: none !important;
+}
+
+prm-citation button {
+	padding-top: 0 !important;
 }
 

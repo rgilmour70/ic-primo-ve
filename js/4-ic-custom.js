@@ -54,11 +54,22 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
   const baseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&db=aph&db=gnh&db=apn&db=ahl&db=aft&db=air&db=ami&db=rfh&db=bvh&db=bxh&db=boh&db=buh&db=cin20&db=cms&db=nlebk&db=eric&db=hev&db=8gh&db=hch&db=hia&db=ibh&db=qth&db=lxh&db=lfh&db=cmedm&db=mah&db=msn&db=nfh&db=phl&db=tfh&db=rgr&db=bwh&db=rft&db=sih&db=s3h&db=trh&db=ser&type=1&searchMode=Standard&site=ehost-live&scope=site';
   this.searchUrl = encodeURIComponent(baseUrl + '&bquery=' + ebscoSearchString);
   this.proxiedSearchUrl = proxyString + this.searchUrl;
+
+  // send an event to GA
+  const ebscoLink = document.getElementById('ic-ebsco-link');
+  ebscoLink.addEventListener('click', function(event) {
+    ga('send', 'event', 'primo_to_ebsco_link_clicked', 'click', {
+      hitCallback: function() {
+        ebscoLink.click();
+      }
+    });
+  });
+
 }]);
 app.component('prmPersonalizeResultsButtonAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'ebscoLinkController',
-  template: '<div class="ic-ebsco-link" id="ic-ebsco-link"><a href="{{$ctrl.proxiedSearchUrl}}" target="_blank">{{$ctrl.label}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div>'
+  template: '<div id="ic-ebsco-link-block"><a href="{{$ctrl.proxiedSearchUrl}}" target="_blank" id="ic-ebsco-link">{{$ctrl.label}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div>'
 });
 
 
@@ -385,15 +396,3 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 
 ga('create', 'UA-114536289-1', 'auto');  // Replace with your property ID.
 ga('send', 'pageview');
-
-(function(){
-  const ebscoLink = document.getElementById('ic-ebsco-link');
-  ebscoLink.addEventListener('click', function(event) {
-    ga('send', 'event', 'primo_to_ebsco_link_clicked', 'click', {
-      hitCallback: function() {
-        ebscoLink.click();
-      }
-    });
-  });
-})();
-
