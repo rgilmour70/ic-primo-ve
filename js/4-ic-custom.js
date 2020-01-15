@@ -58,11 +58,7 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
   // send an event to GA
   const ebscoLink = document.getElementById('ic-ebsco-link');
   ebscoLink.addEventListener('click', function(event) {
-    ga('send', 'event', 'primo_to_ebsco_link_clicked', 'click', {
-      hitCallback: function() {
-        ebscoLink.click();
-      }
-    });
+  	ebscoLink.click();
   });
 
 }]);

@@ -216,9 +216,9 @@ button.section-title svg {
 }
 
 /* Hide facet Open access */ 
-[data-facet-value="tlevel-open_access"] {
+/*[data-facet-value="tlevel-open_access"] {
 	display: none !important;
-}
+}*/
 
 prm-citation button {
 	padding-top: 0 !important;

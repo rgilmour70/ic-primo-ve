@@ -426,11 +426,7 @@ app.controller('ebscoLinkController', [function ($stateParams, $state) {
     // send an event to GA
     var ebscoLink = document.getElementById('ic-ebsco-link');
     ebscoLink.addEventListener('click', function (event) {
-        ga('send', 'event', 'primo_to_ebsco_link_clicked', 'click', {
-            hitCallback: function hitCallback() {
-                ebscoLink.click();
-            }
-        });
+        ebscoLink.click();
     });
 }]);
 app.component('prmPersonalizeResultsButtonAfter', {
