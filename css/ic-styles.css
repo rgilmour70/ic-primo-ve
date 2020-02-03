@@ -243,6 +243,19 @@ prm-citation button {
 	color: #fff;
 	font-style: italic;
 }*/
+.results-title {
+	padding-left: 0 !important;
+}
+.results-count {
+	text-align: center;
+}
 .button-as-link-mobile > prm-icon[icon-definition="facets-filter"]::before {
-	content: 'Tweak your results';
+	content: 'Tweak results';
+}
+.mobile-actions {
+	flex-direction: row-reverse;
+	justify-content: space-around;
+}
+#sidebar-trigger {
+	padding-top: 8px;
 }

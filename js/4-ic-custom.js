@@ -49,7 +49,7 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
     ebscoSearchString = ebscoSearchString.replace(/\+[A-Z]+\+$/, '');
   }
 
-  this.label = 'Try this search in EBSCO';
+  this.label = 'Try EBSCO';
   const proxyString = 'http://ezproxy.ithaca.edu:2048/login?qurl=';
   const baseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&defaultdb=aph,gnh,apn,ahl,aft,air,ami,rfh,bvh,bxh,boh,buh,cin20,cms,nlebk,eric,hev,8gh,hch,hia,ibh,qth,lxh,lfh,ulh,cmedm,mth,mah,msn,nfh,ofs,phl,tfh,rgr,bwh,ram,rft,sih,s3h,trh,ser,e870sww,e872sww,mft,kah,mzh&type=1&searchMode=Standard&site=ehost-live&scope=site';
   this.searchUrl = encodeURIComponent(baseUrl + '&bquery=' + ebscoSearchString);
