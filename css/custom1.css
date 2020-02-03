@@ -614,7 +614,11 @@ prm-logo .product-logo {
 	padding: 0 !important;
 }
 prm-search-result-list .pages-separated-with-gaps .results-title:not(.results-title-favorites) {
-    padding-left: 100px;
+    padding-left: 64px;
+}
+
+.layout-align-end, .layout-align-end-center, .layout-align-end-end, .layout-align-end-start, .layout-align-end-stretch {
+	justify-content: flex-start;
 }
 
 md-list-item {
@@ -622,6 +626,9 @@ md-list-item {
 }
 md-list-item:hover {
 	border-left: 3px solid #FFC533 !important; /* IC gold */
+}
+._md-subheader-inner > ._md-subheader-content > .text {
+	font-weight: normal;
 }
 
 prm-brief-result-container {
@@ -822,3 +829,18 @@ prm-citation button {
 	padding-top: 0 !important;
 }
 
+/* position of LibChat slide-out widget */
+.lcs_slide_out-r { position: fixed; top: 40% !important }
+
+/* Ebsco link */
+/*#ic-ebsco-link-block {
+	padding-top: 1.5em;
+	text-align: center;
+}
+#ic-ebsco-link {
+	color: #fff;
+	font-style: italic;
+}*/
+.button-as-link-mobile > prm-icon[icon-definition="facets-filter"]::before {
+	content: 'Tweak your results';
+}

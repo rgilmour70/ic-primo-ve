@@ -33,7 +33,7 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
     return ebscoSearchString;
   }
 
-  // this.primoSearchString = document.getElementById('searchBar').value;
+  this.primoSearchString = document.getElementById('searchBar').value;
   const primoSearch = this.parentCtrl.$stateParams.query; // can be a string OR array!
 
   let ebscoSearchString = '';
@@ -51,7 +51,7 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
 
   this.label = 'Try this search in EBSCO';
   const proxyString = 'http://ezproxy.ithaca.edu:2048/login?qurl=';
-  const baseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&db=aph&db=gnh&db=apn&db=ahl&db=aft&db=air&db=ami&db=rfh&db=bvh&db=bxh&db=boh&db=buh&db=cin20&db=cms&db=nlebk&db=eric&db=hev&db=8gh&db=hch&db=hia&db=ibh&db=qth&db=lxh&db=lfh&db=cmedm&db=mah&db=msn&db=nfh&db=phl&db=tfh&db=rgr&db=bwh&db=rft&db=sih&db=s3h&db=trh&db=ser&type=1&searchMode=Standard&site=ehost-live&scope=site';
+  const baseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&defaultdb=aph,gnh,apn,ahl,aft,air,ami,rfh,bvh,bxh,boh,buh,cin20,cms,nlebk,eric,hev,8gh,hch,hia,ibh,qth,lxh,lfh,ulh,cmedm,mth,mah,msn,nfh,ofs,phl,tfh,rgr,bwh,ram,rft,sih,s3h,trh,ser,e870sww,e872sww,mft,kah,mzh&type=1&searchMode=Standard&site=ehost-live&scope=site';
   this.searchUrl = encodeURIComponent(baseUrl + '&bquery=' + ebscoSearchString);
   this.proxiedSearchUrl = proxyString + this.searchUrl;
 
@@ -375,6 +375,7 @@ app.component('prmActionContainerAfter', {
   controller: 'prmActionContainerAfterController',
   template: '<div class="ic-more-actions"><button class="_md-nav-button md-accent md-button md-primoExplore-theme md-ink-ripple md-primary" ng-show="$ctrl.getit[0].category===\'Alma-P\' || $ctrl.getit[1].category===\'Alma-P\'"><span class="_md-nav-button-text"><a ng-href="https://library.ithaca.edu/services/sms_me.php?title={{$ctrl.title | encode}}&cn={{$ctrl.callNumber | encode}}&loc={{$ctrl.location | encode}}" class="ic-sms-link" target="_blank"><div class="layout-column" layout="column"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="#616161" d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg><span class="button-text">SMS</span></div></a></span></button><button class="_md-nav-button md-accent md-button md-primoExplore-theme md-ink-ripple md-primary"><span class="_md-nav-button-text"><a ng-href={{$ctrl.reportFormUrl}} class="ic-report-problem-link" target="_blank"><div class="layout-column" layout="column"><prm-icon icon-definition="error-attention" icon-type="svg" svg-icon-set="primo-ui"></prm-icon><span class="button-text">REPORT A PROBLEM</span></div></a></span></button></div>',
 });
+
 
 // LibAnswers chat widget
 (function() {

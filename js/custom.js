@@ -401,7 +401,7 @@ app.controller('ebscoLinkController', [function ($stateParams, $state) {
         return ebscoSearchString;
     }
 
-    // this.primoSearchString = document.getElementById('searchBar').value;
+    this.primoSearchString = document.getElementById('searchBar').value;
     var primoSearch = this.parentCtrl.$stateParams.query; // can be a string OR array!
 
     var ebscoSearchString = '';
@@ -419,7 +419,7 @@ app.controller('ebscoLinkController', [function ($stateParams, $state) {
 
     this.label = 'Try this search in EBSCO';
     var proxyString = 'http://ezproxy.ithaca.edu:2048/login?qurl=';
-    var baseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&db=aph&db=gnh&db=apn&db=ahl&db=aft&db=air&db=ami&db=rfh&db=bvh&db=bxh&db=boh&db=buh&db=cin20&db=cms&db=nlebk&db=eric&db=hev&db=8gh&db=hch&db=hia&db=ibh&db=qth&db=lxh&db=lfh&db=cmedm&db=mah&db=msn&db=nfh&db=phl&db=tfh&db=rgr&db=bwh&db=rft&db=sih&db=s3h&db=trh&db=ser&type=1&searchMode=Standard&site=ehost-live&scope=site';
+    var baseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&defaultdb=aph,gnh,apn,ahl,aft,air,ami,rfh,bvh,bxh,boh,buh,cin20,cms,nlebk,eric,hev,8gh,hch,hia,ibh,qth,lxh,lfh,ulh,cmedm,mth,mah,msn,nfh,ofs,phl,tfh,rgr,bwh,ram,rft,sih,s3h,trh,ser,e870sww,e872sww,mft,kah,mzh&type=1&searchMode=Standard&site=ehost-live&scope=site';
     this.searchUrl = encodeURIComponent(baseUrl + '&bquery=' + ebscoSearchString);
     this.proxiedSearchUrl = proxyString + this.searchUrl;
 
