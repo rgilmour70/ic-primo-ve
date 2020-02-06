@@ -40,6 +40,10 @@ prm-brief-result-container {
 #full-view-container {
 	outline: none !important;
 }
+.md-button.md-primary:hover:not([disabled]), .md-button.md-primary:focus:not([disabled]), .md-button.md-primary.hovered:not([disabled]), .md-button.md-primary.md-focused:not([disabled]), .md-button.md-primary._md-focused:not([disabled]) {
+	color: #333;
+	background-color: rgba(0, 0, 0, 0.1) !important;
+}
 .ic-links-area {
 	color: #666;
 }
@@ -52,7 +56,6 @@ prm-brief-result-container {
 .ic-report-problem-link:hover, .ic-report-problem-link:active, .ic-report-problem-link:focus {
 	color: #000;
 	text-decoration: underline;
-	background-color: #fff;
 	box-shadow: none;
 }
 
@@ -68,6 +71,11 @@ prm-brief-result-container {
 	font-size: 10px;
 	font-weight: 600;
 }
+
+.ic-more-actions .md-nav-button:hover {
+	background-color: rgba(0, 0, 0, 0.1) !important;
+}
+
 
 @media (max-width: 959px) {
 	.ic-more-actions {
@@ -295,4 +303,8 @@ sign-in message */
 	#sidebar-trigger {
 		padding-top: 8px;
 	}
+}
+
+mark, .text-highlight {
+	box-shadow: inset 0 -.3em 0 0 yellow;
 }
