@@ -69,6 +69,12 @@ prm-brief-result-container {
 	font-weight: 600;
 }
 
+@media (max-width: 959px) {
+	.ic-more-actions {
+		justify-content: flex-start;
+		padding-left: 17px;
+	}
+}
 prm-action-list md-nav-bar ul._md-nav-bar-list li.md-nav-item {
 	margin: 0 10px;
 }
@@ -135,7 +141,26 @@ h3.light-text {
 	font-size: medium;
 	padding-left: 1em;
 }
+h3.section-title-header span {
+	color: #0277D6;
+}
 
+prm-facet .sidebar-inner-wrapper button.section-title {
+	color: #0277D6;
+}
+prm-facet .sidebar-inner-wrapper button.section-title prm-icon {
+	color: #0277D6;
+}
+prm-facet .sidebar-inner-wrapper .section-content .button-as-link {
+	color: #0277D6;
+}
+.expand-section-button .button-as-link {
+	color: #0277D6 !important;
+}
+
+prm-brief-result .item-title span {
+	color: #0277D6 !important;
+}
 prm-icon.giant-icon {
 	display: none;
 }
@@ -234,17 +259,16 @@ prm-citation button {
 /* position of LibChat slide-out widget */
 .lcs_slide_out-r { position: fixed; top: 40% !important }
 
-/* Ebsco link */
-/*#ic-ebsco-link-block {
-	padding-top: 1.5em;
-	text-align: center;
+
+.result-item-actions button {
+	color: #0277D6 !important;
 }
-#ic-ebsco-link {
-	color: #fff;
-	font-style: italic;
-}*/
+
+
+/* Stuff relating to the area just under the
+sign-in message */
 .results-title {
-	padding-left: 0 !important;
+	padding-left: 1em !important;
 }
 .results-count {
 	text-align: center;
@@ -256,6 +280,19 @@ prm-citation button {
 	flex-direction: row-reverse;
 	justify-content: space-around;
 }
-#sidebar-trigger {
-	padding-top: 8px;
+.mobile-actions > *, #ic-ebsco-link {
+	color: #0071BC !important;
+}
+
+@media (max-width: 959px) {
+	.mobile-actions {
+		padding-bottom: 0.5em;
+		border-bottom: 1px solid #ccc;
+	}
+	.results-count {
+		padding-top: 0.8em;
+	}
+	#sidebar-trigger {
+		padding-top: 8px;
+	}
 }
