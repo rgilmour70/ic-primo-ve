@@ -1026,3 +1026,15 @@ sign-in message */
 mark, .text-highlight {
 	box-shadow: inset 0 -.3em 0 0 yellow;
 }
+
+#lcs_slide_out_button-16220 {
+	padding-top: 2em;
+	transform: rotate(-90deg) translateX(-2px);
+	border: 3px solid white !important;
+	border-right: 0 !important;
+	letter-spacing: 2px !important;
+	background-image: url('../img/chat.svg');
+	background-size: 46%;
+	background-repeat: no-repeat;
+	background-position: 50% 10%;
+}
