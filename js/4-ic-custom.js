@@ -1,6 +1,12 @@
 /* eslint-disable */
 var app = angular.module('viewCustom', ['angularLoad', 'ui.router']);
 
+
+var jQueryScript = document.createElement("script");  
+jQueryScript.src = "https://code.jquery.com/jquery-3.3.1.min.js";  
+document.getElementsByTagName("head")[0].appendChild(jQueryScript);
+
+
 app.filter('encode', function() {
   return encodeURIComponent;
 });
@@ -377,13 +383,40 @@ app.component('prmActionContainerAfter', {
 });
 
 
+// app.controller('prmFacetAfterController', [function() {
+//   this.fruit = 'banana';
+//   this.parts = document.getElementById('facets').children[0].children[0].children[0];
+//   console.log(this);
+// }]);
+// app.component('prmFacetAfter', {
+//   bindings: { parentCtrl: '<' },
+//   controller: 'prmFacetAfterController',
+//   template: '<span id="ic-expand-tooltip">{{$ctrl.fruit}}</span>',
+// });
+
+// This adds the expand my results tooltip
+// From Joe Ferguson at UT Knoxville
+window.setInterval(function() { 
+  if ($(".tooltip").length > 0) {
+  }else{
+    $("#facets > prm-facet > div > div > div.sidebar-section.margin-top-small.margin-bottom-medium.compensate-padding-left > md-checkbox > div._md-label > span").append("&nbsp;<span class=\"tooltip\">?<span class=\"tooltiptext\">Include items that IC doesn’t own.</span></span>");
+    $('.tooltip').hover(
+      function() {
+        $(this).find('.tooltiptext').css({'visibility':'visible'});
+      }, function() {
+        $(this).find('.tooltiptext').css({'visibility':'hidden'});
+      }
+    );
+  }
+}, 500);
+
+
 // LibAnswers chat widget
 (function() {
   var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
   lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'v2.libanswers.com/load_chat.php?hash=0e36fb096f988326b1c420ab5ad6af7a';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
 })();
-
 
 // Google Analytics stuff
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

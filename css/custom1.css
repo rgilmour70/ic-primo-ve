@@ -916,9 +916,10 @@ prm-search-bar, prm-browse-search-bar, prm-atoz-search-bar {
 	color: #008dc6;
 }
 
-md-checkbox[aria-label="Expand My Results"] {
+
+/*md-checkbox[aria-label="Expand My Results"] {
 	display: none;
-}
+}*/
 
 #item-details > div > div {
 	border-bottom: 1px solid #ddd;
@@ -1037,4 +1038,41 @@ mark, .text-highlight {
 	background-size: 46%;
 	background-repeat: no-repeat;
 	background-position: 50% 10%;
+}
+
+/* From Joe Ferguson at UT Knoxville */
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+    color: #0277d6;
+    font-weight: bold;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #58595B;
+    color: #fff;
+    /*text-align: center;*/
+    padding: 5px;
+    font-weight: normal;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    width: 120px;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+md-checkbox[aria-label="Expand My Results"] ._md-icon {
+	background-color: #0277d6 !important;
+}
+
+.md-button.button-as-link.link-alt-color, .bar prm-authentication .md-button.link-alt-color, .bar prm-authentication .section-title prm-icon.md-button, .section-title .bar prm-authentication prm-icon.md-button, .section-title prm-icon.md-button.button-as-link, prm-gallery-collection .collection-folder .item-actions button, prm-gallery-collection .collection-folder .item-actions .md-button, .is-gallery-view prm-gallery-item .collection-element .item-actions button, .is-gallery-view prm-gallery-item .collection-element .item-actions .md-button, .is-grid-view prm-gallery-item .collection-element .item-actions button, .is-grid-view prm-gallery-item .collection-element .item-actions .md-button {
+	color: #013158;
+}
+.md-button.button-as-link.link-alt-color:hover:not([disabled]), .bar prm-authentication .md-button.link-alt-color:hover:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button:hover:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button:hover:not([disabled]), .section-title prm-icon.md-button.button-as-link:hover:not([disabled]), prm-gallery-collection .collection-folder .item-actions button:hover:not([disabled]), prm-gallery-collection .collection-folder .item-actions .md-button:hover:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions button:hover:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions .md-button:hover:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions button:hover:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions .md-button:hover:not([disabled]), .md-button.button-as-link.link-alt-color:focus:not([disabled]), .bar prm-authentication .md-button.link-alt-color:focus:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button:focus:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button:focus:not([disabled]), .section-title prm-icon.md-button.button-as-link:focus:not([disabled]), prm-gallery-collection .collection-folder .item-actions button:focus:not([disabled]), prm-gallery-collection .collection-folder .item-actions .md-button:focus:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions button:focus:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions .md-button:focus:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions button:focus:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions .md-button:focus:not([disabled]), .md-button.button-as-link.link-alt-color.hovered:not([disabled]), .bar prm-authentication .md-button.link-alt-color.hovered:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button.hovered:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button.hovered:not([disabled]), .section-title prm-icon.md-button.button-as-link.hovered:not([disabled]), prm-gallery-collection .collection-folder .item-actions button.hovered:not([disabled]), prm-gallery-collection .collection-folder .item-actions .hovered.md-button:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions button.hovered:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions .hovered.md-button:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions button.hovered:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions .hovered.md-button:not([disabled]), .md-button.button-as-link.link-alt-color.md-focused:not([disabled]), .bar prm-authentication .md-button.link-alt-color.md-focused:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button.md-focused:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button.md-focused:not([disabled]), .section-title prm-icon.md-button.button-as-link.md-focused:not([disabled]), prm-gallery-collection .collection-folder .item-actions button.md-focused:not([disabled]), prm-gallery-collection .collection-folder .item-actions .md-focused.md-button:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions button.md-focused:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions .md-focused.md-button:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions button.md-focused:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions .md-focused.md-button:not([disabled]), .md-button.button-as-link.link-alt-color._md-focused:not([disabled]), .bar prm-authentication .md-button.link-alt-color._md-focused:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button._md-focused:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button._md-focused:not([disabled]), .section-title prm-icon.md-button.button-as-link._md-focused:not([disabled]), prm-gallery-collection .collection-folder .item-actions button._md-focused:not([disabled]), prm-gallery-collection .collection-folder .item-actions ._md-focused.md-button:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions button._md-focused:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions ._md-focused.md-button:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions button._md-focused:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions ._md-focused.md-button:not([disabled]) {
+    background-color: rgba(2, 119, 214, 0.1);
 }
