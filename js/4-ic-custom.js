@@ -412,11 +412,11 @@ window.setInterval(function() {
 
 
 // LibAnswers chat widget
-// (function() {
-//   var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
-//   lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'v2.libanswers.com/load_chat.php?hash=0e36fb096f988326b1c420ab5ad6af7a';
-//   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
-// })();
+(function() {
+  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
+  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'v2.libanswers.com/load_chat.php?hash=88261efafc9e5e717508101165503bda';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+})();
 
 // Google Analytics stuff
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

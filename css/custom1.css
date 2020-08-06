@@ -1028,7 +1028,17 @@ mark, .text-highlight {
 	box-shadow: inset 0 -.3em 0 0 yellow;
 }
 
-#lcs_slide_out_button-16220 {
+#lcs_slide_out_button-18845 {
+	padding-left: 3em;
+	border: 3px solid #fff !important;
+	border-top: 0 !important;
+	background-image: url('../img/chat.svg');
+	background-size: 20%;
+	background-repeat: no-repeat;
+	background-position: 5% 50%;
+}
+
+/*#lcs_slide_out_button-16220 {
 	padding-top: 2em;
 	transform: rotate(-90deg) translateX(-2px);
 	border: 3px solid white !important;
@@ -1040,6 +1050,18 @@ mark, .text-highlight {
 	background-position: 50% 10%;
 }
 
+#lcs_slide_out_button-18423 {
+	z-index: -1;
+	right: 10px !important;
+	left: auto !important;
+	border-bottom: 0;
+	background-image: url('../img/chat.svg');
+	background-repeat: no-repeat;
+	background-size: 23%;
+	padding-left: 56px;
+	margin-left: 50px !important;
+	background-position-x: 5px;
+}*/
 /* From Joe Ferguson at UT Knoxville */
 /*.tooltip {
     position: relative;
@@ -1068,6 +1090,7 @@ mark, .text-highlight {
 md-checkbox[aria-label="Expand My Results"] ._md-icon {
 	background-color: #0277d6 !important;
 }
+
 
 .md-button.button-as-link.link-alt-color, .bar prm-authentication .md-button.link-alt-color, .bar prm-authentication .section-title prm-icon.md-button, .section-title .bar prm-authentication prm-icon.md-button, .section-title prm-icon.md-button.button-as-link, prm-gallery-collection .collection-folder .item-actions button, prm-gallery-collection .collection-folder .item-actions .md-button, .is-gallery-view prm-gallery-item .collection-element .item-actions button, .is-gallery-view prm-gallery-item .collection-element .item-actions .md-button, .is-grid-view prm-gallery-item .collection-element .item-actions button, .is-grid-view prm-gallery-item .collection-element .item-actions .md-button {
 	color: #013158;
