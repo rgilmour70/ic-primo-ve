@@ -79,7 +79,7 @@ app.component('prmPersonalizeResultsButtonAfter', {
 // Map stuff
 
 app.controller ('mapController', [function() {
-  console.log(this);
+  // console.log(this);
 
   function drawIndicator(mapHeight, mapWidth, x, y, h, w) {
     // not sure why, but works best if we draw on ALL the possible canvases
@@ -156,6 +156,7 @@ app.controller ('mapController', [function() {
     this.lookupArray = null;
     this.coordinates = '';
     this.locMessage = '';
+    this.pickupMessage = 'Click "request" to have the item held for you at the circulation desk. You must be logged in to use this feature.';
     this.side = '';
     this.sideLong = '';
     this.debug = false;
@@ -180,8 +181,9 @@ app.controller ('mapController', [function() {
 
     this.showLocMessage = true;
 
-    console.log('location: ', this.location);
-    console.log(staticLocations);
+    // console.log('location: ', this.location);
+    // console.log(staticLocations);
+
     // is it in a static location?
     for (var loc in staticLocations) {
       if (loc === this.location) {
@@ -294,7 +296,7 @@ app.controller ('mapController', [function() {
 app.component('prmOpacAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'mapController',
-  template: '<div class="ic-map-error" ng-show="$ctrl.needsMap && $ctrl.mapError">SYSTEM ERROR: TRY REFRESHING THE PAGE</div><div class="ic-map-container" ng-style="$ctrl.mapDimensions"><p ng-show="$ctrl.showLocMessage" class="ic-loc-message">{{$ctrl.locMessage}}</p><div ng-show="$ctrl.needsMap" class="ic-map-div"><img class="ic-map-img" ng-src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png" ng-style="$ctrl.mapDimensions" ng-show="$ctrl.needsMap"><canvas ng-show="$ctrl.needsMap" class="ic-map-canvas"></canvas></div></div>'
+  template: '<div class="ic-map-error" ng-show="$ctrl.needsMap && $ctrl.mapError">SYSTEM ERROR: TRY REFRESHING THE PAGE</div><div class="ic-map-container" ng-style="$ctrl.mapDimensions"><p ng-show="$ctrl.pickupMessage" class="ic-loc-message">{{$ctrl.pickupMessage}}</p><p ng-show="$ctrl.showLocMessage" class="ic-loc-message">{{$ctrl.locMessage}}</p><div ng-show="$ctrl.needsMap" class="ic-map-div"><img class="ic-map-img" ng-src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png" ng-style="$ctrl.mapDimensions" ng-show="$ctrl.needsMap"><canvas ng-show="$ctrl.needsMap" class="ic-map-canvas"></canvas></div></div>'
 });
 
 
