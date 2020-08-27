@@ -45,7 +45,7 @@ app.controller('ebscoLinkController', [function ($stateParams, $state) {
     return ebscoSearchString;
   }
 
-  this.primoSearchString = document.getElementById('searchBar').value;
+  // this.primoSearchString = document.getElementById('searchBar').value;
   var primoSearch = this.parentCtrl.$stateParams.query; // can be a string OR array!
 
   var ebscoSearchString = '';
@@ -68,10 +68,10 @@ app.controller('ebscoLinkController', [function ($stateParams, $state) {
   this.proxiedSearchUrl = proxyString + this.searchUrl;
 
   // send an event to GA
-  var ebscoLink = document.getElementById('ic-ebsco-link');
-  ebscoLink.addEventListener('click', function (event) {
-    ebscoLink.click();
-  });
+  // const ebscoLink = document.getElementById('ic-ebsco-link');
+  // ebscoLink.addEventListener('click', function(event) {
+  // 	ebscoLink.click();
+  // });
 }]);
 app.component('prmPersonalizeResultsButtonAfter', {
   bindings: { parentCtrl: '<' },
@@ -420,16 +420,20 @@ app.component('prmActionContainerAfter', {
 
 // This adds the expand my results tooltip
 // From Joe Ferguson at UT Knoxville
-window.setInterval(function () {
-  if ($(".tooltip").length > 0) {} else {
-    $("#facets > prm-facet > div > div > div.sidebar-section.margin-top-small.margin-bottom-medium.compensate-padding-left > md-checkbox > div._md-label > span").append("&nbsp;<span class=\"tooltip\">?<span class=\"tooltiptext\">Include items that IC doesn’t own.</span></span>");
-    $('.tooltip').hover(function () {
-      $(this).find('.tooltiptext').css({ 'visibility': 'visible' });
-    }, function () {
-      $(this).find('.tooltiptext').css({ 'visibility': 'hidden' });
-    });
-  }
-}, 500);
+// window.setInterval(function() { 
+//   if ($(".tooltip").length > 0) {
+//   }else{
+//     $("#facets > prm-facet > div > div > div.sidebar-section.margin-top-small.margin-bottom-medium.compensate-padding-left > md-checkbox > div._md-label > span").append("&nbsp;<span class=\"tooltip\">?<span class=\"tooltiptext\">Include items that IC doesn’t own.</span></span>");
+//     $('.tooltip').hover(
+//       function() {
+//         $(this).find('.tooltiptext').css({'visibility':'visible'});
+//       }, function() {
+//         $(this).find('.tooltiptext').css({'visibility':'hidden'});
+//       }
+//     );
+//   }
+// }, 500);
+
 
 // LibAnswers chat widget
 (function () {
