@@ -890,13 +890,38 @@ prm-brief-result .item-title span {
 prm-icon.giant-icon {
 	display: none;
 }
+
+/* Links to External Services */
+prm-search-result-sort-by md-input-container {
+	display: block;
+}
+.section-title-header > span[title='Sort'] {
+	position: relative;
+	top: -60px;
+}
+#ic-external-links {
+	position: relative;
+	margin-top: 30px;
+	padding-bottom: 1em;
+}
+#ic-external-links h3 {
+	color: #0277D6;
+	font-size: 1.15rem;
+	position: relative;
+	left: -81px;
+}
 #ic-ebsco-link {
 	color: #44707b;
+	top: 10px;
+	left: -55px;
 }
 #ic-ebsco-link svg {
 	height: 16px;
 	width: 16px;
 }
+
+
+
 /* Make animated pin icon match the static pin color */
 .pinDummy prm-icon {
 	color: #4DB8FF;

@@ -18,60 +18,80 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
   function convertToEbsco(str) {
     let ebscoSearchString = '';
     const primoSearchArray = str.split(/,\s*/);
-      const conjunction = primoSearchArray[3] || '';
+    const conjunction = primoSearchArray[3] || '';
 
-      const searchTerms = primoSearchArray[2].replace(/\s/g, '+');
+    const searchTerms = primoSearchArray[2].replace(/\s/g, '+');
 
-      switch (primoSearchArray[0]) {
-        case 'title':
-          ebscoSearchString = 'TI+' + searchTerms;
-          break;
-        case 'creator':
-          ebscoSearchString = 'AU+' + searchTerms;
-          break;
-        case 'sub':
-          ebscoSearchString = 'SU+' + searchTerms;
-          break;
-        default: // handles 'any' case
-          ebscoSearchString = '' + searchTerms;
-      }
-    if (conjunction) { ebscoSearchString += '+' + conjunction + '+'; }
+    switch (primoSearchArray[0]) {
+      case 'title':
+        ebscoSearchString = 'TI+' + searchTerms;
+        break;
+      case 'creator':
+        ebscoSearchString = 'AU+' + searchTerms;
+        break;
+      case 'sub':
+        ebscoSearchString = 'SU+' + searchTerms;
+        break;
+      default: // handles 'any' case
+        ebscoSearchString = '' + searchTerms;
+    }
+
+    if (conjunction) { googleSearchString += '+'; }
+
     return ebscoSearchString;
   }
 
-  // this.primoSearchString = document.getElementById('searchBar').value;
+  function convertToGoogle(str) {
+    let googleSearchString = '';
+    const primoSearchArray = str.split(/,\s*/);
+    const conjunction = primoSearchArray[3] || '';
+
+    const searchTerms = primoSearchArray[2].replace(/\s/g, '+');
+    googleSearchString = searchTerms;
+
+    if (conjunction) { ebscoSearchString += '+' + conjunction + '+'; }
+
+    return googleSearchString;
+  }
+
   const primoSearch = this.parentCtrl.$stateParams.query; // can be a string OR array!
 
+  const proxyString = 'http://ezproxy.ithaca.edu:2048/login?qurl=';
+
   let ebscoSearchString = '';
+  let googleSearchString = '';
 
   if (!Array.isArray(primoSearch)) {
     // simple search
     ebscoSearchString = convertToEbsco(primoSearch);
+    googleSearchString = convertToGoogle(primoSearch);
   } else {
     // compound search
     for (let i=0; i<primoSearch.length; i++) {
       ebscoSearchString += convertToEbsco(primoSearch[i]);
+      googleSearchString += convertToGoogle(primoSearch[i]);
     }
     ebscoSearchString = ebscoSearchString.replace(/\+[A-Z]+\+$/, '');
+    googleSearchString = googleSearchString.replace(/^\+/, '');
   }
 
-  this.label = 'Try EBSCO';
-  const proxyString = 'http://ezproxy.ithaca.edu:2048/login?qurl=';
-  const baseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&defaultdb=aph,gnh,apn,ahl,aft,air,ami,rfh,bvh,bxh,boh,buh,cin20,cms,nlebk,eric,hev,8gh,hch,hia,ibh,qth,lxh,lfh,ulh,cmedm,mth,mah,msn,nfh,ofs,phl,tfh,rgr,bwh,ram,rft,sih,s3h,trh,ser,e870sww,e872sww,mft,kah,mzh&type=1&searchMode=Standard&site=ehost-live&scope=site';
-  this.searchUrl = encodeURIComponent(baseUrl + '&bquery=' + ebscoSearchString);
-  this.proxiedSearchUrl = proxyString + this.searchUrl;
+  this.ebscoLabel = 'EBSCO';
+  const ebscoBaseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&defaultdb=aph,gnh,apn,ahl,aft,air,ami,rfh,bvh,bxh,boh,buh,cin20,cms,nlebk,eric,hev,8gh,hch,hia,ibh,qth,lxh,lfh,ulh,cmedm,mth,mah,msn,nfh,ofs,phl,tfh,rgr,bwh,ram,rft,sih,s3h,trh,ser,e870sww,e872sww,mft,kah,mzh&type=1&searchMode=Standard&site=ehost-live&scope=site';
+  const ebscoSearchUrl = encodeURIComponent(ebscoBaseUrl + '&bquery=' + ebscoSearchString);
+  this.ebscoProxiedSearchUrl = proxyString + ebscoSearchUrl;
 
-  // send an event to GA
-  // const ebscoLink = document.getElementById('ic-ebsco-link');
-  // ebscoLink.addEventListener('click', function(event) {
-  // 	ebscoLink.click();
-  // });
+  this.googleLabel = 'Google Scholar';
+  const googleBaseUrl = 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C33&inst=7210957415625843320&q=';
+  // const googleBaseUrl = 'https://scholar.google.com/?inst=7210957415625843320&q=';
+  this.googleProxiedSearchUrl = googleBaseUrl + googleSearchString;
 
 }]);
-app.component('prmPersonalizeResultsButtonAfter', {
+// Experimentally moving this to prmSearchResultSortByAfter
+// Used to be on prmPersonalizeResultsButtonAfter
+app.component('prmSearchResultSortByAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'ebscoLinkController',
-  template: '<div id="ic-ebsco-link-block"><a href="{{$ctrl.proxiedSearchUrl}}" target="_blank" id="ic-ebsco-link">{{$ctrl.label}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div>'
+  template: '<div id="ic-external-links"><h3 ng-class="section-title-header"><span>Try My Search In&hellip;</span></h3><div id="ic-ebsco-link-block"><a href="{{$ctrl.ebscoProxiedSearchUrl}}" target="_blank" id="ic-ebsco-link">{{$ctrl.ebscoLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div><div id="ic-ebsco-link-block"><a href="{{$ctrl.googleProxiedSearchUrl}}" target="_blank" id="ic-ebsco-link">{{$ctrl.googleLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div></div>'
 });
 
 

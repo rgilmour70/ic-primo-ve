@@ -39,44 +39,66 @@ app.controller('ebscoLinkController', [function ($stateParams, $state) {
         // handles 'any' case
         ebscoSearchString = '' + searchTerms;
     }
+
     if (conjunction) {
-      ebscoSearchString += '+' + conjunction + '+';
+      googleSearchString += '+';
     }
+
     return ebscoSearchString;
   }
 
-  // this.primoSearchString = document.getElementById('searchBar').value;
+  function convertToGoogle(str) {
+    var googleSearchString = '';
+    var primoSearchArray = str.split(/,\s*/);
+    var conjunction = primoSearchArray[3] || '';
+
+    var searchTerms = primoSearchArray[2].replace(/\s/g, '+');
+    googleSearchString = searchTerms;
+
+    if (conjunction) {
+      ebscoSearchString += '+' + conjunction + '+';
+    }
+
+    return googleSearchString;
+  }
+
   var primoSearch = this.parentCtrl.$stateParams.query; // can be a string OR array!
 
+  var proxyString = 'http://ezproxy.ithaca.edu:2048/login?qurl=';
+
   var ebscoSearchString = '';
+  var googleSearchString = '';
 
   if (!Array.isArray(primoSearch)) {
     // simple search
     ebscoSearchString = convertToEbsco(primoSearch);
+    googleSearchString = convertToGoogle(primoSearch);
   } else {
     // compound search
     for (var i = 0; i < primoSearch.length; i++) {
       ebscoSearchString += convertToEbsco(primoSearch[i]);
+      googleSearchString += convertToGoogle(primoSearch[i]);
     }
     ebscoSearchString = ebscoSearchString.replace(/\+[A-Z]+\+$/, '');
+    googleSearchString = googleSearchString.replace(/^\+/, '');
   }
 
-  this.label = 'Try EBSCO';
-  var proxyString = 'http://ezproxy.ithaca.edu:2048/login?qurl=';
-  var baseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&defaultdb=aph,gnh,apn,ahl,aft,air,ami,rfh,bvh,bxh,boh,buh,cin20,cms,nlebk,eric,hev,8gh,hch,hia,ibh,qth,lxh,lfh,ulh,cmedm,mth,mah,msn,nfh,ofs,phl,tfh,rgr,bwh,ram,rft,sih,s3h,trh,ser,e870sww,e872sww,mft,kah,mzh&type=1&searchMode=Standard&site=ehost-live&scope=site';
-  this.searchUrl = encodeURIComponent(baseUrl + '&bquery=' + ebscoSearchString);
-  this.proxiedSearchUrl = proxyString + this.searchUrl;
+  this.ebscoLabel = 'EBSCO';
+  var ebscoBaseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&defaultdb=aph,gnh,apn,ahl,aft,air,ami,rfh,bvh,bxh,boh,buh,cin20,cms,nlebk,eric,hev,8gh,hch,hia,ibh,qth,lxh,lfh,ulh,cmedm,mth,mah,msn,nfh,ofs,phl,tfh,rgr,bwh,ram,rft,sih,s3h,trh,ser,e870sww,e872sww,mft,kah,mzh&type=1&searchMode=Standard&site=ehost-live&scope=site';
+  var ebscoSearchUrl = encodeURIComponent(ebscoBaseUrl + '&bquery=' + ebscoSearchString);
+  this.ebscoProxiedSearchUrl = proxyString + ebscoSearchUrl;
 
-  // send an event to GA
-  // const ebscoLink = document.getElementById('ic-ebsco-link');
-  // ebscoLink.addEventListener('click', function(event) {
-  // 	ebscoLink.click();
-  // });
+  this.googleLabel = 'Google Scholar';
+  var googleBaseUrl = 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C33&inst=7210957415625843320&q=';
+  // const googleBaseUrl = 'https://scholar.google.com/?inst=7210957415625843320&q=';
+  this.googleProxiedSearchUrl = googleBaseUrl + googleSearchString;
 }]);
-app.component('prmPersonalizeResultsButtonAfter', {
+// Experimentally moving this to prmSearchResultSortByAfter
+// Used to be on prmPersonalizeResultsButtonAfter
+app.component('prmSearchResultSortByAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'ebscoLinkController',
-  template: '<div id="ic-ebsco-link-block"><a href="{{$ctrl.proxiedSearchUrl}}" target="_blank" id="ic-ebsco-link">{{$ctrl.label}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div>'
+  template: '<div id="ic-external-links"><h3 ng-class="section-title-header"><span>Try My Search In&hellip;</span></h3><div id="ic-ebsco-link-block"><a href="{{$ctrl.ebscoProxiedSearchUrl}}" target="_blank" id="ic-ebsco-link">{{$ctrl.ebscoLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div><div id="ic-ebsco-link-block"><a href="{{$ctrl.googleProxiedSearchUrl}}" target="_blank" id="ic-ebsco-link">{{$ctrl.googleLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div></div>'
 });
 
 // Map stuff
