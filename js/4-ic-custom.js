@@ -2,9 +2,9 @@
 var app = angular.module('viewCustom', ['angularLoad', 'ui.router']);
 
 // Import jQuery
-// var jQueryScript = document.createElement("script");  
-// jQueryScript.src = "https://code.jquery.com/jquery-3.3.1.min.js";  
-// document.getElementsByTagName("head")[0].appendChild(jQueryScript);
+var jQueryScript = document.createElement("script");  
+jQueryScript.src = "https://code.jquery.com/jquery-3.3.1.min.js";  
+document.getElementsByTagName("head")[0].appendChild(jQueryScript);
 
 
 app.filter('encode', function() {
@@ -12,7 +12,7 @@ app.filter('encode', function() {
 });
 
 
-// EBSCO link
+// External search links
 app.controller ('ebscoLinkController', [function($stateParams, $state) {
 
   function convertToEbsco(str) {
@@ -79,19 +79,17 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
   const ebscoBaseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&defaultdb=aph,gnh,apn,ahl,aft,air,ami,rfh,bvh,bxh,boh,buh,cin20,cms,nlebk,eric,hev,8gh,hch,hia,ibh,qth,lxh,lfh,ulh,cmedm,mth,mah,msn,nfh,ofs,phl,tfh,rgr,bwh,ram,rft,sih,s3h,trh,ser,e870sww,e872sww,mft,kah,mzh&type=1&searchMode=Standard&site=ehost-live&scope=site';
   const ebscoSearchUrl = encodeURIComponent(ebscoBaseUrl + '&bquery=' + ebscoSearchString);
   this.ebscoProxiedSearchUrl = proxyString + ebscoSearchUrl;
-
+  
   this.googleLabel = 'Google Scholar';
   const googleBaseUrl = 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C33&inst=7210957415625843320&q=';
   // const googleBaseUrl = 'https://scholar.google.com/?inst=7210957415625843320&q=';
   this.googleProxiedSearchUrl = googleBaseUrl + googleSearchString;
-
 }]);
-// Experimentally moving this to prmSearchResultSortByAfter
 // Used to be on prmPersonalizeResultsButtonAfter
 app.component('prmSearchResultSortByAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'ebscoLinkController',
-  template: '<div id="ic-external-links"><h3 ng-class="section-title-header"><span>Try My Search In&hellip;</span></h3><div id="ic-ebsco-link-block"><a href="{{$ctrl.ebscoProxiedSearchUrl}}" target="_blank" id="ic-ebsco-link">{{$ctrl.ebscoLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div><div id="ic-ebsco-link-block"><a href="{{$ctrl.googleProxiedSearchUrl}}" target="_blank" id="ic-ebsco-link">{{$ctrl.googleLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div></div>'
+  template: '<div id="ic-external-links"><h3 ng-class="section-title-header"><span>Try My Search In&hellip;</span></h3><div id="ic-ebsco-link-block"><a href="{{$ctrl.ebscoProxiedSearchUrl}}" target="_blank" id="ic-ebsco-link"><img src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/ebsco.png" width="16" height="16"> {{$ctrl.ebscoLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div><div id="ic-google-link-block"><a href="{{$ctrl.googleProxiedSearchUrl}}" target="_blank" id="ic-google-link"><img src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/google.png" width="16" height="16"> {{$ctrl.googleLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div></div>'
 });
 
 
@@ -99,7 +97,7 @@ app.component('prmSearchResultSortByAfter', {
 // Map stuff
 
 // app.controller ('mapController', [function() {
-//   // console.log(this);
+//   console.log(this);
 
 //   function drawIndicator(mapHeight, mapWidth, x, y, h, w) {
 //     // not sure why, but works best if we draw on ALL the possible canvases
@@ -176,7 +174,6 @@ app.component('prmSearchResultSortByAfter', {
 //     this.lookupArray = null;
 //     this.coordinates = '';
 //     this.locMessage = '';
-//     this.pickupMessage = 'Click "request" to have the item held for you at the circulation desk. You must be logged in to use this feature.';
 //     this.side = '';
 //     this.sideLong = '';
 //     this.debug = false;
@@ -201,9 +198,8 @@ app.component('prmSearchResultSortByAfter', {
 
 //     this.showLocMessage = true;
 
-//     // console.log('location: ', this.location);
-//     // console.log(staticLocations);
-
+//     console.log('location: ', this.location);
+//     console.log(staticLocations);
 //     // is it in a static location?
 //     for (var loc in staticLocations) {
 //       if (loc === this.location) {
@@ -316,7 +312,7 @@ app.component('prmSearchResultSortByAfter', {
 // app.component('prmOpacAfter', {
 //   bindings: { parentCtrl: '<' },
 //   controller: 'mapController',
-//   template: '<div class="ic-map-error" ng-show="$ctrl.needsMap && $ctrl.mapError">SYSTEM ERROR: TRY REFRESHING THE PAGE</div><div class="ic-map-container" ng-style="$ctrl.mapDimensions"><p ng-show="$ctrl.pickupMessage" class="ic-loc-message">{{$ctrl.pickupMessage}}</p><p ng-show="$ctrl.showLocMessage" class="ic-loc-message">{{$ctrl.locMessage}}</p><div ng-show="$ctrl.needsMap" class="ic-map-div"><img class="ic-map-img" ng-src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png" ng-style="$ctrl.mapDimensions" ng-show="$ctrl.needsMap"><canvas ng-show="$ctrl.needsMap" class="ic-map-canvas"></canvas></div></div>'
+//   template: '<div class="ic-map-error" ng-show="$ctrl.needsMap && $ctrl.mapError">SYSTEM ERROR: TRY REFRESHING THE PAGE</div><div class="ic-map-container" ng-style="$ctrl.mapDimensions"><p ng-show="$ctrl.showLocMessage" class="ic-loc-message">{{$ctrl.locMessage}}</p><div ng-show="$ctrl.needsMap" class="ic-map-div"><img class="ic-map-img" ng-src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png" ng-style="$ctrl.mapDimensions" ng-show="$ctrl.needsMap"><canvas ng-show="$ctrl.needsMap" class="ic-map-canvas"></canvas></div></div>'
 // });
 
 
@@ -418,27 +414,27 @@ app.component('prmActionContainerAfter', {
 
 // This adds the expand my results tooltip
 // From Joe Ferguson at UT Knoxville
-// window.setInterval(function() { 
-//   if ($(".tooltip").length > 0) {
-//   }else{
-//     $("#facets > prm-facet > div > div > div.sidebar-section.margin-top-small.margin-bottom-medium.compensate-padding-left > md-checkbox > div._md-label > span").append("&nbsp;<span class=\"tooltip\">?<span class=\"tooltiptext\">Include items that IC doesn’t own.</span></span>");
-//     $('.tooltip').hover(
-//       function() {
-//         $(this).find('.tooltiptext').css({'visibility':'visible'});
-//       }, function() {
-//         $(this).find('.tooltiptext').css({'visibility':'hidden'});
-//       }
-//     );
-//   }
-// }, 500);
+window.setInterval(function() { 
+  if ($(".tooltip").length > 0) {
+  }else{
+    $("#facets > prm-facet > div > div > div.sidebar-section.margin-top-small.margin-bottom-medium.compensate-padding-left > md-checkbox > div._md-label > span").append("&nbsp;<span class=\"tooltip\">?<span class=\"tooltiptext\">Include items that IC doesn’t own.</span></span>");
+    $('.tooltip').hover(
+      function() {
+        $(this).find('.tooltiptext').css({'visibility':'visible'});
+      }, function() {
+        $(this).find('.tooltiptext').css({'visibility':'hidden'});
+      }
+    );
+  }
+}, 500);
 
 
 // LibAnswers chat widget
-(function() {
-  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
-  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'v2.libanswers.com/load_chat.php?hash=88261efafc9e5e717508101165503bda';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
-})();
+// (function() {
+//   var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
+//   lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'v2.libanswers.com/load_chat.php?hash=88261efafc9e5e717508101165503bda';
+//   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+// })();
 
 // Google Analytics stuff
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
