@@ -35,9 +35,7 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
       default: // handles 'any' case
         ebscoSearchString = '' + searchTerms;
     }
-
     if (conjunction) { googleSearchString += '+'; }
-
     return ebscoSearchString;
   }
 
@@ -82,14 +80,13 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
   
   this.googleLabel = 'Google Scholar';
   const googleBaseUrl = 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C33&inst=7210957415625843320&q=';
-  // const googleBaseUrl = 'https://scholar.google.com/?inst=7210957415625843320&q=';
   this.googleProxiedSearchUrl = googleBaseUrl + googleSearchString;
 }]);
 // Used to be on prmPersonalizeResultsButtonAfter
 app.component('prmSearchResultSortByAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'ebscoLinkController',
-  template: '<div id="ic-external-links"><h3 ng-class="section-title-header"><span>Try My Search In&hellip;</span></h3><div id="ic-ebsco-link-block"><a href="{{$ctrl.ebscoProxiedSearchUrl}}" target="_blank" id="ic-ebsco-link"><img src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/ebsco.png" width="16" height="16"> {{$ctrl.ebscoLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div><div id="ic-google-link-block"><a href="{{$ctrl.googleProxiedSearchUrl}}" target="_blank" id="ic-google-link"><img src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/google.png" width="16" height="16"> {{$ctrl.googleLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div></div>'
+  template: '<div id="ic-external-links"><h3 ng-class="section-title-header"><span>Try My Search In&hellip;</span></h3><div id="ic-ebsco-link-block"><a href="{{$ctrl.ebscoProxiedSearchUrl}}" target="_blank" id="ic-ebsco-link"><img src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/ebsco.svg"> {{$ctrl.ebscoLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div><div id="ic-google-link-block"><a href="{{$ctrl.googleProxiedSearchUrl}}" target="_blank" id="ic-google-link"><img src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/google.svg"> {{$ctrl.googleLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div></div>'
 });
 
 

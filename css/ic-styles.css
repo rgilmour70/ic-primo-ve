@@ -193,9 +193,8 @@ prm-search-result-sort-by md-input-container {
 	left: -81px;
 }
 #ic-ebsco-link, #ic-google-link {
-	color: #44707b;
+	color: #0071BC;
 	top: 10px;
-	/*left: -55px;*/
 	left: -80px;
 	white-space: nowrap;
 }
@@ -315,9 +314,9 @@ sign-in message */
 	flex-direction: row-reverse;
 	justify-content: space-around;
 }
-.mobile-actions > *, #ic-ebsco-link {
+/*.mobile-actions > *, #ic-ebsco-link {
 	color: #0071BC !important;
-}
+}*/
 
 @media (max-width: 959px) {
 	.mobile-actions {
