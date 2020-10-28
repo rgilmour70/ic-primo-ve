@@ -1063,6 +1063,9 @@ mark, .text-highlight {
 	background-position: 5% 50%;
 }
 
+.personalization-section {
+	display: none;
+}
 /*#lcs_slide_out_button-16220 {
 	padding-top: 2em;
 	transform: rotate(-90deg) translateX(-2px);

@@ -2,9 +2,9 @@
 var app = angular.module('viewCustom', ['angularLoad', 'ui.router']);
 
 // Import jQuery
-var jQueryScript = document.createElement("script");  
-jQueryScript.src = "https://code.jquery.com/jquery-3.3.1.min.js";  
-document.getElementsByTagName("head")[0].appendChild(jQueryScript);
+// var jQueryScript = document.createElement("script");  
+// jQueryScript.src = "https://code.jquery.com/jquery-3.3.1.min.js";  
+// document.getElementsByTagName("head")[0].appendChild(jQueryScript);
 
 
 app.filter('encode', function() {
@@ -15,40 +15,53 @@ app.filter('encode', function() {
 // External search links
 app.controller ('ebscoLinkController', [function($stateParams, $state) {
 
-  function convertToEbsco(str) {
+  function spaceToPlus(str) {
+    return str.replace(/\s+/g, '+');
+  }
+
+  function convertToEbsco(primoSearch) {
     let ebscoSearchString = '';
-    const primoSearchArray = str.split(/,\s*/);
-    const conjunction = primoSearchArray[3] || '';
-
-    const searchTerms = primoSearchArray[2].replace(/\s/g, '+');
-
-    switch (primoSearchArray[0]) {
-      case 'title':
-        ebscoSearchString = 'TI+' + searchTerms;
-        break;
-      case 'creator':
-        ebscoSearchString = 'AU+' + searchTerms;
-        break;
-      case 'sub':
-        ebscoSearchString = 'SU+' + searchTerms;
-        break;
-      default: // handles 'any' case
-        ebscoSearchString = '' + searchTerms;
+    if (!Array.isArray(primoSearch)) {
+      ebscoSearchString = spaceToPlus(primoSearch.split(/,/)[2]);
+    } else {
+      for (let i=0; i<primoSearch.length; i++) {
+        const searchTerms = spaceToPlus(primoSearch[i].split(/,/)[2]);
+        const conjunction = primoSearch[i].split(/,/)[3] || '';
+        switch (primoSearch[i].split(/,/)[0]) {
+            case 'title':
+              ebscoSearchString += 'TI+(' + searchTerms + ')';
+              break;
+            case 'creator':
+              ebscoSearchString += 'AU+(' + searchTerms + ')';
+              break;
+            case 'sub':
+              ebscoSearchString += 'SU+(' + searchTerms + ')';
+              break;
+            default: // handles 'any' case
+              ebscoSearchString += '(' + searchTerms + ')';
+          }
+          if (i !== primoSearch.length - 1) {
+            ebscoSearchString += '+' + conjunction + '+';
+          }
+      }
     }
-    if (conjunction) { googleSearchString += '+'; }
     return ebscoSearchString;
   }
 
-  function convertToGoogle(str) {
+  function convertToGoogle(primoSearch) {
     let googleSearchString = '';
-    const primoSearchArray = str.split(/,\s*/);
-    const conjunction = primoSearchArray[3] || '';
-
-    const searchTerms = primoSearchArray[2].replace(/\s/g, '+');
-    googleSearchString = searchTerms;
-
-    if (conjunction) { ebscoSearchString += '+' + conjunction + '+'; }
-
+    if (!Array.isArray(primoSearch)) {
+      googleSearchString = spaceToPlus(primoSearch.split(/,/)[2]);
+    } else {
+      for (let i=0; i<primoSearch.length; i++) {
+        const searchTerms = spaceToPlus(primoSearch[i].split(/,/)[2]);
+        const conjunction = primoSearch[i].split(/,/)[3] || '';
+        googleSearchString += '(' + searchTerms + ')';
+        if (i !== primoSearch.length - 1) {
+          googleSearchString += '+' + conjunction + '+';
+        }
+      }
+    }
     return googleSearchString;
   }
 
@@ -56,33 +69,20 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
 
   const proxyString = 'http://ezproxy.ithaca.edu:2048/login?qurl=';
 
-  let ebscoSearchString = '';
-  let googleSearchString = '';
-
-  if (!Array.isArray(primoSearch)) {
-    // simple search
-    ebscoSearchString = convertToEbsco(primoSearch);
-    googleSearchString = convertToGoogle(primoSearch);
-  } else {
-    // compound search
-    for (let i=0; i<primoSearch.length; i++) {
-      ebscoSearchString += convertToEbsco(primoSearch[i]);
-      googleSearchString += convertToGoogle(primoSearch[i]);
-    }
-    ebscoSearchString = ebscoSearchString.replace(/\+[A-Z]+\+$/, '');
-    googleSearchString = googleSearchString.replace(/^\+/, '');
-  }
+  const ebscoSearchString = convertToEbsco(primoSearch);
+  const googleSearchString = convertToGoogle(primoSearch);
+  console.log(googleSearchString);
 
   this.ebscoLabel = 'EBSCO';
   const ebscoBaseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&defaultdb=aph,gnh,apn,ahl,aft,air,ami,rfh,bvh,bxh,boh,buh,cin20,cms,nlebk,eric,hev,8gh,hch,hia,ibh,qth,lxh,lfh,ulh,cmedm,mth,mah,msn,nfh,ofs,phl,tfh,rgr,bwh,ram,rft,sih,s3h,trh,ser,e870sww,e872sww,mft,kah,mzh&type=1&searchMode=Standard&site=ehost-live&scope=site';
-  const ebscoSearchUrl = encodeURIComponent(ebscoBaseUrl + '&bquery=' + ebscoSearchString);
-  this.ebscoProxiedSearchUrl = proxyString + ebscoSearchUrl;
+  const ebscoSearchUrl = ebscoBaseUrl + '&bquery=' + ebscoSearchString;
+  this.ebscoProxiedSearchUrl = proxyString + encodeURIComponent(ebscoSearchUrl);
   
   this.googleLabel = 'Google Scholar';
   const googleBaseUrl = 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C33&inst=7210957415625843320&q=';
   this.googleProxiedSearchUrl = googleBaseUrl + googleSearchString;
 }]);
-// Used to be on prmPersonalizeResultsButtonAfter
+// EBSCO used to be on prmPersonalizeResultsButtonAfter
 app.component('prmSearchResultSortByAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'ebscoLinkController',
@@ -411,27 +411,27 @@ app.component('prmActionContainerAfter', {
 
 // This adds the expand my results tooltip
 // From Joe Ferguson at UT Knoxville
-window.setInterval(function() { 
-  if ($(".tooltip").length > 0) {
-  }else{
-    $("#facets > prm-facet > div > div > div.sidebar-section.margin-top-small.margin-bottom-medium.compensate-padding-left > md-checkbox > div._md-label > span").append("&nbsp;<span class=\"tooltip\">?<span class=\"tooltiptext\">Include items that IC doesn’t own.</span></span>");
-    $('.tooltip').hover(
-      function() {
-        $(this).find('.tooltiptext').css({'visibility':'visible'});
-      }, function() {
-        $(this).find('.tooltiptext').css({'visibility':'hidden'});
-      }
-    );
-  }
-}, 500);
+// window.setInterval(function() { 
+//   if ($(".tooltip").length > 0) {
+//   }else{
+//     $("#facets > prm-facet > div > div > div.sidebar-section.margin-top-small.margin-bottom-medium.compensate-padding-left > md-checkbox > div._md-label > span").append("&nbsp;<span class=\"tooltip\">?<span class=\"tooltiptext\">Include items that IC doesn’t own.</span></span>");
+//     $('.tooltip').hover(
+//       function() {
+//         $(this).find('.tooltiptext').css({'visibility':'visible'});
+//       }, function() {
+//         $(this).find('.tooltiptext').css({'visibility':'hidden'});
+//       }
+//     );
+//   }
+// }, 500);
 
 
 // LibAnswers chat widget
-// (function() {
-//   var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
-//   lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'v2.libanswers.com/load_chat.php?hash=88261efafc9e5e717508101165503bda';
-//   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
-// })();
+(function() {
+  var lc = document.createElement('script'); lc.type = 'text/javascript'; lc.async = 'true';
+  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'v2.libanswers.com/load_chat.php?hash=88261efafc9e5e717508101165503bda';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
+})();
 
 // Google Analytics stuff
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
