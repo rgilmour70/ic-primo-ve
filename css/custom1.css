@@ -1066,6 +1066,17 @@ mark, .text-highlight {
 .personalization-section {
 	display: none;
 }
+
+/* Hide the "Copy Citation to Clipboard" button b/c it doesn't 
+carry over italics */
+prm-citation prm-copy-clipboard-btn + span {
+	margin-top: 1em !important;
+}
+prm-citation prm-copy-clipboard-btn {
+	display: none;
+}
+
+
 /*#lcs_slide_out_button-16220 {
 	padding-top: 2em;
 	transform: rotate(-90deg) translateX(-2px);
