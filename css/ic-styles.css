@@ -358,6 +358,11 @@ prm-citation prm-copy-clipboard-btn {
 	display: none;
 }
 
+/* Make the ILL link look like a link */
+span[translate="AlmaResourceSharing"] {
+	color: rgb(2, 119, 214);
+}
+
 
 /*#lcs_slide_out_button-16220 {
 	padding-top: 2em;
