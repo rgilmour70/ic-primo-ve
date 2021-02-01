@@ -458,7 +458,7 @@ app.component('prmSearchResultSortByAfter', {
 // Map stuff
 
 app.controller('mapController', [function () {
-    console.log(this);
+    // console.log(this);
 
     function drawIndicator(mapHeight, mapWidth, x, y, h, w) {
         // not sure why, but works best if we draw on ALL the possible canvases
@@ -499,6 +499,7 @@ app.controller('mapController', [function () {
 
     try {
         this.location = this.parentCtrl.item.delivery.bestlocation.subLocationCode;
+        console.log(this.location);
     } catch (e) {
         this.location = '';
         this.mapError = true;
@@ -512,7 +513,10 @@ app.controller('mapController', [function () {
     }
 
     // Do we need to display a map?
-    this.needsMap = Boolean((this.availability === 'available' || this.availability === 'check_holdings') && this.callNumber && this.physical || this.location === 'periodical');
+    // this.needsMap = Boolean(( (this.availability === 'available' || this.availability === 'check_holdings') && this.callNumber && this.physical) || this.location === 'periodical');
+
+    // Slightly different for COVID - reserves weirdness
+    this.needsMap = Boolean((this.availability === 'available' && this.location !== 'reserves' || this.availability === 'check_holdings') && this.callNumber && this.physical || this.location === 'periodical');
 
     if (this.needsMap) {
 
