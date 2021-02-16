@@ -1081,6 +1081,14 @@ span[translate="AlmaResourceSharing"] {
 	color: rgb(2, 119, 214);
 }
 
+/* Hide RefWorks button in mobile Safari menu */
+.my-refworks-ctm{
+display: none;
+}
+.my-refworks-separator-ctm{
+display: none;
+}
+
 
 /*#lcs_slide_out_button-16220 {
 	padding-top: 2em;
