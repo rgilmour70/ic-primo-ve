@@ -15,6 +15,11 @@ app.filter('encode', function() {
 // External search links
 app.controller ('ebscoLinkController', [function($stateParams, $state) {
 
+  // get the view for image paths
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  this.view = urlParams.get('vid').replace(':', '-');
+
   function spaceToPlus(str) {
     return str.replace(/\s+/g, '+');
   }
@@ -48,6 +53,32 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
     return ebscoSearchString;
   }
 
+  function convertToWorldCat(primoSearch) {
+    let worldCatSearchString = '';
+    if (!Array.isArray(primoSearch)) {
+      worldCatSearchString = spaceToPlus(primoSearch.split(/,/)[2]);
+    } else {
+      for (let i=0; i<primoSearch.length; i++) {
+        const searchTerms = spaceToPlus(primoSearch[i].split(/,/)[2]);
+        const conjunction = primoSearch[i].split(/,/)[3] || '';
+        switch (primoSearch[i].split(/,/)[0]) {
+          case 'title':
+            worldCatSearchString += 'ti:' + searchTerms;
+            break;
+          case 'creator':
+            worldCatSearchString += 'au:' + searchTerms;
+            break
+          default:
+            worldCatSearchString += 'kw:' + searchTerms;
+        }
+        if (i !== primoSearch.length - 1) {
+          worldCatSearchString += '+';
+        }
+      }
+    }
+    return worldCatSearchString;
+  }
+
   function convertToGoogle(primoSearch) {
     let googleSearchString = '';
     if (!Array.isArray(primoSearch)) {
@@ -67,26 +98,31 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
 
   const primoSearch = this.parentCtrl.$stateParams.query; // can be a string OR array!
 
-  const proxyString = 'http://ezproxy.ithaca.edu:2048/login?qurl=';
+  const proxyString = 'https://ezproxy.ithaca.edu/login?url=';
 
   const ebscoSearchString = convertToEbsco(primoSearch);
   const googleSearchString = convertToGoogle(primoSearch);
-  console.log(googleSearchString);
+  const worldCatSearchString = convertToWorldCat(primoSearch);
+  console.log(worldCatSearchString);
 
   this.ebscoLabel = 'EBSCO';
   const ebscoBaseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&defaultdb=aph,gnh,apn,ahl,aft,air,ami,rfh,bvh,bxh,boh,buh,cin20,cms,nlebk,eric,hev,8gh,hch,hia,ibh,qth,lxh,lfh,ulh,cmedm,mth,mah,msn,nfh,ofs,phl,tfh,rgr,bwh,ram,rft,sih,s3h,trh,ser,e870sww,e872sww,mft,kah,mzh&type=1&searchMode=Standard&site=ehost-live&scope=site';
   const ebscoSearchUrl = ebscoBaseUrl + '&bquery=' + ebscoSearchString;
-  this.ebscoProxiedSearchUrl = proxyString + encodeURIComponent(ebscoSearchUrl);
+  this.ebscoProxiedSearchUrl = proxyString + ebscoSearchUrl;
   
   this.googleLabel = 'Google Scholar';
   const googleBaseUrl = 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C33&inst=7210957415625843320&q=';
   this.googleProxiedSearchUrl = googleBaseUrl + googleSearchString;
+
+  this.worldCatLabel = 'WorldCat';
+  const worldCatBaseUrl = 'https://www.worldcat.org/search?qt=worldcat_org_all&q=';
+  this.worldCatProxiedSearchUrl = proxyString + worldCatBaseUrl + worldCatSearchString;
 }]);
 // EBSCO used to be on prmPersonalizeResultsButtonAfter
 app.component('prmSearchResultSortByAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'ebscoLinkController',
-  template: '<div id="ic-external-links"><h3 ng-class="section-title-header"><span>Try My Search In&hellip;</span></h3><div id="ic-ebsco-link-block"><a href="{{$ctrl.ebscoProxiedSearchUrl}}" target="_blank" id="ic-ebsco-link"><img src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/ebsco.svg"> {{$ctrl.ebscoLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div><div id="ic-google-link-block"><a href="{{$ctrl.googleProxiedSearchUrl}}" target="_blank" id="ic-google-link"><img src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/google.svg"> {{$ctrl.googleLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div></div>'
+  template: '<div id="ic-external-links"><h3 ng-class="section-title-header"><span>Try My Search In&hellip;</span></h3><div id="ic-ebsco-link-block"><a href="{{$ctrl.ebscoProxiedSearchUrl}}" target="_blank" id="ic-ebsco-link"><img src="custom/{{$ctrl.view}}/img/ebsco.svg"> {{$ctrl.ebscoLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div><div id="ic-google-link-block"><a href="{{$ctrl.googleProxiedSearchUrl}}" target="_blank" id="ic-google-link"><img src="custom/{{$ctrl.view}}/img/google.svg"> {{$ctrl.googleLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div><div id="ic-worldcat-link-block"><a href="{{$ctrl.worldCatProxiedSearchUrl}}" target="_blank" id="ic-worldcat-link"><img src="custom/{{$ctrl.view}}/img/WorldCat.svg"> {{$ctrl.worldCatLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div></div>'
 });
 
 
