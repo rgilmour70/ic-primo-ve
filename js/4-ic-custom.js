@@ -1,10 +1,12 @@
-/* eslint-disable */
-var app = angular.module('viewCustom', ['angularLoad', 'ui.router']);
-
 // Import jQuery
 // var jQueryScript = document.createElement("script");  
 // jQueryScript.src = "https://code.jquery.com/jquery-3.3.1.min.js";  
 // document.getElementsByTagName("head")[0].appendChild(jQueryScript);
+
+
+/* eslint-disable */
+var app = angular.module('viewCustom', ['angularLoad', 'ui.router', 'customActions', 'sendSms']);
+
 
 
 app.filter('encode', function() {
@@ -431,12 +433,26 @@ app.controller('prmActionContainerAfterController', [function() {
   }
 
 }]);
-app.component('prmActionContainerAfter', {
+app.component('prmActionListAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'prmActionContainerAfterController',
-  template: '<div class="ic-more-actions"><button class="_md-nav-button md-accent md-button md-primoExplore-theme md-ink-ripple md-primary" ng-show="$ctrl.getit[0].category===\'Alma-P\' || $ctrl.getit[1].category===\'Alma-P\'"><span class="_md-nav-button-text"><a ng-href="https://library.ithaca.edu/services/sms_me.php?title={{$ctrl.title | encode}}&cn={{$ctrl.callNumber | encode}}&loc={{$ctrl.location | encode}}" class="ic-sms-link" target="_blank"><div class="layout-column" layout="column"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="none" d="M0 0h24v24H0V0z"/><path fill="#616161" d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 11H7V9h2v2zm4 0h-2V9h2v2zm4 0h-2V9h2v2z"/></svg><span class="button-text">SMS</span></div></a></span></button><button class="_md-nav-button md-accent md-button md-primoExplore-theme md-ink-ripple md-primary"><span class="_md-nav-button-text"><a ng-href={{$ctrl.reportFormUrl}} class="ic-report-problem-link" target="_blank"><div class="layout-column" layout="column"><prm-icon icon-definition="error-attention" icon-type="svg" svg-icon-set="primo-ui"></prm-icon><span class="button-text">REPORT A PROBLEM</span></div></a></span></button></div>',
+  template: `<custom-action 
+    name="sms"
+    label="SMS"
+    index=7
+    icon="ic_textsms_24px"
+    icon-set="communication"
+    link="https://library.ithaca.edu/services/sms_me.php?title={{$ctrl.title | encode}}&cn={{$ctrl.callNumber | encode}}&loc={{$ctrl.location | encode}}" 
+    />
+    <custom-action 
+    name="report_a_problem"
+    label="Report a Problem"
+    index=8
+    icon="ic_report_problem_24px"
+    icon-set="action"
+    link="{{$ctrl.reportFormUrl}}" 
+    />`
 });
-
 
 // app.controller('prmFacetAfterController', [function() {
 //   this.fruit = 'banana';

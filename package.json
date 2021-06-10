@@ -1,0 +1,24 @@
+{
+  "name": "01ithacacol_inst-01ithacacol_v1",
+  "version": "1.0.0",
+  "description": "This repository contains the front-end customization code for [Ithaca College Library](https://library.ithaca.edu)'s hosted Ex Libris Primo implementation.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rgilmour70/ic-primo-ve.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rgilmour70/ic-primo-ve/issues"
+  },
+  "homepage": "https://github.com/rgilmour70/ic-primo-ve#readme",
+  "dependencies": {
+    "primo-explore-custom-actions": "^3.1.0",
+    "primo-explore-send-sms": "^1.1.0"
+  }
+}
