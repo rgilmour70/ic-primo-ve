@@ -18,7 +18,6 @@
   },
   "homepage": "https://github.com/rgilmour70/ic-primo-ve#readme",
   "dependencies": {
-    "primo-explore-custom-actions": "^3.1.0",
-    "primo-explore-send-sms": "^1.1.0"
+    "primo-explore-custom-actions": "^3.1.0"
   }
 }

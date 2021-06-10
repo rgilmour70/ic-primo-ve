@@ -5,7 +5,7 @@
 
 
 /* eslint-disable */
-var app = angular.module('viewCustom', ['angularLoad', 'ui.router', 'customActions', 'sendSms']);
+var app = angular.module('viewCustom', ['angularLoad', 'ui.router', 'customActions']);
 
 
 
