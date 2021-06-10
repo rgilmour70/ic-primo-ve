@@ -64,34 +64,6 @@ prm-brief-result-container {
 	box-shadow: none;
 }
 
-.ic-more-actions {
-	display: flex;
-	justify-content: center;
-}
-.ic-more-actions button {
-	display: flex;
-	justify-content: center;
-}
-.ic-more-actions .button-text {
-	font-size: 10px;
-	font-weight: 600;
-}
-
-.ic-more-actions .md-nav-button:hover {
-	background-color: rgba(0, 0, 0, 0.1) !important;
-}
-
-
-@media (max-width: 959px) {
-	.ic-more-actions {
-		justify-content: flex-start;
-		padding-left: 17px;
-	}
-}
-prm-action-list md-nav-bar ul._md-nav-bar-list li.md-nav-item {
-	margin: 0 10px;
-}
-
 prm-topbar {
 	height: 60px;
 }
