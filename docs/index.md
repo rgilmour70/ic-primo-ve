@@ -71,37 +71,38 @@ Once you have your map image files completed, you'll need to define the areas th
 
 You will need x, y, height, and width values for each of your static locations and for each of the mapping units within your dynamic locations. The x and y coordinates are for the top left corner of the rectangle.
 
-Your static locations can be described in your `mapData.js` file as follows:
+Your static locations can be described in your `1-map-data.js` file as follows:
 
     var staticLocations = {
-        "Popular Reading" : { 
-            "id" : "2.popReading", 
-            "x" : 133,
-            "y" : 156, 
-            "width" : 102, 
-            "height" : 23 
-        },
-        "Newspapers" : { 
-            "id" : "2.newspapers", 
-            "x" : 264, 
-            "y" : 131, 
-            "width" : 55, 
-            "height" : 73 
-        },
-        "Reference Desk" : { 
-            "id" : "2.refDeskStack", 
-            "x" : 128, 
-            "y" : 236, 
-            "width" : 110, 
-            "height" : 57 
-        },
-        "Popular Periodicals" : {
-            "id" : "2.popPer", 
-            "x" : 323, 
-            "y" : 135, 
-            "width" : 22, 
-            "height" : 67 
-        },
+        'leasedbook': 
+            { 
+                'floor':'2',
+                'x':131,
+                'y':156,
+                'width':103,
+                'height':22, 
+                'message':'This item is located on the low shelves just inside the main entrance.', 
+                'english':'Popular Reading' 
+            },
+        'leasedaud': 
+            { 
+                'floor':'2',
+                'x':131,
+                'y':156,
+                'width':103,
+                'height':11, 
+                'message':'This item is located on the low shelves just inside the main entrance, on the side facing the circulation/reserves desk.', 
+                'english':'Audio Books' 
+            },
+        'newbooks': 
+            { 
+                'floor':'2',
+                'x':207,
+                'y':166,
+                'width':26,
+                'height':13, 
+                'message':'This item is located on the low shelves just inside the main entrance, on the side facing the research help desk.', 'english':'New Books' 
+            },
         // and so forth
     };
 
