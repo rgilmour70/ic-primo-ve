@@ -2,7 +2,7 @@
 
 As online access to library resources has become the norm, the ability to find items in a library's stacks using a call number seems to be on the decline among students. In order to address this problem, Ithaca College Library has implemented a tool in our discovery system to assist students by displaying a map indicating the location of each physical library item.
 
-![Sample Map](images/sample-map.png)
+![Sample Map](images/sample_map.png)
 
 We are often asked about how to implement such a tool. Of course, we're happy to share our code with anyone who wants it, but the programming is only one part of the map system. On this page, I hope to document the system as a whole, including the organizational challenges along with the technical ones. This will help you decide if such a project is worthwhile for your institution and to what extent the code provided here will work for your needs.
 
