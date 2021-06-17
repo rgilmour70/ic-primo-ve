@@ -30,7 +30,7 @@ The material type icons included in the img directory were designed by @dtaylor4
 
 We added three new actions (or "Send To" items) using the `prmSearchResultAvailabilityLineAfter` directive. Each of these links to a form on the library web site. The code in this repository provides no functionality, just the links.
 
-* SMS - physical items only
+* SMS - text the current record
 * Not on Shelf - physical items in open stacks only
 * Report a Problem - electronic items only
 
@@ -42,6 +42,6 @@ We added a "Try this search in EBSCO" button to the search results page. This op
 
 ### Stack Maps
 
-This is by far the most complex of the customizations. The code relating to the maps is anything but plug-and-play. Some of the details and challenges of implementing a stack map system in Primo are addressed [here](http://rgilmour70.github.io/stackMaps/). The functions for manipulating LC call numbers in `js/call_number_functions.js` are JavaScript translations of [sortLC](https://rocky.uta.edu/doran/sortlc/) by @michaeldoran. These functions in turn depend on [sprintf-js](https://github.com/alexei/sprintf.js) by @alexei.
+This is by far the most complex of the customizations. The code relating to the maps is anything but plug-and-play. Some of the details and challenges of implementing a stack map system in Primo are addressed [here](http://rgilmour70.github.io/ic-primo-ve/). The functions for manipulating LC call numbers in `js/3-call_number_functions.js` are JavaScript translations of [sortLC](https://rocky.uta.edu/doran/sortlc/) by @michaeldoran. These functions in turn depend on [sprintf-js](https://github.com/alexei/sprintf.js) by @alexei.
 
 

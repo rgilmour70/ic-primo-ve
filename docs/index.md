@@ -8,6 +8,9 @@ We are often asked about how to implement such a tool. Of course, we're happy to
 
 Because of the host of variables involved in a mapping system, this is *not* "plug and play" software. You will need at least a little JavaScript (and preferably AngularJS) experience in order to customize and implement it. In particular, you will need to create your own version of `js/1-mapData.js` (instructions follow) and you will need to edit `js/ic-custom.js`, especially if your stack designations differ significantly from those used at Ithaca College.
 
+This system is can only draw rectangles. If you need to highlight areas using other shapes, you may need to do some significant coding (and probably math!) to make that work.
+
+
 ## Planning Your Mapping Project
 
 ### Define Your Locations
@@ -106,8 +109,6 @@ Your static locations can be described in your `1-map-data.js` file as follows:
         // and so forth
     };
 
-Again, the numeric prefixes for the id values indicate the floor.
-
 Add x, y, height, and width values to the arrays that you already established for the dynamic locations:
 
     var musicStacks = [
@@ -143,50 +144,14 @@ Add x, y, height, and width values to the arrays that you already established fo
 
 You should have a JavaScript array like the one above for each of your dynamic locations.
 
-The final ingredient for a complete `mapData.js` file is a messages array that contains any text that you would like displayed for particular statuses or location. 
 
-    var messages = {
-        "popReading" : "Located on the low shelves just inside the Library entrance on the second floor.",
-        "newspapers" : "Located on the low shelves on either side of the main staircase on the second floor.",
-        "askALibrarian" : "Ask at the Research Help Desk on the second floor for help finding this item.",
-        "mapFail" : "Odd. We can't find that. Ask at the Research Help Desk on the second floor for help finding this item.",
-        "unavailable" : "This item is not currently available.",
-        // and so forth
-    };
+## Editing the mapController
+
+This would be a good time to look over the `mapController` controller in `4-ic-custom.js` and see what changes need to be made to match your particular case. The file is commented to help you with this process.
+
+For instance, if you are using a different system of stack designations, you will need to edit the floor/stack/side code starting around line 280.
 
 
-## Editing maps.js
-
-This would be a good time to look over `maps.js` and see if there are any changes that need to be made to match your particular case. The file is commented in some detail to help you with this process.
-
-For instance, if your `id` designations differ from the system described above at for Ithaca College, you'll need to edit the first 20 lines or so of the `buildMap` function, where the id is parsed.
-
-You'll almost certainly need to edit the `switch` statment that begins around line 97 to allow for your particular set of dynamic locations.
-
-
-## Preliminary Testing
-
-At this point, you might want to make a copy `sample.html` and substitute my data with some of your own. This will let you test your system locally without worrying about the complexities of whatever catalog or discovery system you may be using. Use the simple markup as in the original file:
-
-    <div class="catalogItem">
-        <h2 class="title">Bleak House</h2>
-        <div class="holding">
-            <div class="location">General Stacks</div>
-            <div class="callNumber">PR4556 .A1 1977</div>
-            <div class="availability">Available</div>
-       </div>
-    </div>
-
-Create test cases for items in static and dynamic locations, on different floors, etc. and see how the system works.
-
-
-## Porting It To Your Catalog or Discovery Layer
-
-The next step is to get familiar with the HTML of your catalog or discovery layer interface. Use your browser deverloper tools to discover what markup corresponds to a "holding" in the simplified HTML above. Once you've determined that, you can edit line 79 to control the appearance of the "Where?" link. You might want to add some logic for cases where no "Where?" link is desired (e.g., ebooks).
-
-You'll also need to edit the jQuery selectors on lines 84-86 to match the markup of your system.
-
-Specific notes for the Ex Libris Primo discovery system can be found in the README.
 
 
 

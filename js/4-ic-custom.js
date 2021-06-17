@@ -237,8 +237,6 @@ app.controller ('mapController', [function() {
 
     this.showLocMessage = true;
 
-    console.log('location: ', this.location);
-    console.log(staticLocations);
     // is it in a static location?
     for (var loc in staticLocations) {
       if (loc === this.location) {
@@ -309,7 +307,6 @@ app.controller ('mapController', [function() {
 
         if (this.holdingsLocations[i] !== this.location) {
           var hl = this.holdingsLocations[i];
-          // console.log("hl: " + hl);
           this.staticLocations = "";
 
           if (staticLocations[hl]) {
@@ -318,7 +315,6 @@ app.controller ('mapController', [function() {
             this.locMessage += hl; // cases where secondary loc isn't static
           }
 
-          // this.locMessage += staticLocations[hl].english;
           if (i === this.holdingsLocations.length - 1) {
             this.locMessage += '.';
           } else {
