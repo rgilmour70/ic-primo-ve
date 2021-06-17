@@ -4,9 +4,9 @@ As online access to library resources has become the norm, the ability to find i
 
 ![Sample Map](images/sample_map.png)
 
-We are often asked about how to implement such a tool. Of course, we're happy to share our code with anyone who wants it, but the programming is only one part of the map system. On this page, I hope to document the system as a whole, including the organizational challenges along with the technical ones. This will help you decide if such a project is worthwhile for your institution and to what extent the code provided here will work for your needs.
+We are often asked about how to implement such a tool. Of course, we're happy to share this code (as part of our Primo VE customization package) with anyone who wants it, but the programming is only one part of the map system. On this page, I hope to document the system as a whole, including the organizational challenges as well as the technical ones. This will help you decide if such a project is worthwhile for your institution and to what extent the code provided here will work for your needs.
 
-Because of the host of variables involved in a mapping system, this is not "plug and play" software. You will need at least a little JavaScript experience in order to customize and implement it. In particular, you will need to create your own version of `js/mapData.js` (instructions follow) and you will most likely need to edit `js/maps.js`, especially if your stack designations differ significantly from those used at Ithaca College.
+Because of the host of variables involved in a mapping system, this is *not* "plug and play" software. You will need at least a little JavaScript (and preferably AngularJS) experience in order to customize and implement it. In particular, you will need to create your own version of `js/1-mapData.js` (instructions follow) and you will need to edit `js/ic-custom.js`, especially if your stack designations differ significantly from those used at Ithaca College.
 
 ## Planning Your Mapping Project
 
@@ -16,20 +16,22 @@ Before you even open your code editor, there are a lot of decisions to make. Mos
 
 **Static** locations are those that need mapping only to the collection level. These include collections that are small enough that just getting the student to the collection is adequate (e.g., newspapers, popular periodicals) as well as collections that are "closed stack," requiring interaction with a staff member for the student to access an item (e.g., multimedia, reserves). In the case of the closed stack locations, we decided that the map should simply direct students to the appropriate service desk.
 
-**Dynamic** locations are those for which the map will specify a more specific location within the collection. This will include a library's general stacks area. At Ithaca College, we also decided to dynamically map our music book collection and our bound periodicals collection.
+**Dynamic** locations are those for which the map will indicate a specific location within the collection. This will include a library's general stacks area. At Ithaca College, we also decided to dynamically map our music book collection and our bound periodicals collection.
 
 ### Decide on Granularity for Dynamic Locations
 
-We decided that for the dynamic locations, we would specify location to the level of one side of a shelving unit. Anecdotal evidence from staff members indicated that students who had trouble finding an item were usually in the wrong area of the stacks altogether, so we felt that specifying location to the level of stack face should be adequate. In deciding on the level of granularity for your map data, remember that *collections move.* The more granular you make your data, the more frequently you will have to update it to account for shifting in the stacks.
+We decided that for the dynamic locations, we would specify location to the level of one side of a shelving unit. Anecdotal evidence from staff members suggested that students who had trouble finding an item were usually in the wrong area of the stacks altogether, so we felt that specifying location to the level of stack face should be adequate. In deciding on the level of granularity for your map data, remember that *collections move.* The more granular you make your data, the more frequently you will have to update it to account for shifting in the stacks.
 
 ### Naming and Stack Signs
 
-A mapping system will be most effective if it is coupled with clear, highly visible stack signs that unambiguously designate the location in whatever language is used in the maps. As mentioned above, at Ithaca College we have three dynamically mapped locations, general stacks, music stacks, and bound periodicals. We numbered the shelving units as G1, G2, etc. for the general stacks, and used M and P, respectively, to prefix numbers for the music and periodical stacks. The stacks in all three of these collections are oriented north-south, so we indicate the side of a shelving unit with "east" or "west." "M8.e," for instance, would indicate the east side of the eleventh shelving unit in the music collection.
+A mapping system will be most effective if it is coupled with clear, highly visible stack signs that unambiguously designate the location in whatever system is used in the maps. As mentioned above, at Ithaca College we have three dynamically mapped locations, general stacks, music stacks, and bound periodicals. We numbered the shelving units as G1, G2, etc. for the general stacks, and used M and P, respectively, to prefix numbers for the music and periodical stacks. The stacks in all three of these collections are oriented north-south, so we indicate the side of a shelving unit with "east" or "west." "M8.e," for instance, would indicate the east side of the eighth shelving unit in the music collection.
+
+![Stack Signs](images/stackSign.jpg)
 
 
 ## Collecting Call Number Data
 
-For each "mapping unit" (in IC's case, a mapping unit is one stack face), you'll need to collect beginning and end call numbers. This data can be recorded in a JSON-ish manner as follows:
+For each "mapping unit" (in IC's case, one stack face), you'll need to collect beginning and end call numbers. This data can be recorded in a JSON-ish manner as follows:
 
     var musicStacks = [
         {
@@ -54,18 +56,18 @@ Notice the construction of the id values. They have the format:
 
     [floor].[stack designation].[side of shelving unit]
 
-The code in `js/maps.js` assumes that you are using this triplet system for the ids. If you are not, you will need to modify the `buildMap` function accordingly.
+The code in `js/4-ic-custom.js` assumes that you are using this triplet system for the ids. If you are not, you will need to modify the `mapController` controller accordingly.
 
-Put this and other location information in a file called `mapData.js`. You'll need an array like the one above for each of your dynamically mapped locations.
+Put this and other location information in a file called `1-map-data.js`. (The number prefixes on filenames ensure that the JS is compiled in the desired order.) You'll need an array like the one above for each of your dynamically mapped locations.
 
 
 ## Building the Maps and Adding Coordinate Data
 
-You'll need to create a map of each floor of your library. Try to keep these maps simple, emphasizing the stacks and any landmark features (stairwells, pillars) that will help students to orient. The map need not be to scale: it just needs to show your locations clearly, with enough room for a "highlight" effect to be applied to emphasize a single mapping unit. Save your maps as png files in the `img/mapImages` directory, using the naming scheme `floor_[number].png`.
+You'll need to create a map of each floor of your library. Try to keep these maps simple, emphasizing the stacks and any landmark features (stairwells, pillars) that will help students to orient. The map need not be to scale: it just needs to show your locations clearly, with enough room for a "highlight" effect to be applied to emphasize a single mapping unit. Save your maps as png files in the `img` directory, using the naming scheme `floor_[number].png`.
 
-One you have your map image files completed, you'll need to define the areas that you want highlighted for each location. Open one of your floor maps in Adobe Photoshop and activate the "info" panel. This will display x and y values for the point where your cursor is located on the image and will display height and width for any shape that you highlight with the cursor.
+Once you have your map image files completed, you'll need to define the areas that you want highlighted for each location. Open one of your floor maps in Adobe Photoshop and activate the "info" panel. This will display x and y values for the point where your cursor is located on the image and will display height and width for any shape that you highlight with the cursor.
 
-![Determining map coordinates with Photoshop](img/determiningCoordinates.png)
+![Determining map coordinates with Photoshop](images/determiningCoordinates.png)
 
 You will need x, y, height, and width values for each of your static locations and for each of the mapping units within your dynamic locations. The x and y coordinates are for the top left corner of the rectangle.
 
