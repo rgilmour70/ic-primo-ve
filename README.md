@@ -9,7 +9,9 @@ Our main point of entry for Primo is a search box on the [library home page](htt
 
 You'll see many lines in the custom JS in this repository that look something like this:
 
-```this.location = this.parentCtrl.result.delivery.bestlocation.subLocationCode;```
+```
+this.location = this.parentCtrl.result.delivery.bestlocation.subLocationCode;
+```
 
 Lines like these may need to be modified to match the data structure provided by your ILS. If you try to implement this code and see problems, `console.log` the variable and see if it contains what you think it should. If not, you'll probably need to modify the data path. To find the right path, `console.log(this);` within the directive that you're working on. This will log an object to the console and you can drill down through that to find the value you need.
 
@@ -35,9 +37,9 @@ We added three new actions (or "Send To" items) using the `prmSearchResultAvaila
 * Report a Problem - electronic items only
 
 
-### EBSCO Link
+### EBSCO / Google Scholar / WorldCat Links
 
-We added a "Try this search in EBSCO" button to the search results page. This opens in a new window.
+We added "Try my search in ..." links for these services to the search results page. These open in a new window. These links do not replicate every aspect of the current search--they just get the main search terms into the service. An enthusiastic programmer who is familiar with the intricacies of the search URLs in these services could probably make them more precise.
 
 
 ### Stack Maps

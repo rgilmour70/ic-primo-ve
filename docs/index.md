@@ -6,16 +6,16 @@ As online access to library resources has become the norm, the ability to find i
 
 We are often asked about how to implement such a tool. Of course, we're happy to share this code (as part of our Primo VE customization package) with anyone who wants it, but the programming is only one part of the map system. On this page, I hope to document the system as a whole, including the organizational challenges as well as the technical ones. This will help you decide if such a project is worthwhile for your institution and to what extent the code provided here will work for your needs.
 
-Because of the host of variables involved in a mapping system, this is *not* "plug and play" software. You will need at least a little JavaScript (and preferably AngularJS) experience in order to customize and implement it. In particular, you will need to create your own version of `js/1-mapData.js` (instructions follow) and you will need to edit `js/ic-custom.js`, especially if your stack designations differ significantly from those used at Ithaca College.
+Because of the host of variables involved in a mapping system, this is *not* "plug and play" software. You will need at least a little JavaScript (and preferably AngularJS) experience in order to customize and implement it. In particular, you will need to create your own version of `js/1-mapData.js` (instructions follow) and you will need to edit `js/4-ic-custom.js`, especially if your stack designations differ significantly from those used at Ithaca College.
 
-This system is can only draw rectangles. If you need to highlight areas using other shapes, you may need to do some significant coding (and probably math!) to make that work.
+This system can only draw rectangles. If you need to highlight areas using other shapes, you may need to do some significant coding (and probably math!) to make that work.
 
 
 ## Planning Your Mapping Project
 
 ### Define Your Locations
 
-Before you even open your code editor, there are a lot of decisions to make. Most libraries have multiple locations. At Ithaca College, we have about eighteen of these, including archives, general stacks, multimedia collection, periodicals, newspapers, reference, reserves, over-sized, etc. For the purposes of the mapping project, we divided these into two groups based on the type of mapping they would need.
+Before you even open your code editor, there are a lot of decisions to make. Most libraries have multiple locations. At Ithaca College, we have about eighteen, including archives, general stacks, multimedia collection, periodicals, newspapers, reference, reserves, over-sized, etc. For the purposes of the mapping project, we divided these into two groups based on the type of mapping they would need.
 
 **Static** locations are those that need mapping only to the collection level. These include collections that are small enough that just getting the student to the collection is adequate (e.g., newspapers, popular periodicals) as well as collections that are "closed stack," requiring interaction with a staff member for the student to access an item (e.g., multimedia, reserves). In the case of the closed stack locations, we decided that the map should simply direct students to the appropriate service desk.
 
@@ -27,7 +27,7 @@ We decided that for the dynamic locations, we would specify location to the leve
 
 ### Naming and Stack Signs
 
-A mapping system will be most effective if it is coupled with clear, highly visible stack signs that unambiguously designate the location in whatever system is used in the maps. As mentioned above, at Ithaca College we have three dynamically mapped locations, general stacks, music stacks, and bound periodicals. We numbered the shelving units as G1, G2, etc. for the general stacks, and used M and P, respectively, to prefix numbers for the music and periodical stacks. The stacks in all three of these collections are oriented north-south, so we indicate the side of a shelving unit with "east" or "west." "M8.e," for instance, would indicate the east side of the eighth shelving unit in the music collection.
+A mapping system will be most effective if it is coupled with clear, highly visible stack signs that unambiguously designate the location in whatever system is used in the maps. As mentioned above, at Ithaca College we have three dynamically mapped locations: general stacks, music stacks, and bound periodicals. We numbered the shelving units as G1, G2, etc. for the general stacks, and used M and P, respectively, to prefix numbers for the music and periodical stacks. The stacks in all three of these collections are oriented north-south, so we indicate the side of a shelving unit with "east" or "west." "M8.e," for instance, would indicate the east side of the eighth shelving unit in the music collection.
 
 ![Stack Signs](images/stackSign.jpg)
 
@@ -61,7 +61,7 @@ Notice the construction of the id values. They have the format:
 
 The code in `js/4-ic-custom.js` assumes that you are using this triplet system for the ids. If you are not, you will need to modify the `mapController` controller accordingly.
 
-Put this and other location information in a file called `1-map-data.js`. (The number prefixes on filenames ensure that the JS is compiled in the desired order.) You'll need an array like the one above for each of your dynamically mapped locations.
+Put this and other location information in a file called `js/1-map-data.js`. (The number prefixes on filenames ensure that the JS is compiled in the desired order.) You'll need an array like the one above for each of your dynamically mapped locations.
 
 
 ## Building the Maps and Adding Coordinate Data
@@ -74,7 +74,7 @@ Once you have your map image files completed, you'll need to define the areas th
 
 You will need x, y, height, and width values for each of your static locations and for each of the mapping units within your dynamic locations. The x and y coordinates are for the top left corner of the rectangle.
 
-Your static locations can be described in your `1-map-data.js` file as follows:
+This data should be added to your `js/1-map-data.js` file as follows:
 
     var staticLocations = {
         'leasedbook': 
@@ -147,7 +147,7 @@ You should have a JavaScript array like the one above for each of your dynamic l
 
 ## Editing the mapController
 
-This would be a good time to look over the `mapController` controller in `4-ic-custom.js` and see what changes need to be made to match your particular case. The file is commented to help you with this process.
+This would be a good time to look over the `mapController` controller in `js/4-ic-custom.js` and see what changes need to be made to match your particular case. The file is commented to help you with this process.
 
 For instance, if you are using a different system of stack designations, you will need to edit the floor/stack/side code starting around line 280.
 
