@@ -30,7 +30,7 @@ The material type icons included in the img directory were designed by @dtaylor4
 
 ### Report a Problem
 
-We added a "report a problem" action  using the `prmSearchResultAvailabilityLineAfter` directive. This links to a form on the IC Library website. The code in this repository provides no functionality, just the link.
+We added a "report a problem" action  using the `prmSearchResultAvailabilityLineAfter` directive and [primo-explore-custom-actions](https://github.com/alliance-pcsg/primo-explore-custom-actions). This links to a form on the IC Library website. The code in this repository provides no functionality, just the link.
 
 
 ### EBSCO / Google Scholar / WorldCat Links
