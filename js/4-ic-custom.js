@@ -4,10 +4,7 @@
 // document.getElementsByTagName("head")[0].appendChild(jQueryScript);
 
 
-/* eslint-disable */
 var app = angular.module('viewCustom', ['angularLoad', 'ui.router', 'customActions']);
-
-
 
 app.filter('encode', function() {
   return encodeURIComponent;
@@ -135,7 +132,6 @@ app.controller ('mapController', [function() {
   // console.log(this);
 
   function drawIndicator(mapHeight, mapWidth, x, y, h, w) {
-    // not sure why, but works best if we draw on ALL the possible canvases
     var canvases = document.getElementsByClassName('ic-map-canvas');
     for (let i=0; i<canvases.length; i++) {
       var theCanvas = canvases.item(i);
@@ -351,16 +347,16 @@ app.component('prmOpacAfter', {
 });
 
 
+// Report a Problem action
 
 app.controller('prmActionContainerAfterController', [function() {
+  console.log(this);
 
   // build a permalink (for 'report a problem')
   try {
     let recordid = this.parentCtrl.item.pnx.control.recordid[0];
-    // const start = 'https://ithaca-primo.hosted.exlibrisgroup.com/primo-explore/fulldisplay?docid=01ITHACACOL_';
-    // const end = '&vid=01ITHACACOL_V1&search_scope=01ITHACACOL_EVERYTHING&tab=default_tab&lang=en_US&context=L';
     const start = 'https://ithaca.primo.exlibrisgroup.com/discovery/fulldisplay?docid=';
-    const end = '&context=PC&vid=01ITHACACOL_INST:01ITHACACOL_V1&search_scope=MyInst_and_CI&tab=Everything&lang=en';
+    const end = '&context=PC&vid=01ITHACACOL_INST:01ITHACACOL_V1';
     this.url = encodeURIComponent(start + recordid + end);
   } catch(e) {
     this.recordid = '';
@@ -416,7 +412,6 @@ app.controller('prmActionContainerAfterController', [function() {
     // Add the call number for traces
     this.reportFormUrl += '&callNumber=' + encodeURI(this.callNumber);
     this.reportFormUrl += '&permalink=' + encodeURI(this.url);
-    // console.log(this.reportFormUrl);
   } catch(e) {
     this.reportFormUrl = '';
   }
@@ -433,14 +428,6 @@ app.component('prmActionListAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'prmActionContainerAfterController',
   template: `<custom-action 
-    name="sms"
-    label="SMS"
-    index=7
-    icon="ic_textsms_24px"
-    icon-set="communication"
-    link="https://library.ithaca.edu/services/sms_me.php?title={{$ctrl.title | encode}}&cn={{$ctrl.callNumber | encode}}&loc={{$ctrl.location | encode}}" 
-    />
-    <custom-action 
     name="report_a_problem"
     label="Report a Problem"
     index=8
@@ -449,17 +436,6 @@ app.component('prmActionListAfter', {
     link="{{$ctrl.reportFormUrl}}" 
     />`
 });
-
-// app.controller('prmFacetAfterController', [function() {
-//   this.fruit = 'banana';
-//   this.parts = document.getElementById('facets').children[0].children[0].children[0];
-//   console.log(this);
-// }]);
-// app.component('prmFacetAfter', {
-//   bindings: { parentCtrl: '<' },
-//   controller: 'prmFacetAfterController',
-//   template: '<span id="ic-expand-tooltip">{{$ctrl.fruit}}</span>',
-// });
 
 // This adds the expand my results tooltip
 // From Joe Ferguson at UT Knoxville

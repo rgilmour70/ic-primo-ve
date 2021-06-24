@@ -371,7 +371,6 @@ function sortLC() {
 // document.getElementsByTagName("head")[0].appendChild(jQueryScript);
 
 
-/* eslint-disable */
 var app = angular.module('viewCustom', ['angularLoad', 'ui.router', 'customActions']);
 
 app.filter('encode', function () {
@@ -498,7 +497,6 @@ app.controller('mapController', [function () {
   // console.log(this);
 
   function drawIndicator(mapHeight, mapWidth, x, y, h, w) {
-    // not sure why, but works best if we draw on ALL the possible canvases
     var canvases = document.getElementsByClassName('ic-map-canvas');
     for (var _i = 0; _i < canvases.length; _i++) {
       var theCanvas = canvases.item(_i);
@@ -600,8 +598,6 @@ app.controller('mapController', [function () {
 
     this.showLocMessage = true;
 
-    console.log('location: ', this.location);
-    console.log(staticLocations);
     // is it in a static location?
     for (var loc in staticLocations) {
       if (loc === this.location) {
@@ -671,7 +667,6 @@ app.controller('mapController', [function () {
 
         if (this.holdingsLocations[i] !== this.location) {
           var hl = this.holdingsLocations[i];
-          // console.log("hl: " + hl);
           this.staticLocations = "";
 
           if (staticLocations[hl]) {
@@ -680,7 +675,6 @@ app.controller('mapController', [function () {
             this.locMessage += hl; // cases where secondary loc isn't static
           }
 
-          // this.locMessage += staticLocations[hl].english;
           if (i === this.holdingsLocations.length - 1) {
             this.locMessage += '.';
           } else {
@@ -712,15 +706,16 @@ app.component('prmOpacAfter', {
   template: '<div class="ic-map-error" ng-show="$ctrl.needsMap && $ctrl.mapError">SYSTEM ERROR: TRY REFRESHING THE PAGE</div><div class="ic-map-container" ng-style="$ctrl.mapDimensions"><p ng-show="$ctrl.showLocMessage" class="ic-loc-message">{{$ctrl.locMessage}}</p><div ng-show="$ctrl.needsMap" class="ic-map-div"><img class="ic-map-img" ng-src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png" ng-srcset="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png 1x, custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}@2x.png 2x" ng-style="$ctrl.mapDimensions" ng-show="$ctrl.needsMap"><canvas ng-show="$ctrl.needsMap" class="ic-map-canvas"></canvas></div></div>'
 });
 
+// Report a Problem action
+
 app.controller('prmActionContainerAfterController', [function () {
+  console.log(this);
 
   // build a permalink (for 'report a problem')
   try {
     var recordid = this.parentCtrl.item.pnx.control.recordid[0];
-    // const start = 'https://ithaca-primo.hosted.exlibrisgroup.com/primo-explore/fulldisplay?docid=01ITHACACOL_';
-    // const end = '&vid=01ITHACACOL_V1&search_scope=01ITHACACOL_EVERYTHING&tab=default_tab&lang=en_US&context=L';
     var start = 'https://ithaca.primo.exlibrisgroup.com/discovery/fulldisplay?docid=';
-    var end = '&context=PC&vid=01ITHACACOL_INST:01ITHACACOL_V1&search_scope=MyInst_and_CI&tab=Everything&lang=en';
+    var end = '&context=PC&vid=01ITHACACOL_INST:01ITHACACOL_V1';
     this.url = encodeURIComponent(start + recordid + end);
   } catch (e) {
     this.recordid = '';
@@ -798,7 +793,6 @@ app.controller('prmActionContainerAfterController', [function () {
     // Add the call number for traces
     this.reportFormUrl += '&callNumber=' + encodeURI(this.callNumber);
     this.reportFormUrl += '&permalink=' + encodeURI(this.url);
-    // console.log(this.reportFormUrl);
   } catch (e) {
     this.reportFormUrl = '';
   }
@@ -813,19 +807,8 @@ app.controller('prmActionContainerAfterController', [function () {
 app.component('prmActionListAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'prmActionContainerAfterController',
-  template: '<custom-action \n    name="sms"\n    label="SMS"\n    index=7\n    icon="ic_textsms_24px"\n    icon-set="communication"\n    link="https://library.ithaca.edu/services/sms_me.php?title={{$ctrl.title | encode}}&cn={{$ctrl.callNumber | encode}}&loc={{$ctrl.location | encode}}" \n    />\n    <custom-action \n    name="report_a_problem"\n    label="Report a Problem"\n    index=8\n    icon="ic_report_problem_24px"\n    icon-set="action"\n    link="{{$ctrl.reportFormUrl}}" \n    />'
+  template: '<custom-action \n    name="report_a_problem"\n    label="Report a Problem"\n    index=8\n    icon="ic_report_problem_24px"\n    icon-set="action"\n    link="{{$ctrl.reportFormUrl}}" \n    />'
 });
-
-// app.controller('prmFacetAfterController', [function() {
-//   this.fruit = 'banana';
-//   this.parts = document.getElementById('facets').children[0].children[0].children[0];
-//   console.log(this);
-// }]);
-// app.component('prmFacetAfter', {
-//   bindings: { parentCtrl: '<' },
-//   controller: 'prmFacetAfterController',
-//   template: '<span id="ic-expand-tooltip">{{$ctrl.fruit}}</span>',
-// });
 
 // This adds the expand my results tooltip
 // From Joe Ferguson at UT Knoxville
