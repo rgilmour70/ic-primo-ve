@@ -28,13 +28,9 @@ Much of the code here was inspired by, if not copied outright from posts to PRIM
 The material type icons included in the img directory were designed by @dtaylor4444.  His [PrimoIcons](https://github.com/dtaylor4444/PrimoIcons) repository includes an Adobe Illustrator file for the icons as well as the pngs included here.
 
 
-### Additional Actions
+### Report a Problem
 
-We added three new actions (or "Send To" items) using the `prmSearchResultAvailabilityLineAfter` directive. Each of these links to a form on the library web site. The code in this repository provides no functionality, just the links.
-
-* SMS - text the current record
-* Not on Shelf - physical items in open stacks only
-* Report a Problem - electronic items only
+We added a "report a problem" action  using the `prmSearchResultAvailabilityLineAfter` directive. This links to a form on the IC Library website. The code in this repository provides no functionality, just the link.
 
 
 ### EBSCO / Google Scholar / WorldCat Links
