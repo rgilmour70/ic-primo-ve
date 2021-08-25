@@ -356,6 +356,14 @@ display: none;
 display: none;
 }
 
+/* Get rid of "date not needed by" blank in Rapido request form */
+#blankGetItRequest .form_item_not_needed {
+	display: none;
+}
+prm-get-it-request .close {
+	font-family: sans-serif;
+}
+
 
 /*#lcs_slide_out_button-16220 {
 	padding-top: 2em;
