@@ -20,6 +20,7 @@ var staticLocations = {
   'musper': { 'floor': '3', 'x': 153, 'y': 228, 'width': 39, 'height': 86, 'message': 'This item is located in the northeast corner of the third floor, near the administrative offices.', 'english': 'Music Periodicals' },
   'multimedia': { 'floor': '3', 'x': 263, 'y': 95, 'width': 81, 'height': 39, 'message': 'Ask for this item at the multimedia desk on the third floor.', 'english': 'Multimedia' },
   'mm_noILL': { 'floor': '3', 'x': 263, 'y': 95, 'width': 81, 'height': 39, 'message': 'Ask for this item at the multimedia desk on the third floor.', 'english': 'Multimedia' },
+  'mmreserve': { 'floor': '3', 'x': 263, 'y': 95, 'width': 81, 'height': 39, 'message': 'Ask for this item at the multimedia desk on the third floor.', 'english': 'Multimedia Reserve' },
   'musicref': { 'floor': '3', 'x': 433, 'y': 233, 'width': 18, 'height': 78, 'message': 'This item is located near the music desk in the NW corner of the third floor.', 'english': 'Music Reference' },
   'mustopshlf': { 'floor': '3', 'x': 443, 'y': 233, 'width': 9, 'height': 78, 'message': 'This item is located near the music desk in the NW corner of the third floor.', 'english': 'Top Shelf Music' },
   'miniscore': { 'floor': '3', 'x': 413, 'y': 250, 'width': 21, 'height': 64, 'message': 'This item is located near the music desk in the NW corner of the third floor.', 'english': 'Mini scores' },
