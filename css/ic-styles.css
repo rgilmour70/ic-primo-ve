@@ -24,9 +24,9 @@ prm-search-result-list .pages-separated-with-gaps .results-title:not(.results-ti
 }
 
 /* hide "How to get it" header */
-h4[translate="nui.getit.service_howtogetit"] { 
+/*h4[translate="nui.getit.service_howtogetit"] { 
 	display: none; 
-}
+}*/
 
 md-list-item {
 	border-left: 3px solid #fff !important;
@@ -181,7 +181,6 @@ h3.section-title-header > button > span {
 	top: 10px;
 	left: -50px;
 	white-space: nowrap;
-	font-family: ;
 }
 #ic-ebsco-link svg, #ic-google-link svg, #ic-worldcat-link svg {
 	height: 16px;
@@ -200,10 +199,13 @@ prm-search-bar, prm-browse-search-bar, prm-atoz-search-bar {
 .advanced-search-backdrop {
 	background-color: #013158;
 }
-
-.available-facets {
+/* Looks better with this turned on, but turned if
+off when the "exclude" buttons started appearing 
+all the time. */
+/* .available-facets {
 	background-color: #F3F3F3;
-}
+} */
+
 .available-facets button h3 {
 	color: #008dc6;
 }
@@ -267,9 +269,9 @@ button.section-title svg {
 }
 
 /* Hide facet Open access */ 
-/*[data-facet-value="tlevel-open_access"] {
+[data-facet-value="tlevel-open_access"] {
 	display: none !important;
-}*/
+}
 
 prm-citation button {
 	padding-top: 0 !important;
