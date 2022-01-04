@@ -378,6 +378,30 @@ app.filter('encode', function () {
   return encodeURIComponent;
 });
 
+// Re-run search when the scope is changed
+// Dan got this code from somewhere
+app.component('prmTabsAndScopesSelectorAfter', {
+  bindings: { parentCtrl: '<' },
+  controller: function controller($scope) {
+    setTimeout(function () {
+
+      function activateSearch() {
+        setTimeout(function () {
+          document.getElementsByClassName("zero-margin button-confirm md-button md-primoExplore-theme")[0].click();
+        }, 500);
+      }
+
+      var searchScopes = document.querySelectorAll('div.simple-search-wrapper [id^="select_option_"]');
+
+      for (var i = 0; i < 6; i++) {
+        searchScopes[i].onclick = function () {
+          activateSearch();
+        };
+      }
+    }, 500);
+  }
+});
+
 // External search links
 app.controller('ebscoLinkController', [function ($stateParams, $state) {
 
