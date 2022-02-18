@@ -378,8 +378,18 @@ app.filter('encode', function () {
   return encodeURIComponent;
 });
 
+// Just testing some stuff
+// app.controller ('showSubjectIcon', [function() {
+//   console.log(this);
+// }]);
+// app.component('prmServiceHeaderAfter', {
+//   bindings: { parentCtrl: '<' },
+//   controller: 'showSubjectIcon',
+//   template: '<span>BANANA!</span>'
+// });
+
 // Re-run search when the scope is changed
-// Dan got this code from somewhere
+// Dan got this code from St. Olaf College
 app.component('prmTabsAndScopesSelectorAfter', {
   bindings: { parentCtrl: '<' },
   controller: function controller($scope) {
@@ -519,7 +529,6 @@ app.component('prmSearchResultSortByAfter', {
 // Map stuff
 
 app.controller('mapController', [function () {
-  // console.log(this);
 
   function drawIndicator(mapHeight, mapWidth, x, y, h, w) {
     var canvases = document.getElementsByClassName('ic-map-canvas');
