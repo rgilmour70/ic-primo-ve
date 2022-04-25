@@ -1084,6 +1084,8 @@ prm-get-it-request .close {
 	font-family: sans-serif;
 }
 
+
+
 /* Make the "exclude" icons less conspicuous */
 #facets md-icon {
 	height: 16px;
@@ -1091,14 +1093,12 @@ prm-get-it-request .close {
 	min-width: 16px;
 	min-height: 16px;
 }
-
-/* Prevent the exclude-facets icons from always displaying */
-/* From Jeff Peterson of U Minn. */
-@media (min-width:960px) {
-  .available-facets .section-content .md-chips .md-chip .button-exclude {
-    opacity: 0 !important;
-  }
+.available-facets .section-content .md-chips .md-chip .button-exclude {
+	color: #999 !important;
 }
+
+
+
 /*#lcs_slide_out_button-16220 {
 	padding-top: 2em;
 	transform: rotate(-90deg) translateX(-2px);
