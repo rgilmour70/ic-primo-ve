@@ -10,15 +10,28 @@ app.filter('encode', function() {
   return encodeURIComponent;
 });
 
-// Just testing some stuff
-// app.controller ('showSubjectIcon', [function() {
-//   console.log(this);
+// app.controller('myExcellentController', [function ($stateParams, $state) {
+//     console.log(this.parentCtrl.vid);
 // }]);
-// app.component('prmServiceHeaderAfter', {
-//   bindings: { parentCtrl: '<' },
-//   controller: 'showSubjectIcon',
-//   template: '<span>BANANA!</span>'
+// app.component('prmSearchBarAfter', {
+//     bindings: { parentCtrl: '<' },
+//     template: `<div>hello world</div>`,
+//     controller: 'myExcellentController'
 // });
+
+// app.controller('myExcellentController', [function ($stateParams, $state) {
+//       this.$onInit = function() {
+//        {
+//           console.log(this.parentCtrl.vid);
+//         }
+//       }
+// }]);
+// app.component('prmSearchBarAfter', {
+//     bindings: { parentCtrl: '<' },
+//     template: `<div>hello world</div>`,
+//     controller: 'myExcellentController'
+// });
+
 
 // Re-run search when the scope is changed
 // Dan got this code from St. Olaf College
@@ -46,111 +59,113 @@ app.component('prmTabsAndScopesSelectorAfter',{
 
 // External search links
 app.controller ('ebscoLinkController', [function($stateParams, $state) {
+  this.$onInit = function() {
+    {
+      // get the view for image paths
+      const queryString = window.location.search;
+      const urlParams = new URLSearchParams(queryString);
+      this.view = urlParams.get('vid').replace(':', '-');
 
-  // get the view for image paths
-  const queryString = window.location.search;
-  const urlParams = new URLSearchParams(queryString);
-  this.view = urlParams.get('vid').replace(':', '-');
+      function spaceToPlus(str) {
+        return str.replace(/\s+/g, '+');
+      }
 
-  function spaceToPlus(str) {
-    return str.replace(/\s+/g, '+');
-  }
-
-  function convertToEbsco(primoSearch) {
-    let ebscoSearchString = '';
-    if (!Array.isArray(primoSearch)) {
-      ebscoSearchString = spaceToPlus(primoSearch.split(/,/)[2]);
-    } else {
-      for (let i=0; i<primoSearch.length; i++) {
-        const searchTerms = spaceToPlus(primoSearch[i].split(/,/)[2]);
-        const conjunction = primoSearch[i].split(/,/)[3] || '';
-        switch (primoSearch[i].split(/,/)[0]) {
-            case 'title':
-              ebscoSearchString += 'TI+(' + searchTerms + ')';
-              break;
-            case 'creator':
-              ebscoSearchString += 'AU+(' + searchTerms + ')';
-              break;
-            case 'sub':
-              ebscoSearchString += 'SU+(' + searchTerms + ')';
-              break;
-            default: // handles 'any' case
-              ebscoSearchString += '(' + searchTerms + ')';
+      function convertToEbsco(primoSearch) {
+        let ebscoSearchString = '';
+        if (!Array.isArray(primoSearch)) {
+          ebscoSearchString = spaceToPlus(primoSearch.split(/,/)[2]);
+        } else {
+          for (let i=0; i<primoSearch.length; i++) {
+            const searchTerms = spaceToPlus(primoSearch[i].split(/,/)[2]);
+            const conjunction = primoSearch[i].split(/,/)[3] || '';
+            switch (primoSearch[i].split(/,/)[0]) {
+                case 'title':
+                  ebscoSearchString += 'TI+(' + searchTerms + ')';
+                  break;
+                case 'creator':
+                  ebscoSearchString += 'AU+(' + searchTerms + ')';
+                  break;
+                case 'sub':
+                  ebscoSearchString += 'SU+(' + searchTerms + ')';
+                  break;
+                default: // handles 'any' case
+                  ebscoSearchString += '(' + searchTerms + ')';
+              }
+              if (i !== primoSearch.length - 1) {
+                ebscoSearchString += '+' + conjunction + '+';
+              }
           }
-          if (i !== primoSearch.length - 1) {
-            ebscoSearchString += '+' + conjunction + '+';
+        }
+        return ebscoSearchString;
+      }
+
+      function convertToWorldCat(primoSearch) {
+        let worldCatSearchString = '';
+        if (!Array.isArray(primoSearch)) {
+          worldCatSearchString = spaceToPlus(primoSearch.split(/,/)[2]);
+        } else {
+          for (let i=0; i<primoSearch.length; i++) {
+            const searchTerms = spaceToPlus(primoSearch[i].split(/,/)[2]);
+            const conjunction = primoSearch[i].split(/,/)[3] || '';
+            switch (primoSearch[i].split(/,/)[0]) {
+              case 'title':
+                worldCatSearchString += 'ti:' + searchTerms;
+                break;
+              case 'creator':
+                worldCatSearchString += 'au:' + searchTerms;
+                break
+              default:
+                worldCatSearchString += 'kw:' + searchTerms;
+            }
+            if (i !== primoSearch.length - 1) {
+              worldCatSearchString += '+';
+            }
           }
-      }
-    }
-    return ebscoSearchString;
-  }
-
-  function convertToWorldCat(primoSearch) {
-    let worldCatSearchString = '';
-    if (!Array.isArray(primoSearch)) {
-      worldCatSearchString = spaceToPlus(primoSearch.split(/,/)[2]);
-    } else {
-      for (let i=0; i<primoSearch.length; i++) {
-        const searchTerms = spaceToPlus(primoSearch[i].split(/,/)[2]);
-        const conjunction = primoSearch[i].split(/,/)[3] || '';
-        switch (primoSearch[i].split(/,/)[0]) {
-          case 'title':
-            worldCatSearchString += 'ti:' + searchTerms;
-            break;
-          case 'creator':
-            worldCatSearchString += 'au:' + searchTerms;
-            break
-          default:
-            worldCatSearchString += 'kw:' + searchTerms;
         }
-        if (i !== primoSearch.length - 1) {
-          worldCatSearchString += '+';
-        }
+        return worldCatSearchString;
       }
-    }
-    return worldCatSearchString;
-  }
 
-  function convertToGoogle(primoSearch) {
-    let googleSearchString = '';
-    if (!Array.isArray(primoSearch)) {
-      googleSearchString = spaceToPlus(primoSearch.split(/,/)[2]);
-    } else {
-      for (let i=0; i<primoSearch.length; i++) {
-        const searchTerms = spaceToPlus(primoSearch[i].split(/,/)[2]);
-        const conjunction = primoSearch[i].split(/,/)[3] || '';
-        googleSearchString += '(' + searchTerms + ')';
-        if (i !== primoSearch.length - 1) {
-          googleSearchString += '+' + conjunction + '+';
+      function convertToGoogle(primoSearch) {
+        let googleSearchString = '';
+        if (!Array.isArray(primoSearch)) {
+          googleSearchString = spaceToPlus(primoSearch.split(/,/)[2]);
+        } else {
+          for (let i=0; i<primoSearch.length; i++) {
+            const searchTerms = spaceToPlus(primoSearch[i].split(/,/)[2]);
+            const conjunction = primoSearch[i].split(/,/)[3] || '';
+            googleSearchString += '(' + searchTerms + ')';
+            if (i !== primoSearch.length - 1) {
+              googleSearchString += '+' + conjunction + '+';
+            }
+          }
         }
+        return googleSearchString;
       }
+
+      const primoSearch = this.parentCtrl.$stateParams.query; // can be a string OR array!
+
+      const proxyString = 'https://ezproxy.ithaca.edu/login?url=';
+
+      const ebscoSearchString = convertToEbsco(primoSearch);
+      const googleSearchString = convertToGoogle(primoSearch);
+      const worldCatSearchString = convertToWorldCat(primoSearch);
+      console.log(worldCatSearchString);
+
+      this.ebscoLabel = 'EBSCO';
+      const ebscoBaseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&defaultdb=aph,gnh,apn,ahl,aft,air,ami,rfh,bvh,bxh,boh,buh,cin20,cms,nlebk,eric,hev,8gh,hch,hia,ibh,qth,lxh,lfh,ulh,cmedm,mth,mah,msn,nfh,ofs,phl,tfh,rgr,bwh,ram,rft,sih,s3h,trh,ser,e870sww,e872sww,mft,kah,mzh&type=1&searchMode=Standard&site=ehost-live&scope=site';
+      const ebscoSearchUrl = ebscoBaseUrl + '&bquery=' + ebscoSearchString;
+      this.ebscoProxiedSearchUrl = proxyString + ebscoSearchUrl;
+      
+      this.googleLabel = 'Google Scholar';
+      const googleBaseUrl = 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C33&inst=7210957415625843320&q=';
+      this.googleProxiedSearchUrl = googleBaseUrl + googleSearchString;
+
+      this.worldCatLabel = 'WorldCat';
+      const worldCatBaseUrl = 'https://www.worldcat.org/search?qt=worldcat_org_all&q=';
+      this.worldCatProxiedSearchUrl = proxyString + worldCatBaseUrl + worldCatSearchString;
     }
-    return googleSearchString;
   }
-
-  const primoSearch = this.parentCtrl.$stateParams.query; // can be a string OR array!
-
-  const proxyString = 'https://ezproxy.ithaca.edu/login?url=';
-
-  const ebscoSearchString = convertToEbsco(primoSearch);
-  const googleSearchString = convertToGoogle(primoSearch);
-  const worldCatSearchString = convertToWorldCat(primoSearch);
-  console.log(worldCatSearchString);
-
-  this.ebscoLabel = 'EBSCO';
-  const ebscoBaseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&defaultdb=aph,gnh,apn,ahl,aft,air,ami,rfh,bvh,bxh,boh,buh,cin20,cms,nlebk,eric,hev,8gh,hch,hia,ibh,qth,lxh,lfh,ulh,cmedm,mth,mah,msn,nfh,ofs,phl,tfh,rgr,bwh,ram,rft,sih,s3h,trh,ser,e870sww,e872sww,mft,kah,mzh&type=1&searchMode=Standard&site=ehost-live&scope=site';
-  const ebscoSearchUrl = ebscoBaseUrl + '&bquery=' + ebscoSearchString;
-  this.ebscoProxiedSearchUrl = proxyString + ebscoSearchUrl;
-  
-  this.googleLabel = 'Google Scholar';
-  const googleBaseUrl = 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C33&inst=7210957415625843320&q=';
-  this.googleProxiedSearchUrl = googleBaseUrl + googleSearchString;
-
-  this.worldCatLabel = 'WorldCat';
-  const worldCatBaseUrl = 'https://www.worldcat.org/search?qt=worldcat_org_all&q=';
-  this.worldCatProxiedSearchUrl = proxyString + worldCatBaseUrl + worldCatSearchString;
 }]);
-// EBSCO used to be on prmPersonalizeResultsButtonAfter
 app.component('prmSearchResultSortByAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'ebscoLinkController',
@@ -163,211 +178,215 @@ app.component('prmSearchResultSortByAfter', {
 
 app.controller ('mapController', [function() {
 
-  function drawIndicator(mapHeight, mapWidth, x, y, h, w) {
-    var canvases = document.getElementsByClassName('ic-map-canvas');
-    for (let i=0; i<canvases.length; i++) {
-      var theCanvas = canvases.item(i);
-      theCanvas.height = mapHeight;
-      theCanvas.width = mapWidth;
-      var ctx = theCanvas.getContext('2d');
-      ctx.globalAlpha = 0.6;
-      ctx.fillStyle = 'fuchsia';
-      ctx.fillRect(x, y, w, h);
-    }
-  }
-
-  // Gather a bunch of information from the current directive.
-  try {
-    this.physical = Boolean(this.parentCtrl.item.delivery.GetIt1[0].category === 'Alma-P' || this.parentCtrl.item.delivery.GetIt1[1].category === 'Alma-P');
-  } catch(e) {
-    this.physical = false;
-  }
-
-  try {
-    this.holding = this.parentCtrl.item.delivery.holding;
-  } catch(e) {
-    this.holding = false;
-  }
-
-  try {
-    var theCallNumber = this.parentCtrl.item.delivery.bestlocation.callNumber;
-    theCallNumber = theCallNumber.replace(/^[(\s]+/,'');
-    theCallNumber = theCallNumber.replace(/[)\s]+$/,'');
-    this.callNumber = theCallNumber;
-  } catch(e) {
-    this.callNumber = '';
-    this.mapError = true;
-  }
-
-  try {
-    this.location = this.parentCtrl.item.delivery.bestlocation.subLocationCode;
-    console.log(this.location);
-  } catch(e) {
-    this.location = '';
-    this.mapError = true;
-  }
-
-  try {
-    this.availability = this.parentCtrl.item.delivery.bestlocation.availabilityStatus;
-  } catch(e) {
-    this.availability = '';
-    this.mapError = true;
-  }
-
-  // Do we need to display a map?
-  // this.needsMap = Boolean(( (this.availability === 'available' || this.availability === 'check_holdings') && this.callNumber && this.physical) || this.location === 'periodical');
-
-  // Slightly different for COVID - reserves weirdness
-  this.needsMap = Boolean(( ( (this.availability === 'available' && this.location !== 'reserves') || this.availability === 'check_holdings') && this.callNumber && this.physical) || this.location === 'periodical');
-
-  if (this.needsMap) {
-
-    // are there multiple holdings?
-    if (this.holding && this.holding.length > 1) {
-      this.multipleHoldings = true;
-      this.holdingsLocations = [];
-      for (let i=0; i<this.holding.length; i++) {
-        this.holdingsLocations.push(this.holding[i].subLocationCode);
+  this.$onInit = function() {
+    {
+      function drawIndicator(mapHeight, mapWidth, x, y, h, w) {
+        var canvases = document.getElementsByClassName('ic-map-canvas');
+        for (let i=0; i<canvases.length; i++) {
+          var theCanvas = canvases.item(i);
+          theCanvas.height = mapHeight;
+          theCanvas.width = mapWidth;
+          var ctx = theCanvas.getContext('2d');
+          ctx.globalAlpha = 0.6;
+          ctx.fillStyle = 'fuchsia';
+          ctx.fillRect(x, y, w, h);
+        }
       }
-    }
 
-    this.floor = 0;
-    this.showLocMessage = false;
-    this.staticLocation = false;
-    this.x = 0;
-    this.y = 0;
-    this.width = 0; // width of highlight box
-    this.height = 0; // height of highlight box
-    this.lookupArray = null;
-    this.coordinates = '';
-    this.locMessage = '';
-    this.side = '';
-    this.sideLong = '';
-    this.debug = false;
-    // this.display = { display: 'block' };
-    this.mapError = false;
-    this.normalizeLC = normalizeLC;
-    this.sortLC = sortLC;
-
-    this.containerWidth = document.getElementById('full-view-container').offsetWidth;
-    
-    this.mapAreaRatio; // amount of containerWidth map will occupy
-    if (this.containerWidth > 1400) {
-      this.mapAreaRatio = 0.5;
-    } else if (this.containerWidth > 600) {
-      this.mapAreaRatio = 0.6;
-    } else {
-      this.mapAreaRatio = 0.83;
-    }
-
-    this.mapWidth = this.containerWidth * this.mapAreaRatio;
-    this.mapHeight = 0.58666666667 * this.mapWidth;
-
-    this.showLocMessage = true;
-
-    // is it in a static location?
-    for (var loc in staticLocations) {
-      if (loc === this.location) {
-        this.staticLocation = true;
-        this.floor = staticLocations[loc].floor;
-        this.x = staticLocations[loc].x;
-        this.y = staticLocations[loc].y;
-        this.width = staticLocations[loc].width;
-        this.height = staticLocations[loc].height;
-        this.locMessage = staticLocations[loc].message;
+      // Gather a bunch of information from the current directive.
+      try {
+        this.physical = Boolean(this.parentCtrl.item.delivery.GetIt1[0].category === 'Alma-P' || this.parentCtrl.item.delivery.GetIt1[1].category === 'Alma-P');
+      } catch(e) {
+        this.physical = false;
       }
-    }
 
-    if (!this.staticLocation) {
+      try {
+        this.holding = this.parentCtrl.item.delivery.holding;
+      } catch(e) {
+        this.holding = false;
+      }
 
-      // where should we look for the item?
-      switch(this.location) {
-      case 'music':
-        this.lookupArray = musicStacks;
-        break;
-      case 'periodical':
-        this.lookupArray = perStacks;
-        break;
-      case 'general':
-        this.lookupArray = stacks;
-        break;
-      default:
+      try {
+        var theCallNumber = this.parentCtrl.item.delivery.bestlocation.callNumber;
+        theCallNumber = theCallNumber.replace(/^[(\s]+/,'');
+        theCallNumber = theCallNumber.replace(/[)\s]+$/,'');
+        this.callNumber = theCallNumber;
+      } catch(e) {
+        this.callNumber = '';
+        this.mapError = true;
+      }
+
+      try {
+        this.location = this.parentCtrl.item.delivery.bestlocation.subLocationCode;
+        console.log(this.location);
+      } catch(e) {
+        this.location = '';
+        this.mapError = true;
+      }
+
+      try {
+        this.availability = this.parentCtrl.item.delivery.bestlocation.availabilityStatus;
+      } catch(e) {
+        this.availability = '';
+        this.mapError = true;
+      }
+
+      // Do we need to display a map?
+      // this.needsMap = Boolean(( (this.availability === 'available' || this.availability === 'check_holdings') && this.callNumber && this.physical) || this.location === 'periodical');
+
+      // Slightly different for COVID - reserves weirdness
+      this.needsMap = Boolean(( ( (this.availability === 'available' && this.location !== 'reserves') || this.availability === 'check_holdings') && this.callNumber && this.physical) || this.location === 'periodical');
+
+      if (this.needsMap) {
+
+        // are there multiple holdings?
+        if (this.holding && this.holding.length > 1) {
+          this.multipleHoldings = true;
+          this.holdingsLocations = [];
+          for (let i=0; i<this.holding.length; i++) {
+            this.holdingsLocations.push(this.holding[i].subLocationCode);
+          }
+        }
+
+        this.floor = 0;
+        this.showLocMessage = false;
+        this.staticLocation = false;
+        this.x = 0;
+        this.y = 0;
+        this.width = 0; // width of highlight box
+        this.height = 0; // height of highlight box
         this.lookupArray = null;
-        break;
-      }
+        this.coordinates = '';
+        this.locMessage = '';
+        this.side = '';
+        this.sideLong = '';
+        this.debug = false;
+        // this.display = { display: 'block' };
+        this.mapError = false;
+        this.normalizeLC = normalizeLC;
+        this.sortLC = sortLC;
 
-      for (let i=0; i < this.lookupArray.length; i++) {
-        var start = this.lookupArray[i].start;
-        var end = this.lookupArray[i].end;
-        var test = this.sortLC(start, end, this.callNumber);
-        if ( this.normalizeLC(test[1]) === this.normalizeLC(this.callNumber) || test.length === 2) {
-          this.coordinates = this.lookupArray[i];
-        }
-      }
-
-      if (this.coordinates) {
-        this.floor = this.coordinates.id.split('.')[0];
-        this.stack = this.coordinates.id.split('.')[1];
-        this.side = this.coordinates.id.split('.')[2];
-        if (this.side === 'e') {
-          this.sideLong = 'east';
+        this.containerWidth = document.getElementById('full-view-container').offsetWidth;
+        
+        this.mapAreaRatio; // amount of containerWidth map will occupy
+        if (this.containerWidth > 1400) {
+          this.mapAreaRatio = 0.5;
+        } else if (this.containerWidth > 600) {
+          this.mapAreaRatio = 0.6;
         } else {
-          this.sideLong = 'west';
+          this.mapAreaRatio = 0.83;
         }
-        this.locMessage = 'This item is available at stack ' + this.stack + ', ' + this.sideLong + ' side.';
 
-        this.x = this.coordinates.x;
-        this.y = this.coordinates.y;
-        this.width = this.coordinates.width;
-        this.height = this.coordinates.height;
-      } else {
-        this.needsMap = false;
-      }
+        this.mapWidth = this.containerWidth * this.mapAreaRatio;
+        this.mapHeight = 0.58666666667 * this.mapWidth;
 
-    }
+        this.showLocMessage = true;
 
-    if (this.multipleHoldings) {
+        // is it in a static location?
+        for (var loc in staticLocations) {
+          if (loc === this.location) {
+            this.staticLocation = true;
+            this.floor = staticLocations[loc].floor;
+            this.x = staticLocations[loc].x;
+            this.y = staticLocations[loc].y;
+            this.width = staticLocations[loc].width;
+            this.height = staticLocations[loc].height;
+            this.locMessage = staticLocations[loc].message;
+          }
+        }
 
-      this.locMessage += ' It may also be available in ';
-      
-      // what locations are there that aren't the "bestlocation"?
-      for (var i=0; i < this.holdingsLocations.length; i++) {
+        if (!this.staticLocation) {
 
-        if (this.holdingsLocations[i] !== this.location) {
-          var hl = this.holdingsLocations[i];
-          this.staticLocations = "";
-
-          if (staticLocations[hl]) {
-            this.locMessage += staticLocations[hl].english;
-          } else {
-            this.locMessage += hl; // cases where secondary loc isn't static
+          // where should we look for the item?
+          switch(this.location) {
+          case 'music':
+            this.lookupArray = musicStacks;
+            break;
+          case 'periodical':
+            this.lookupArray = perStacks;
+            break;
+          case 'general':
+            this.lookupArray = stacks;
+            break;
+          default:
+            this.lookupArray = null;
+            break;
           }
 
-          if (i === this.holdingsLocations.length - 1) {
-            this.locMessage += '.';
+          for (let i=0; i < this.lookupArray.length; i++) {
+            var start = this.lookupArray[i].start;
+            var end = this.lookupArray[i].end;
+            var test = this.sortLC(start, end, this.callNumber);
+            if ( this.normalizeLC(test[1]) === this.normalizeLC(this.callNumber) || test.length === 2) {
+              this.coordinates = this.lookupArray[i];
+            }
+          }
+
+          if (this.coordinates) {
+            this.floor = this.coordinates.id.split('.')[0];
+            this.stack = this.coordinates.id.split('.')[1];
+            this.side = this.coordinates.id.split('.')[2];
+            if (this.side === 'e') {
+              this.sideLong = 'east';
+            } else {
+              this.sideLong = 'west';
+            }
+            this.locMessage = 'This item is available at stack ' + this.stack + ', ' + this.sideLong + ' side.';
+
+            this.x = this.coordinates.x;
+            this.y = this.coordinates.y;
+            this.width = this.coordinates.width;
+            this.height = this.coordinates.height;
           } else {
-            this.locMessage += ', ';
+            this.needsMap = false;
           }
 
         }
+
+        if (this.multipleHoldings) {
+
+          this.locMessage += ' It may also be available in ';
+          
+          // what locations are there that aren't the "bestlocation"?
+          for (var i=0; i < this.holdingsLocations.length; i++) {
+
+            if (this.holdingsLocations[i] !== this.location) {
+              var hl = this.holdingsLocations[i];
+              this.staticLocations = "";
+
+              if (staticLocations[hl]) {
+                this.locMessage += staticLocations[hl].english;
+              } else {
+                this.locMessage += hl; // cases where secondary loc isn't static
+              }
+
+              if (i === this.holdingsLocations.length - 1) {
+                this.locMessage += '.';
+              } else {
+                this.locMessage += ', ';
+              }
+
+            }
+          }
+
+        }
+
+        // determine dimensions for the map image
+        var mapImage = document.getElementsByClassName('ic-map-img').item(0);
+        if (mapImage) {
+          this.mapDimensions = { height: this.mapHeight + 'px', width: this.mapWidth + 'px' };
+        }
+
+        // make highlighted area proportional
+        this.x = this.x * this.mapWidth / 600;
+        this.y = this.y * this.mapHeight / 352;
+        this.width = this.width * this.mapWidth / 600;
+        this.height = this.height * this.mapHeight / 352;
+
+        drawIndicator(this.mapHeight, this.mapWidth, this.x, this.y, this.height, this.width);
+
       }
-
     }
-
-    // determine dimensions for the map image
-    var mapImage = document.getElementsByClassName('ic-map-img').item(0);
-    if (mapImage) {
-      this.mapDimensions = { height: this.mapHeight + 'px', width: this.mapWidth + 'px' };
-    }
-
-    // make highlighted area proportional
-    this.x = this.x * this.mapWidth / 600;
-    this.y = this.y * this.mapHeight / 352;
-    this.width = this.width * this.mapWidth / 600;
-    this.height = this.height * this.mapHeight / 352;
-
-    drawIndicator(this.mapHeight, this.mapWidth, this.x, this.y, this.height, this.width);
-
   }
 
 }]);
@@ -382,79 +401,81 @@ app.component('prmOpacAfter', {
 // Report a Problem action
 
 app.controller('prmActionContainerAfterController', [function() {
-  console.log(this);
+  // console.log(this);
+  this.$onInit = function() {
+    {
+      // build a permalink (for 'report a problem')
+      try {
+        let recordid = this.parentCtrl.item.pnx.control.recordid[0];
+        const start = 'https://ithaca.primo.exlibrisgroup.com/discovery/fulldisplay?docid=';
+        const end = '&context=PC&vid=01ITHACACOL_INST:01ITHACACOL_V1';
+        this.url = encodeURIComponent(start + recordid + end);
+      } catch(e) {
+        this.recordid = '';
+        this.url = '';
+      }
 
-  // build a permalink (for 'report a problem')
-  try {
-    let recordid = this.parentCtrl.item.pnx.control.recordid[0];
-    const start = 'https://ithaca.primo.exlibrisgroup.com/discovery/fulldisplay?docid=';
-    const end = '&context=PC&vid=01ITHACACOL_INST:01ITHACACOL_V1';
-    this.url = encodeURIComponent(start + recordid + end);
-  } catch(e) {
-    this.recordid = '';
-    this.url = '';
-  }
+      // call number
+      try {
+        var theCallNumber = this.parentCtrl.item.delivery.bestlocation.callNumber;
+        theCallNumber = theCallNumber.replace(/^[(\s]+/,'');
+        theCallNumber = theCallNumber.replace(/[)\s]+$/,'');
+        this.callNumber = theCallNumber;
+      } catch(e) {
+        this.callNumber = '';
+      }
 
-  // call number
-  try {
-    var theCallNumber = this.parentCtrl.item.delivery.bestlocation.callNumber;
-    theCallNumber = theCallNumber.replace(/^[(\s]+/,'');
-    theCallNumber = theCallNumber.replace(/[)\s]+$/,'');
-    this.callNumber = theCallNumber;
-  } catch(e) {
-    this.callNumber = '';
-  }
+      // title
+      try {
+        this.title = this.parentCtrl.item.pnx.display.title[0];
+      } catch(e) {
+        this.title = '';
+      }
 
-  // title
-  try {
-    this.title = this.parentCtrl.item.pnx.display.title[0];
-  } catch(e) {
-    this.title = '';
-  }
+      // author
+      try {
+        this.author = this.parentCtrl.item.pnx.display.creator[0];
+      } catch(e) {
+        this.author = '';
+      }
 
-  // author
-  try {
-    this.author = this.parentCtrl.item.pnx.display.creator[0];
-  } catch(e) {
-    this.author = '';
-  }
+      // location
+      try {
+        this.location = this.parentCtrl.item.delivery.bestlocation.subLocationCode;
+      } catch(e) {
+        this.location = '';
+      }
 
-  // location
-  try {
-    this.location = this.parentCtrl.item.delivery.bestlocation.subLocationCode;
-  } catch(e) {
-    this.location = '';
-  }
+      // get all PNX addata (for 'report a problem')
+      try {
+        const addata = this.parentCtrl.item.pnx.addata;
+        let addataString = '';
+        this.reportFormUrl = 'https://library.ithaca.edu/forms/primo_problems.php?origin=primo&';
+        const addataFields = Object.keys(addata);
+        for (const addataField of addataFields) {
+          if (addataField !== 'abstract') {
+            addataString += '&' + addataField + '=' + addata[addataField];
+          }
+        }
+        addataString = encodeURI(addataString.substring(1));
+        // addataString += '&permalink=' + encodeURI(this.url);
+        this.reportFormUrl += addataString;
 
-  // get all PNX addata (for 'report a problem')
-  try {
-    const addata = this.parentCtrl.item.pnx.addata;
-    let addataString = '';
-    this.reportFormUrl = 'https://library.ithaca.edu/forms/primo_problems.php?origin=primo&';
-    const addataFields = Object.keys(addata);
-    for (const addataField of addataFields) {
-      if (addataField !== 'abstract') {
-        addataString += '&' + addataField + '=' + addata[addataField];
+        // Add the call number for traces
+        this.reportFormUrl += '&callNumber=' + encodeURI(this.callNumber);
+        this.reportFormUrl += '&permalink=' + encodeURI(this.url);
+      } catch(e) {
+        this.reportFormUrl = '';
+      }
+
+      try {
+        this.getit = this.parentCtrl.item.delivery.GetIt1;
+      } catch(e) {
+        this.getit = [];
+        console.log(e.message);
       }
     }
-    addataString = encodeURI(addataString.substring(1));
-    // addataString += '&permalink=' + encodeURI(this.url);
-    this.reportFormUrl += addataString;
-
-    // Add the call number for traces
-    this.reportFormUrl += '&callNumber=' + encodeURI(this.callNumber);
-    this.reportFormUrl += '&permalink=' + encodeURI(this.url);
-  } catch(e) {
-    this.reportFormUrl = '';
   }
-
-  try {
-    this.getit = this.parentCtrl.item.delivery.GetIt1;
-  } catch(e) {
-    this.getit = [];
-    console.log(e.message);
-  }
-
 }]);
 app.component('prmActionListAfter', {
   bindings: { parentCtrl: '<' },
@@ -468,22 +489,6 @@ app.component('prmActionListAfter', {
     link="{{$ctrl.reportFormUrl}}" 
     />`
 });
-
-// This adds the expand my results tooltip
-// From Joe Ferguson at UT Knoxville
-// window.setInterval(function() { 
-//   if ($(".tooltip").length > 0) {
-//   }else{
-//     $("#facets > prm-facet > div > div > div.sidebar-section.margin-top-small.margin-bottom-medium.compensate-padding-left > md-checkbox > div._md-label > span").append("&nbsp;<span class=\"tooltip\">?<span class=\"tooltiptext\">Include items that IC doesn’t own.</span></span>");
-//     $('.tooltip').hover(
-//       function() {
-//         $(this).find('.tooltiptext').css({'visibility':'visible'});
-//       }, function() {
-//         $(this).find('.tooltiptext').css({'visibility':'hidden'});
-//       }
-//     );
-//   }
-// }, 500);
 
 
 // LibAnswers chat widget
