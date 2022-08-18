@@ -23,6 +23,7 @@ var staticLocations = {
   'reserves': { 'floor': '2', 'x': 100, 'y': 91, 'width': 123, 'height': 38, 'message': 'Ask for this item at the circulation/reserves desk on the second floor.', 'english': 'Circulation Desk' },
   'mmreserve': { 'floor': '2', 'x': 100, 'y': 91, 'width': 123, 'height': 38, 'message': 'Ask for this item at the circulation/reserves desk on the second floor.', 'english': 'Circulation Desk' },
   'sheetmusic': { 'floor': '3', 'x': 462, 'y': 271, 'width': 79, 'height': 60, 'message': 'Ask for this item at the music desk on the third floor.', 'english': 'Sheet Music Collection' },
+  'audio': { 'floor': '3', 'x': 462, 'y': 271, 'width': 79, 'height': 60, 'message': 'Ask for this item at the music desk on the third floor.', 'english': 'Music Reference Desk' },
   'atlascase': { 'floor': '2', 'x': 264, 'y': 184, 'width': 33, 'height': 18, 'message': 'Located in the atlas case near the main staircase on the second floor.', 'english': 'Atlas Case' },
   'citation': { 'floor': '2', 'x': 218, 'y': 188, 'width': 27, 'height': 15, 'message': 'This item is located on a small bookcase on the right as you come in through the main entrance.', 'english': 'Citation Guides' },
   'ebook': { 'english': 'Ebooks' },
