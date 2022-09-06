@@ -441,3 +441,95 @@ prm-get-it-request .close {
 .md-button.button-as-link.link-alt-color:hover:not([disabled]), .bar prm-authentication .md-button.link-alt-color:hover:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button:hover:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button:hover:not([disabled]), .section-title prm-icon.md-button.button-as-link:hover:not([disabled]), prm-gallery-collection .collection-folder .item-actions button:hover:not([disabled]), prm-gallery-collection .collection-folder .item-actions .md-button:hover:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions button:hover:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions .md-button:hover:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions button:hover:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions .md-button:hover:not([disabled]), .md-button.button-as-link.link-alt-color:focus:not([disabled]), .bar prm-authentication .md-button.link-alt-color:focus:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button:focus:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button:focus:not([disabled]), .section-title prm-icon.md-button.button-as-link:focus:not([disabled]), prm-gallery-collection .collection-folder .item-actions button:focus:not([disabled]), prm-gallery-collection .collection-folder .item-actions .md-button:focus:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions button:focus:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions .md-button:focus:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions button:focus:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions .md-button:focus:not([disabled]), .md-button.button-as-link.link-alt-color.hovered:not([disabled]), .bar prm-authentication .md-button.link-alt-color.hovered:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button.hovered:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button.hovered:not([disabled]), .section-title prm-icon.md-button.button-as-link.hovered:not([disabled]), prm-gallery-collection .collection-folder .item-actions button.hovered:not([disabled]), prm-gallery-collection .collection-folder .item-actions .hovered.md-button:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions button.hovered:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions .hovered.md-button:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions button.hovered:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions .hovered.md-button:not([disabled]), .md-button.button-as-link.link-alt-color.md-focused:not([disabled]), .bar prm-authentication .md-button.link-alt-color.md-focused:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button.md-focused:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button.md-focused:not([disabled]), .section-title prm-icon.md-button.button-as-link.md-focused:not([disabled]), prm-gallery-collection .collection-folder .item-actions button.md-focused:not([disabled]), prm-gallery-collection .collection-folder .item-actions .md-focused.md-button:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions button.md-focused:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions .md-focused.md-button:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions button.md-focused:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions .md-focused.md-button:not([disabled]), .md-button.button-as-link.link-alt-color._md-focused:not([disabled]), .bar prm-authentication .md-button.link-alt-color._md-focused:not([disabled]), .bar prm-authentication .section-title prm-icon.md-button._md-focused:not([disabled]), .section-title .bar prm-authentication prm-icon.md-button._md-focused:not([disabled]), .section-title prm-icon.md-button.button-as-link._md-focused:not([disabled]), prm-gallery-collection .collection-folder .item-actions button._md-focused:not([disabled]), prm-gallery-collection .collection-folder .item-actions ._md-focused.md-button:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions button._md-focused:not([disabled]), .is-gallery-view prm-gallery-item .collection-element .item-actions ._md-focused.md-button:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions button._md-focused:not([disabled]), .is-grid-view prm-gallery-item .collection-element .item-actions ._md-focused.md-button:not([disabled]) {
     background-color: rgba(2, 119, 214, 0.1);
 }
+
+/* Alma-D Styles */
+:root {
+	--charcoal: hsla(197, 37%, 40%, 1);
+	--charcoal-darker: hsla(197, 37%, 20%, 1);
+	--skobeloff: hsla(179, 48%, 30%, 1);
+	--skobeloff-darker: hsla(179, 48%, 15%, 1);
+	--persian-green: hsla(173, 58%, 39%, 1);
+	--persian-green-darker: hsla(173, 58%, 24%, 1);
+	--artichoke: hsla(85, 17%, 55%, 1);
+	--artichoke-darker: hsla(85, 17%, 40%, 1);
+	--maize-crayola: hsla(43, 74%, 66%, 1);
+	--maize-crayola-darker: hsla(43, 74%, 40%, 1);
+	--sandy-brown: hsla(27, 87%, 67%, 1);
+	--sandy-brown-darker: hsla(27, 87%, 40%, 1);
+	--burnt-sienna: hsla(12, 76%, 61%, 1);
+	--burnt-sienna-darker: hsla(12, 76%, 40%, 1);
+}
+
+prm-gallery-collection {
+	padding: 2.4em;
+}
+
+prm-gallery-collection {
+	background: linear-gradient(to top, var(--charcoal-darker), var(--charcoal));
+}
+
+prm-gallery-collection:has(> a[href$="8173719900004016"]) {
+	background: linear-gradient(to top, var(--charcoal-darker), var(--charcoal));
+}
+
+prm-gallery-collection:has(> a[href$="81119820940004016"]),
+prm-gallery-collection:has(> a[href$="81119820930004016"]) {
+	background: linear-gradient(to top, var(--skobeloff-darker), var(--skobeloff));
+}
+
+prm-gallery-collection:has(> a[href$="81120410780004016"]) {
+	background: linear-gradient(to top, var(--persian-green-darker), var(--persian-green));
+}
+
+prm-gallery-collection:has(> a[href$="81120410770004016"]),
+prm-gallery-collection:has(> a[href$="81120410620004016"]),
+prm-gallery-collection:has(> a[href$="81120410600004016"]),
+prm-gallery-collection:has(> a[href$="81120410610004016"]) {
+	background: linear-gradient(to top, var(--maize-crayola-darker), var(--maize-crayola));
+}
+
+prm-gallery-collection:has(> a[href$="81120410760004016"]) {
+	background: linear-gradient(to top, var(--sandy-brown-darker), var(--sandy-brown));
+}
+
+prm-gallery-collection:has(> a[href$="81120410750004016"]),
+prm-gallery-collection:has(> a[href$="81120410650004016"]),
+prm-gallery-collection:has(> a[href$="81120410640004016"]),
+prm-gallery-collection:has(> a[href$="81120410630004016"]) {
+	background: linear-gradient(to top, var(--burnt-sienna-darker), var(--burnt-sienna));
+}
+
+prm-gallery-collection .collection-images {
+	display: none;
+}
+
+prm-gallery-collection .collection-overlay::before {
+	opacity: 1 !important;
+	background-color: #f3f3f3 !important;
+}
+
+prm-gallery-collection:hover .collection-overlay::before {
+	opacity: 1 !important;
+	background-color: #fff !important;
+}
+
+prm-gallery-collection .collection-overlay::after {
+	background: none !important;
+	background-image: none !important;
+	background-color: transparent !important;
+}
+
+/* Sub-collection */
+prm-collection-gallery-header > .collection-header-inner {
+	background-image: none !important;
+}
+
+prm-collection-navigation-breadcrumbs-item > .button-as-link:hover {
+	color: #fff !important;
+}
+
+/* Item */
+prm-gallery-item .collection-element {
+	padding: 1em !important;
+	border: 1px solid #ccc;
+}

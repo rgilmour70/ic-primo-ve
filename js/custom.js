@@ -373,29 +373,6 @@ app.filter('encode', function () {
   return encodeURIComponent;
 });
 
-// app.controller('myExcellentController', [function ($stateParams, $state) {
-//     console.log(this.parentCtrl.vid);
-// }]);
-// app.component('prmSearchBarAfter', {
-//     bindings: { parentCtrl: '<' },
-//     template: `<div>hello world</div>`,
-//     controller: 'myExcellentController'
-// });
-
-// app.controller('myExcellentController', [function ($stateParams, $state) {
-//       this.$onInit = function() {
-//        {
-//           console.log(this.parentCtrl.vid);
-//         }
-//       }
-// }]);
-// app.component('prmSearchBarAfter', {
-//     bindings: { parentCtrl: '<' },
-//     template: `<div>hello world</div>`,
-//     controller: 'myExcellentController'
-// });
-
-
 // Re-run search when the scope is changed
 // Dan got this code from St. Olaf College
 app.component('prmTabsAndScopesSelectorAfter', {
@@ -869,15 +846,6 @@ app.component('prmActionListAfter', {
   lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'v2.libanswers.com/load_chat.php?hash=88261efafc9e5e717508101165503bda';
   var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(lc, s);
 })();
-
-// Google Analytics stuff
-// (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-// (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-// m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-// })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-// ga('create', 'UA-114536289-1', 'auto');  // Replace with your property ID.
-// ga('send', 'pageview');
 
 'use strict';
 
