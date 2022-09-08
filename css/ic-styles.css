@@ -462,9 +462,6 @@ prm-get-it-request .close {
 
 prm-gallery-collection {
 	padding: 2.4em;
-}
-
-prm-gallery-collection {
 	background: linear-gradient(to top, var(--charcoal-darker), var(--charcoal));
 }
 
@@ -497,6 +494,10 @@ prm-gallery-collection:has(> a[href$="81120410650004016"]),
 prm-gallery-collection:has(> a[href$="81120410640004016"]),
 prm-gallery-collection:has(> a[href$="81120410630004016"]) {
 	background: linear-gradient(to top, var(--burnt-sienna-darker), var(--burnt-sienna));
+}
+
+prm-gallery-collection .item-meta > span {
+	display: none;
 }
 
 prm-gallery-collection .collection-images {
