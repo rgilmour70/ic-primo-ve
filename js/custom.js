@@ -367,7 +367,7 @@ function sortLC() {
 // document.getElementsByTagName("head")[0].appendChild(jQueryScript);
 
 
-var app = angular.module('viewCustom', ['angularLoad', 'ui.router', 'customActions']);
+var app = angular.module('viewCustom', ['angularLoad', 'ui.router']);
 
 app.filter('encode', function () {
   return encodeURIComponent;
@@ -840,6 +840,10 @@ app.component('prmActionListAfter', {
   template: '<custom-action \n    name="report_a_problem"\n    label="Report a Problem"\n    index=8\n    icon="ic_report_problem_24px"\n    icon-set="action"\n    link="{{$ctrl.reportFormUrl}}" \n    />'
 });
 
+// app.component('prmGalleryCollectionsListAfter', {
+//   template: 'banana'
+// })
+
 // LibAnswers chat widget
 (function () {
   var lc = document.createElement('script');lc.type = 'text/javascript';lc.async = 'true';
@@ -847,6 +851,37 @@ app.component('prmActionListAfter', {
   var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(lc, s);
 })();
 
+// For someone on the listserv:
+// function waitForElm(selector) {
+//   return new Promise(resolve => {
+//       if (document.querySelector(selector)) {
+//           return resolve(document.querySelector(selector));
+//       }
+
+//       const observer = new MutationObserver(mutations => {
+//           if (document.querySelector(selector)) {
+//               resolve(document.querySelector(selector));
+//           }
+//       });
+
+//       observer.observe(document.body, {
+//           childList: true,
+//           subtree: true
+//       });
+//   });
+// }
+// waitForElm('#getit_link1_0').then((elm) => {
+//   const source = document.getElementById('getit_link1_0');
+//   let target;
+//   try {
+//     target = document.getElementById("details");
+//   } catch (e) {
+//     console.log(`No details: ${e}`);
+//   }
+//   if (target) {
+//     target.appendChild(source);
+//   }
+// });
 'use strict';
 
 angular.module('customActions', []);

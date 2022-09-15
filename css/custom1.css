@@ -1180,6 +1180,12 @@ prm-get-it-request .close {
 	--burnt-sienna-darker: hsla(12, 76%, 40%, 1);
 }
 
+/* 
+As of September 15, 2022, Firefox doesn't support the :has() pseudo-class. 
+So I've set a general background rule that makes Firefox default to 
+charcoal as the background color for all collection blocks.
+*/
+
 prm-gallery-collection {
 	height: 220px;
 	padding: 1.8em;
@@ -1192,7 +1198,7 @@ prm-gallery-collection:has(> a[href$="8173719900004016"]) {
 
 prm-gallery-collection:has(> a[href$="81119820940004016"]),
 prm-gallery-collection:has(> a[href$="81119820930004016"]) {
-	background: linear-gradient(to top, var(--skobeloff-darker), var(--skobeloff));
+	background: linear-gradient(to top, var(--maize-crayola-darker), var(--maize-crayola));
 }
 
 prm-gallery-collection:has(> a[href$="81120410780004016"]),
@@ -1204,25 +1210,25 @@ prm-gallery-collection:has(> a[href$="81120680940004016"]),
 prm-gallery-collection:has(> a[href$="81120680930004016"]),
 prm-gallery-collection:has(> a[href$="81120680920004016"]),
 prm-gallery-collection:has(> a[href$="81120680910004016"]) {
-	background: linear-gradient(to top, var(--persian-green-darker), var(--persian-green));
+	background: linear-gradient(to top, var(--sandy-brown-darker), var(--sandy-brown));
 }
 
 prm-gallery-collection:has(> a[href$="81120410770004016"]),
 prm-gallery-collection:has(> a[href$="81120410620004016"]),
 prm-gallery-collection:has(> a[href$="81120410600004016"]),
 prm-gallery-collection:has(> a[href$="81120410610004016"]) {
-	background: linear-gradient(to top, var(--maize-crayola-darker), var(--maize-crayola));
+	background: linear-gradient(to top, var(--skobeloff-darker), var(--skobeloff));
 }
 
 prm-gallery-collection:has(> a[href$="81120410760004016"]) {
-	background: linear-gradient(to top, var(--sandy-brown-darker), var(--sandy-brown));
+	background: linear-gradient(to top, var(--burnt-sienna-darker), var(--burnt-sienna));
 }
 
 prm-gallery-collection:has(> a[href$="81120410750004016"]),
 prm-gallery-collection:has(> a[href$="81120410650004016"]),
 prm-gallery-collection:has(> a[href$="81120410640004016"]),
 prm-gallery-collection:has(> a[href$="81120410630004016"]) {
-	background: linear-gradient(to top, var(--burnt-sienna-darker), var(--burnt-sienna));
+	background: linear-gradient(to top, var(--persian-green-darker), var(--persian-green));
 }
 
 prm-gallery-collection .item-title {
@@ -1233,17 +1239,14 @@ prm-gallery-collection .collection-overlay {
 }
 
 prm-gallery-collection .collection-overlay .item-title > h3 {
-	/* font-family: Helvetica, Arial, sans-serif !important; */
 	font-size: 15px;
 }
 
 prm-gallery-collection .collection-overlay .item-title > p {
-	/* font-family: Helvetica, Arial, sans-serif !important; */
 	font-size: 10px;
 }
 
 prm-gallery-collection .collection-overlay .item-info > p {
-	/* font-family: Helvetica, Arial, sans-serif !important; */
 	font-size: 15px;
 }
 

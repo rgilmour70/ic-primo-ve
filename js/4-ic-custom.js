@@ -4,7 +4,7 @@
 // document.getElementsByTagName("head")[0].appendChild(jQueryScript);
 
 
-var app = angular.module('viewCustom', ['angularLoad', 'ui.router', 'customActions']);
+var app = angular.module('viewCustom', ['angularLoad', 'ui.router']);
 
 app.filter('encode', function() {
   return encodeURIComponent;
@@ -468,6 +468,9 @@ app.component('prmActionListAfter', {
     />`
 });
 
+// app.component('prmGalleryCollectionsListAfter', {
+//   template: 'banana'
+// })
 
 // LibAnswers chat widget
 (function() {
@@ -478,3 +481,35 @@ app.component('prmActionListAfter', {
 
 
 
+
+// For someone on the listserv:
+// function waitForElm(selector) {
+//   return new Promise(resolve => {
+//       if (document.querySelector(selector)) {
+//           return resolve(document.querySelector(selector));
+//       }
+
+//       const observer = new MutationObserver(mutations => {
+//           if (document.querySelector(selector)) {
+//               resolve(document.querySelector(selector));
+//           }
+//       });
+
+//       observer.observe(document.body, {
+//           childList: true,
+//           subtree: true
+//       });
+//   });
+// }
+// waitForElm('#getit_link1_0').then((elm) => {
+//   const source = document.getElementById('getit_link1_0');
+//   let target;
+//   try {
+//     target = document.getElementById("details");
+//   } catch (e) {
+//     console.log(`No details: ${e}`);
+//   }
+//   if (target) {
+//     target.appendChild(source);
+//   }
+// });
