@@ -1160,6 +1160,8 @@ prm-get-it-request .close {
     background-color: rgba(2, 119, 214, 0.1);
 }
 
+
+
 /* Alma-D Styles */
 :root {
 	--charcoal: hsla(197, 37%, 40%, 1);
@@ -1179,7 +1181,8 @@ prm-get-it-request .close {
 }
 
 prm-gallery-collection {
-	padding: 2.4em;
+	height: 220px;
+	padding: 1.8em;
 	background: linear-gradient(to top, var(--charcoal-darker), var(--charcoal));
 }
 
@@ -1192,7 +1195,15 @@ prm-gallery-collection:has(> a[href$="81119820930004016"]) {
 	background: linear-gradient(to top, var(--skobeloff-darker), var(--skobeloff));
 }
 
-prm-gallery-collection:has(> a[href$="81120410780004016"]) {
+prm-gallery-collection:has(> a[href$="81120410780004016"]),
+prm-gallery-collection:has(> a[href$="81120680970004016"]),
+prm-gallery-collection:has(> a[href$="81120680900004016"]),
+prm-gallery-collection:has(> a[href$="81120680960004016"]),
+prm-gallery-collection:has(> a[href$="81120680950004016"]),
+prm-gallery-collection:has(> a[href$="81120680940004016"]),
+prm-gallery-collection:has(> a[href$="81120680930004016"]),
+prm-gallery-collection:has(> a[href$="81120680920004016"]),
+prm-gallery-collection:has(> a[href$="81120680910004016"]) {
 	background: linear-gradient(to top, var(--persian-green-darker), var(--persian-green));
 }
 
@@ -1214,6 +1225,38 @@ prm-gallery-collection:has(> a[href$="81120410630004016"]) {
 	background: linear-gradient(to top, var(--burnt-sienna-darker), var(--burnt-sienna));
 }
 
+prm-gallery-collection .item-title {
+	width: 94%;
+}
+prm-gallery-collection .collection-overlay {
+	overflow:hidden;
+}
+
+prm-gallery-collection .collection-overlay .item-title > h3 {
+	/* font-family: Helvetica, Arial, sans-serif !important; */
+	font-size: 15px;
+}
+
+prm-gallery-collection .collection-overlay .item-title > p {
+	/* font-family: Helvetica, Arial, sans-serif !important; */
+	font-size: 10px;
+}
+
+prm-gallery-collection .collection-overlay .item-info > p {
+	/* font-family: Helvetica, Arial, sans-serif !important; */
+	font-size: 15px;
+}
+
+prm-gallery-collection .collection-overlay .item-info > p::before {
+	content:'';
+	width:100%;
+	height:190px;    
+	position:absolute;
+	left:0;
+	top:0;
+	background:linear-gradient(transparent, white);
+}
+
 prm-gallery-collection .item-meta > span {
 	display: none;
 }
@@ -1227,7 +1270,7 @@ prm-gallery-collection .collection-overlay::before {
 	background-color: #f3f3f3 !important;
 }
 
-prm-gallery-collection:hover .collection-overlay::before {
+prm-gallery-collection > a:hover .collection-overlay::before {
 	opacity: 1 !important;
 	background-color: #fff !important;
 }
