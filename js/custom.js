@@ -851,6 +851,40 @@ app.component('prmActionListAfter', {
   var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(lc, s);
 })();
 
+// Google Books Experiment
+
+// (function(){
+//   const gb = document.createElement('script'); 
+//   gb.type = 'text/javascript';
+//   gb.src = 'https://www.google.com/books/jsapi.js';
+//   gb.addEventListener('load', () => google.books.load());
+//   document.head.appendChild(gb);
+// })();
+
+// app.controller('prmServiceDetailsAfterController', [function() {
+//   console.log(this);
+//   let isbn = '';
+//   try {
+//     isbn = this.parentCtrl.item.pnx.addata.isbn[0];
+//   } catch (e) {
+//     console.log('No isbn: ' + e);
+//   }
+
+//   const initialize = () => {
+//     const canvas = document.getElementById('viewerCanvas');
+//     const viewer = new google.books.DefaultViewer(canvas);
+//     viewer.load('ISBN:' + isbn);
+//   }
+//   this.$onInit = () => {
+//     initialize();
+//   }
+// }]);
+
+// app.component('prmServiceDetailsAfter', {
+//   bindings: { parentCtrl: '<' },
+//   controller: 'prmServiceDetailsAfterController',
+//   template: '<div id="viewerCanvas" style="height: 500px; width: 600px; border: 1px solid blue"></div>'
+// });
 'use strict';
 
 angular.module('customActions', []);

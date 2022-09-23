@@ -1192,15 +1192,20 @@ prm-gallery-collection {
 	background: linear-gradient(to top, var(--charcoal-darker), var(--charcoal));
 }
 
+/* Ithaca College History */
 prm-gallery-collection:has(> a[href$="8173719900004016"]) {
 	background: linear-gradient(to top, var(--charcoal-darker), var(--charcoal));
 }
 
-prm-gallery-collection:has(> a[href$="81119820940004016"]),
-prm-gallery-collection:has(> a[href$="81119820930004016"]) {
-	background: linear-gradient(to top, var(--maize-crayola-darker), var(--maize-crayola));
+/* Campus Publications */
+prm-gallery-collection:has(> a[href$="81120410770004016"]),
+prm-gallery-collection:has(> a[href$="81120410620004016"]),
+prm-gallery-collection:has(> a[href$="81120410600004016"]),
+prm-gallery-collection:has(> a[href$="81120410610004016"]) {
+	background: linear-gradient(to top, var(--skobeloff-darker), var(--skobeloff));
 }
 
+/* Student Work */
 prm-gallery-collection:has(> a[href$="81120410780004016"]),
 prm-gallery-collection:has(> a[href$="81120680970004016"]),
 prm-gallery-collection:has(> a[href$="81120680900004016"]),
@@ -1210,25 +1215,26 @@ prm-gallery-collection:has(> a[href$="81120680940004016"]),
 prm-gallery-collection:has(> a[href$="81120680930004016"]),
 prm-gallery-collection:has(> a[href$="81120680920004016"]),
 prm-gallery-collection:has(> a[href$="81120680910004016"]) {
-	background: linear-gradient(to top, var(--sandy-brown-darker), var(--sandy-brown));
+	background: linear-gradient(to top, var(--persian-green-darker), var(--persian-green));
 }
 
-prm-gallery-collection:has(> a[href$="81120410770004016"]),
-prm-gallery-collection:has(> a[href$="81120410620004016"]),
-prm-gallery-collection:has(> a[href$="81120410600004016"]),
-prm-gallery-collection:has(> a[href$="81120410610004016"]) {
-	background: linear-gradient(to top, var(--skobeloff-darker), var(--skobeloff));
-}
-
+/* Faculty Work */
 prm-gallery-collection:has(> a[href$="81120410760004016"]) {
-	background: linear-gradient(to top, var(--burnt-sienna-darker), var(--burnt-sienna));
+	background: linear-gradient(to top, var(--maize-crayola-darker), var(--maize-crayola));
 }
 
+/* Image Collections */
 prm-gallery-collection:has(> a[href$="81120410750004016"]),
 prm-gallery-collection:has(> a[href$="81120410650004016"]),
 prm-gallery-collection:has(> a[href$="81120410640004016"]),
 prm-gallery-collection:has(> a[href$="81120410630004016"]) {
-	background: linear-gradient(to top, var(--persian-green-darker), var(--persian-green));
+	background: linear-gradient(to top, var(--sandy-brown-darker), var(--sandy-brown));
+}
+
+/* Music Collections */
+prm-gallery-collection:has(> a[href$="81119820940004016"]),
+prm-gallery-collection:has(> a[href$="81119820930004016"]) {
+	background: linear-gradient(to top, var(--burnt-sienna-darker), var(--burnt-sienna));
 }
 
 prm-gallery-collection .item-title {
