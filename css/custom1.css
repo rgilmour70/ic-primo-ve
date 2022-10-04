@@ -1193,7 +1193,7 @@ prm-gallery-collection {
 }
 
 /* Ithaca College History */
-prm-gallery-collection:has(> a[href$="8173719900004016"]) {
+prm-gallery-collection:has(> a[href$="81121200970004016"]) {
 	background: linear-gradient(to top, var(--charcoal-darker), var(--charcoal));
 }
 
