@@ -140,7 +140,10 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
 
       this.worldCatLabel = 'WorldCat';
       const worldCatBaseUrl = 'https://www.worldcat.org/search?qt=worldcat_org_all&q=';
-      this.worldCatProxiedSearchUrl = proxyString + worldCatBaseUrl + worldCatSearchString;
+      // October 5, 2022 - Proxied link doesn't seem to work any more, so removing the
+      // proxy string until there's a fix.
+      // this.worldCatProxiedSearchUrl = proxyString + worldCatBaseUrl + worldCatSearchString;
+      this.worldCatProxiedSearchUrl = worldCatBaseUrl + worldCatSearchString;
     }
   }
 }]);
@@ -480,4 +483,58 @@ app.component('prmActionListAfter', {
 })();
 
 
+// Google Books Experiment for Mike Saunders
+// Nat'l Library of Scotland
+// (function(){
+//   const gb = document.createElement('script');
+//   gb.type = 'text/javascript';
+//   gb.src = 'https://www.google.com/books/jsapi.js';
+//   gb.addEventListener('load', () => google.books.load());
+//   document.head.appendChild(gb);
+// })();
 
+// function waitForElm(selector) {
+//   return new Promise(resolve => {
+//     if (document.querySelector(selector)) {
+//         return resolve(document.querySelector(selector));
+//     }
+//     const observer = new MutationObserver(mutations => {
+//         if (document.querySelector(selector)) {
+//             resolve(document.querySelector(selector));
+//         }
+//     });
+//     observer.observe(document.body, {
+//         childList: true,
+//         subtree: true
+//     });
+//   });
+// }
+ 
+// app.controller('prmServiceDetailsAfterController', [function() {
+//   this.$onInit = async function() {
+//     const frame = await waitForElm('#iFrameResizer0');
+//     fetch(frame.src)
+//       .then(res => res.text())
+//       .then(text => new DOMParser().parseFromString(text, 'text/html'))
+//       .then(document => {
+//         const bCode = document.getElementsByClassName('itemBarcode')[0].innerText || '';
+//         if (bCode) {
+//           // const canvas = document.getElementById('viewerCanvas');
+//           // const viewer = new google.books.DefaultViewer(canvas);
+//           // viewer.load('BARCODE:' + bCode);
+//           console.log(`BCODE: ${bCode}`);
+//         } else {
+//           console.log('No barcode');
+//         }
+//       })
+//       .catch( e => {
+//         console.log('ERROR', e);
+//       });
+//   }
+// }]);
+ 
+// app.component('prmServiceDetailsAfter', {
+//   bindings: { parentCtrl: '<' },
+//   controller: 'prmServiceDetailsAfterController',
+//   template: '<div id="viewerCanvas" style="height: 500px; width: 600px; border: 1px solid blue"></div>'
+// });
