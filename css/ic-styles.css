@@ -515,7 +515,8 @@ prm-gallery-collection:has(> a[href$="81120410630004016"]) {
 
 /* Music Collections */
 prm-gallery-collection:has(> a[href$="81119820940004016"]),
-prm-gallery-collection:has(> a[href$="81119820930004016"]) {
+prm-gallery-collection:has(> a[href$="81119820930004016"]),
+prm-gallery-collection:has(> a[href$="81121200940004016"]) {
 	background: linear-gradient(to top, var(--burnt-sienna-darker), var(--burnt-sienna));
 }
 
