@@ -818,7 +818,6 @@ app.controller('prmActionListAfterController', [function () {
         }
 
         addataString = encodeURI(addataString.substring(1));
-        // addataString += '&permalink=' + encodeURI(this.url);
         this.reportFormUrl += addataString;
 
         // Add the call number for traces

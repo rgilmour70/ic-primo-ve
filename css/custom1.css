@@ -1305,4 +1305,9 @@ prm-gallery-item .collection-element {
 	padding: 1em !important;
 	border: 1px solid #ccc;
 }
-
+h3[id^='file_label_'] {
+	font-size: 14pt;
+}
+prm-thumbnail-list div[id^='thumbnail-']:hover > a > p {
+	font-weight: normal !important;
+}

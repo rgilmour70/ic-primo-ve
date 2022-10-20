@@ -439,7 +439,6 @@ app.controller('prmActionListAfterController', [function() {
           }
         }
         addataString = encodeURI(addataString.substring(1));
-        // addataString += '&permalink=' + encodeURI(this.url);
         this.reportFormUrl += addataString;
 
         // Add the call number for traces
@@ -471,6 +470,7 @@ app.component('prmActionListAfter', {
     />`
 });
 
+
 // app.component('prmGalleryCollectionsListAfter', {
 //   template: 'banana'
 // })
@@ -481,6 +481,11 @@ app.component('prmActionListAfter', {
   lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'v2.libanswers.com/load_chat.php?hash=88261efafc9e5e717508101165503bda';
   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(lc, s);
 })();
+
+
+
+ 
+
 
 
 // Google Books Experiment for Mike Saunders
