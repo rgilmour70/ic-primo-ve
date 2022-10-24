@@ -16,22 +16,24 @@ app.filter('encode', function() {
 app.component('prmTabsAndScopesSelectorAfter',{
   bindings: {parentCtrl: '<'},
   controller: function($scope){
-    setTimeout(function() {
+    this.$onInit = function() {
+      setTimeout(function() {
 
-      function activateSearch(){
-        setTimeout(function(){
-          document.getElementsByClassName("zero-margin button-confirm md-button md-primoExplore-theme")[0].click()
-        }, 500)
-      }
+        function activateSearch(){
+          setTimeout(function(){
+            document.getElementsByClassName("zero-margin button-confirm md-button md-primoExplore-theme")[0].click()
+          }, 500)
+        }
 
-      var searchScopes = document.querySelectorAll('div.simple-search-wrapper [id^="select_option_"]');
+        var searchScopes = document.querySelectorAll('div.simple-search-wrapper [id^="select_option_"]');
 
-      for (let i = 0; i < 6; i++) {
-        searchScopes[i].onclick = function(){
-          activateSearch();
-        };
-      }
-    }, 500)
+        for (let i = 0; i < 6; i++) {
+          searchScopes[i].onclick = function(){
+            activateSearch();
+          };
+        }
+      }, 500)
+    }
   }
 });
 
