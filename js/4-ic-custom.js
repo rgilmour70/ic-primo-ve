@@ -142,10 +142,7 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
 
       this.worldCatLabel = 'WorldCat';
       const worldCatBaseUrl = 'https://www.worldcat.org/search?qt=worldcat_org_all&q=';
-      // October 5, 2022 - Proxied link doesn't seem to work any more, so removing the
-      // proxy string until there's a fix.
-      // this.worldCatProxiedSearchUrl = proxyString + worldCatBaseUrl + worldCatSearchString;
-      this.worldCatProxiedSearchUrl = worldCatBaseUrl + worldCatSearchString;
+      this.worldCatProxiedSearchUrl = proxyString + worldCatBaseUrl + worldCatSearchString;
     }
   }
 }]);
@@ -473,9 +470,9 @@ app.component('prmActionListAfter', {
 });
 
 
-// app.component('prmGalleryCollectionsListAfter', {
-//   template: 'banana'
-// })
+app.component('prmGalleryCollectionsListAfter', {
+  template: '<p>For more information about our digital collections, see our <a href="https://libguides.ithaca.edu/digital_library">Digital Collections Guide</a> or contact <a href="mailto:digitalcollections@ithaca.edu">digitalcollections@ithaca.edu</a>. For information on submitting materials to the collection, see our <a href="https://library.ithaca.edu/policies/digitalcollections.php">Digital Collections Content Submission Policies and Guidelines</a>.</p>'
+});
 
 // LibAnswers chat widget
 (function() {
