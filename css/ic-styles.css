@@ -442,6 +442,10 @@ prm-get-it-request .close {
     background-color: rgba(2, 119, 214, 0.1);
 }
 
+/* Hide the QR code feature in the header */
+/* #qrCodeScanner {
+	display: none;
+} */
 
 
 /* Alma-D Styles */
