@@ -176,13 +176,13 @@ h3.section-title-header > button > span {
 	left: -81px;
 	/*font-weight: 400;*/
 }
-#ic-ebsco-link, #ic-google-link, #ic-worldcat-link {
+#ic-ebsco-link, #ic-google-link, #ic-worldcat-link, #ic-newspaper-link {
 	color: #0071BC;
 	top: 10px;
 	left: -50px;
 	white-space: nowrap;
 }
-#ic-ebsco-link svg, #ic-google-link svg, #ic-worldcat-link svg {
+#ic-ebsco-link svg, #ic-google-link svg, #ic-worldcat-link svg, #ic-newspaper-link svg {
 	height: 16px;
 	width: 16px;
 }
