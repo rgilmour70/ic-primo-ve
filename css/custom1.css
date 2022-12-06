@@ -721,6 +721,16 @@ body {
 	font-size: 14px;
 }
 
+@media (max-width: 500px) {
+	body {
+		font-size: 16px;
+		line-height: 1.5em;
+	}
+	.ic-map-container {
+		margin-bottom: 3em;
+	}
+}
+
 body.md-dialog-is-showing  {
     overflow-x:visible !important;
 }
