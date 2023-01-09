@@ -8,7 +8,7 @@ var staticLocations = {
 	'mm_noILL' : { 'floor':'2','x':100,'y':91,'width':123,'height':38, 'message':'Request this item in the catalog, then pick up at the circulation/reserves desk on the second floor.', 'english':'Circulation Desk' },
 	'archives': { 'floor':'5','x':338,'y':139,'width':188,'height':83, 'message':'This item is located in the archives on the fifth floor.', 'english':'Archives' },
 	'serling': { 'floor':'5','x':338,'y':139,'width':188,'height':83, 'message':'This item is located in the archives on the fifth floor.', 'english':'Archives' },
-	'reference': { 'floor':'2','x':128,'y':236,'width':110,'height':57, 'message':'This item is located in the stacks on the right as you come in the main entrance.', 'english':'Reference' },
+	'reference': { 'floor':'4', 'x':266, 'y':50, 'height':80, 'width':18, 'message':'This item is located on the towers side of the fourth floor', 'english':'Reference' },
 	'microfilm': { 'floor':'4','x':483,'y':59,'width':39,'height':64, 'message':'This item is located in the metal cases in the southwest corner of the fourth floor, near the restrooms.', 'english':'Microfilm' },
 	'musper': { 'floor':'3','x':170,'y':232,'width':20,'height':81, 'message':'This item is located in the northeast corner of the third floor, near the administrative offices.', 'english':'Music Periodicals' },
 	'musicref': { 'floor':'3','x':442,'y':233,'width':10,'height':78, 'message':'This item is located near the music desk in the NW corner of the third floor.', 'english':'Music Reference'},
@@ -212,28 +212,25 @@ var stacks = [
 ];
 
 var perStacks = [
-	{"id":"4.P1.e", "start":"AG305 .N7", "end":"AP2 .N6763", "x":"86", "y":"50", "height":"80", "width":"9"},
+	{"id":"4.P1.e", "start":"AG305 .N7", "end":"AP2 .N67", "x":"86", "y":"50", "height":"80", "width":"9"},
 	{"id":"4.P1.w", "start":"AP2 .P46", "end":"AP60 .R43", "x":"95", "y":"50", "height":"80", "width":"9"},
 	{"id":"4.P2.e", "start":"AP92 .T5", "end":"BF789 .D4 A53", "x":"104", "y":"50", "height":"80", "width":"9"},
 	{"id":"4.P2.w", "start":"BF789 .D4 O4", "end":"E151 .J8", "x":"114", "y":"50", "height":"80", "width":"9"},
 	{"id":"4.P3.e", "start":"E169.1 .J66", "end":"GN700 .J68", "x":"122", "y":"50", "height":"80", "width":"9"},
 	{"id":"4.P3.w", "start":"GR1 .I39", "end":"HM251 .J53", "x":"130", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P4.e", "start":"HM258 .J67", "end":"JN101 .P3", "x":"140", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P4.w", "start":"JN6501 .D45", "end":"LB3062 .I48", "x":"149", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P5.e", "start":"LB3454 .L3", "end":"N1 .I6", "x":"158", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P5.w", "start":"N1 .J6", "end":"P1 .E58", "x":"168", "y":"50", "height":"80", "width":"9"},
+	{"id":"4.P4.e", "start":"HM263 .P767", "end":"JN101 .P3", "x":"140", "y":"50", "height":"80", "width":"9"},
+	{"id":"4.P4.w", "start":"JN6501 .D45", "end":"LB2342.8 .J68", "x":"149", "y":"50", "height":"80", "width":"9"},
+	{"id":"4.P5.e", "start":"LB3062 .I48", "end":"N1 .I6", "x":"158", "y":"50", "height":"80", "width":"9"},
+	{"id":"4.P5.w", "start":"N1 .S9", "end":"P1 .A1", "x":"168", "y":"50", "height":"80", "width":"9"},
 	{"id":"4.P6.e", "start":"P1 .F72", "end":"PJ5120 .A2254", "x":"176", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P6.w", "start":"PN2 .C4", "end":"PN1993 .A1 F4", "x":"186", "y":"50", "height":"80", "width":"9"},
+	{"id":"4.P6.w", "start":"PN2 .C5", "end":"PN1993 .A1 F4", "x":"186", "y":"50", "height":"80", "width":"9"},
 	{"id":"4.P7.e", "start":"PN1993 .A617", "end":"PQ7081 .A1 H57", "x":"195", "y":"50", "height":"80", "width":"9"},
 	{"id":"4.P7.w", "start":"PQ7081 .A1 R4", "end":"QA1 .A876", "x":"204", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P8.e", "start":"QA1 .F5", "end":"QD1 .A67", "x":"212", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P8.w", "start":"QD1 .B55", "end":"QH301 .J677", "x":"221", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P9.e", "start":"QH301 .J68", "end":"QL750 .B7", "x":"230", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P9.w", "start":"QL757 .J68", "end":"QP1 .H84", "x":"239", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P10.e", "start":"QP1 .J72", "end":"R15 .A48", "x":"249", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P10.w", "start":"R15 .N6", "end":"RC321 .A47", "x":"257", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P11.e", "start":"RC321 .J832", "end":"RF297 .A25", "x":"266", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P11.w", "start":"RJ53 .P5 P432", "end":"Z119 .G87", "x":"276", "y":"50", "height":"80", "width":"9"}
+	{"id":"4.P8.e", "start":"QA1 .N28", "end":"QD1 .A67", "x":"212", "y":"50", "height":"80", "width":"9"},
+	{"id":"4.P8.w", "start":"QD1 .B55", "end":"QH75 .A1 C66515", "x":"221", "y":"50", "height":"80", "width":"9"},
+	{"id":"4.P9.e", "start":"QP1 .A5", "end":"QL671 .A82", "x":"230", "y":"50", "height":"80", "width":"9"},
+	{"id":"4.P9.w", "start":"QL757 .J68", "end":"QP1 .A5", "x":"239", "y":"50", "height":"80", "width":"9"},
+	{"id":"4.P10.e", "start":"RC321 .A47", "end":"Z119 .G87", "x":"249", "y":"50", "height":"80", "width":"9"}
 ];
 
 var musicStacks = [
