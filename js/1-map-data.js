@@ -225,12 +225,12 @@ var perStacks = [
 	{"id":"4.P6.e", "start":"P1 .F72", "end":"PJ5120 .A2254", "x":"176", "y":"50", "height":"80", "width":"9"},
 	{"id":"4.P6.w", "start":"PN2 .C5", "end":"PN1993 .A1 F4", "x":"186", "y":"50", "height":"80", "width":"9"},
 	{"id":"4.P7.e", "start":"PN1993 .A617", "end":"PQ7081 .A1 H57", "x":"195", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P7.w", "start":"PQ7081 .A1 R4", "end":"QA1 .A876", "x":"204", "y":"50", "height":"80", "width":"9"},
+	{"id":"4.P7.w", "start":"PQ7081 .A1 R4", "end":"Q1 .N2", "x":"204", "y":"50", "height":"80", "width":"9"},
 	{"id":"4.P8.e", "start":"QA1 .N28", "end":"QD1 .A67", "x":"212", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P8.w", "start":"QD1 .B55", "end":"QH75 .A1 C66515", "x":"221", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P9.e", "start":"QP1 .A5", "end":"QL671 .A82", "x":"230", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P9.w", "start":"QL757 .J68", "end":"QP1 .A5", "x":"239", "y":"50", "height":"80", "width":"9"},
-	{"id":"4.P10.e", "start":"RC321 .A47", "end":"Z119 .G87", "x":"249", "y":"50", "height":"80", "width":"9"}
+	{"id":"4.P8.w", "start":"QD1 .B55", "end":"QL750 .A5", "x":"221", "y":"50", "height":"80", "width":"9"},
+	{"id":"4.P9.e", "start":"QL755 .A1", "end":"QL755 .A2", "x":"230", "y":"50", "height":"80", "width":"9"},
+	{"id":"4.P9.w", "start":"QL757 .J68", "end":"QP1 .J72", "x":"239", "y":"50", "height":"80", "width":"9"},
+	{"id":"4.P10.e", "start":"R11 .A87", "end":"Z119 .G87", "x":"249", "y":"50", "height":"80", "width":"9"}
 ];
 
 var musicStacks = [
