@@ -1,7 +1,7 @@
 var staticLocations = {
-	'leasedbook': { 'floor':'2','x':131,'y':156,'width':103,'height':22, 'message':'This item is located on the low shelves just inside the main entrance.', 'english':'Popular Reading' },
+	'leasedbook': { 'floor':'2','x':131,'y':251,'width':103,'height':11, 'message':'This item is located on the low shelves on the lake side of the main floor, on the side facing the circulation desk.', 'english':'Popular Reading' },
 	'leasedaud': { 'floor':'2','x':131,'y':156,'width':103,'height':11, 'message':'This item is located on the low shelves just inside the main entrance, on the side facing the circulation/reserves desk.', 'english':'Audio Books' },
-	'newbooks': { 'floor':'2','x':131,'y':166,'width':103,'height':13, 'message':'This item is located on the low shelves just inside the main entrance, on the side facing away from the circulation desk.', 'english':'New Books' },
+	'newbooks': { 'floor':'2','x':131,'y':262,'width':103,'height':11, 'message':'This item is located on the low shelves on the lake side of the main floor, on the side facing away from the circulation desk.', 'english':'New Books' },
 	'display': { 'floor':'2','x':198,'y':198,'width':25,'height':27, 'message':'This item is located to the right as you come in the main entrance.', 'english':'Display Shelf' },
 	'circdesk': { 'floor':'2','x':100,'y':91,'width':123,'height':38, 'message':'Ask for this item at the circulation/reserves desk on the second floor.', 'english':'Circulation Desk' },
 	'multimedia' : { 'floor':'2','x':100,'y':91,'width':123,'height':38, 'message':'Request this item in the catalog, then pick up at the circulation/reserves desk on the second floor.', 'english':'Circulation Desk' },
