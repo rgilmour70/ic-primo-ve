@@ -79,31 +79,31 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
         return ebscoSearchString;
       }
 
-      // function convertToWorldCat(primoSearch) {
-      //   let worldCatSearchString = '';
-      //   if (!Array.isArray(primoSearch)) {
-      //     worldCatSearchString = spaceToPlus(primoSearch.split(/,/)[2]);
-      //   } else {
-      //     for (let i=0; i<primoSearch.length; i++) {
-      //       const searchTerms = spaceToPlus(primoSearch[i].split(/,/)[2]);
-      //       const conjunction = primoSearch[i].split(/,/)[3] || '';
-      //       switch (primoSearch[i].split(/,/)[0]) {
-      //         case 'title':
-      //           worldCatSearchString += 'ti:' + searchTerms;
-      //           break;
-      //         case 'creator':
-      //           worldCatSearchString += 'au:' + searchTerms;
-      //           break
-      //         default:
-      //           worldCatSearchString += 'kw:' + searchTerms;
-      //       }
-      //       if (i !== primoSearch.length - 1) {
-      //         worldCatSearchString += '+';
-      //       }
-      //     }
-      //   }
-      //   return worldCatSearchString;
-      // }
+      function convertToWorldCat(primoSearch) {
+        let worldCatSearchString = '';
+        if (!Array.isArray(primoSearch)) {
+          worldCatSearchString = spaceToPlus(primoSearch.split(/,/)[2]);
+        } else {
+          for (let i=0; i<primoSearch.length; i++) {
+            const searchTerms = spaceToPlus(primoSearch[i].split(/,/)[2]);
+            const conjunction = primoSearch[i].split(/,/)[3] || '';
+            switch (primoSearch[i].split(/,/)[0]) {
+              case 'title':
+                worldCatSearchString += 'ti:' + searchTerms;
+                break;
+              case 'creator':
+                worldCatSearchString += 'au:' + searchTerms;
+                break
+              default:
+                worldCatSearchString += 'kw:' + searchTerms;
+            }
+            if (i !== primoSearch.length - 1) {
+              worldCatSearchString += '+';
+            }
+          }
+        }
+        return worldCatSearchString;
+      }
 
       function convertToGoogle(primoSearch) {
         let googleSearchString = '';
@@ -141,7 +141,7 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
 
       const ebscoSearchString = convertToEbsco(primoSearch);
       const googleSearchString = convertToGoogle(primoSearch);
-      // const worldCatSearchString = convertToWorldCat(primoSearch);
+      const worldCatSearchString = convertToWorldCat(primoSearch);
       // const npSearchString = convertToNewspaper(primoSearch);
 
       // this.newspaperLabel = 'Newspapers';
@@ -157,16 +157,16 @@ app.controller ('ebscoLinkController', [function($stateParams, $state) {
       const googleBaseUrl = 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C33&inst=7210957415625843320&q=';
       this.googleProxiedSearchUrl = googleBaseUrl + googleSearchString;
 
-      // this.worldCatLabel = 'WorldCat';
-      // const worldCatBaseUrl = 'https://www.worldcat.org/search?qt=worldcat_org_all&q=';
-      // this.worldCatProxiedSearchUrl = proxyString + worldCatBaseUrl + worldCatSearchString;
+      this.worldCatLabel = 'WorldCat';
+      const worldCatBaseUrl = 'https://www.worldcat.org/search?qt=worldcat_org_all&q=';
+      this.worldCatProxiedSearchUrl = proxyString + worldCatBaseUrl + worldCatSearchString;
     }
   }
 }]);
 app.component('prmSearchResultSortByAfter', {
   bindings: { parentCtrl: '<' },
   controller: 'ebscoLinkController',
-  template: '<div id="ic-external-links"><h3 ng-class="section-title-header"><span>Try My Search In&hellip;</span></h3><div id="ic-ebsco-link-block"><a href="{{$ctrl.ebscoProxiedSearchUrl}}" target="_blank" id="ic-ebsco-link"><img src="custom/{{$ctrl.view}}/img/ebsco.svg"> {{$ctrl.ebscoLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div><div id="ic-google-link-block"><a href="{{$ctrl.googleProxiedSearchUrl}}" target="_blank" id="ic-google-link"><img src="custom/{{$ctrl.view}}/img/google.svg"> {{$ctrl.googleLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div></div></div>'
+  template: '<div id="ic-external-links"><h3 ng-class="section-title-header"><span>Try My Search In&hellip;</span></h3><div id="ic-ebsco-link-block"><a href="{{$ctrl.ebscoProxiedSearchUrl}}" target="_blank" id="ic-ebsco-link"><img src="custom/{{$ctrl.view}}/img/ebsco.svg"> {{$ctrl.ebscoLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div><div id="ic-google-link-block"><a href="{{$ctrl.googleProxiedSearchUrl}}" target="_blank" id="ic-google-link"><img src="custom/{{$ctrl.view}}/img/google.svg"> {{$ctrl.googleLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div><div id="ic-worldcat-link-block"><a href="{{$ctrl.worldCatProxiedSearchUrl}}" target="_blank" id="ic-worldcat-link"><img src="custom/{{$ctrl.view}}/img/WorldCat.svg"> {{$ctrl.worldCatLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div></div>'
 });
 
 
