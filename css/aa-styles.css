@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,500;1,700&display=swap');
+
 body {
-	font-family: Verdana, sans-serif;
+	font-family: roboto, sans-serif;
 	font-size: 14px;
 }
 
@@ -373,7 +375,7 @@ display: none;
 	display: none;
 }*/
 prm-get-it-request .close {
-	font-family: sans-serif;
+	font-family: Roboto, sans-serif;
 }
 
 
