@@ -168,7 +168,7 @@ prm-search-result-sort-by md-input-container {
 }
 .section-title-header > span[title='Sort'] {
 	position: relative;
-	top: -84px;
+	top: -70px;
 }
 h3.section-title-header {
 	font-size: 1.05rem !important;
@@ -185,8 +185,7 @@ h3.section-title-header > button > span {
 	color: #0277D6;
 	font-size: 1.05rem;
 	position: relative;
-	left: -81px;
-	/*font-weight: 400;*/
+	left: -64px;
 }
 #ic-ebsco-link, #ic-google-link, #ic-worldcat-link, #ic-newspaper-link {
 	color: #0071BC;
@@ -223,9 +222,6 @@ all the time. */
 }
 
 
-/*md-checkbox[aria-label="Expand My Results"] {
-	display: none;
-}*/
 
 #item-details > div > div {
 	border-bottom: 1px solid #ddd;
@@ -378,7 +374,10 @@ prm-get-it-request .close {
 	font-family: Roboto, sans-serif;
 }
 
-
+/* Center the numbers in the checkboxes in results view */
+.has-checkbox .list-item-count {
+	top: 1.5em !important;
+}
 
 /* Make the "exclude" icons less conspicuous */
 #facets md-icon {
