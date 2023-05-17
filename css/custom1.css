@@ -608,6 +608,10 @@ h3[id^='file_label_'] {
 prm-thumbnail-list div[id^='thumbnail-']:hover > a > p {
 	font-weight: normal !important;
 }
+
+prm-search-result-thumbnail-container img {
+	width: auto;
+}
 /* primary color hook */
 /* commenttttt*/
 .md-button {
