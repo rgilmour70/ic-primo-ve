@@ -58,6 +58,7 @@ md-list-item:hover {
 
 prm-brief-result-container {
   background-color: #fff !important;
+  padding-top: 1em;
 }
 
 #full-view-container {
@@ -849,9 +850,11 @@ h3[id^="file_label_"] {
 prm-thumbnail-list div[id^="thumbnail-"]:hover > a > p {
   font-weight: normal !important;
 }
-
+prm-search-result-thumbnail-container {
+  padding-left: 1rem;
+}
 prm-search-result-thumbnail-container img {
-  max-width: 6rem !important;
+  max-width: 3.4rem !important;
 }
 
 /* primary color hook */
