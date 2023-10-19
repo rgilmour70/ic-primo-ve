@@ -3,32 +3,59 @@
 "use strict";
 
 var staticLocations = {
-  leasedbook: {
-    floor: "2",
-    x: 131,
-    y: 251,
-    width: 103,
-    height: 11,
-    message: "This item is located on the low shelves on the lake side of the main floor, on the side facing the circulation desk.",
-    english: "Popular Reading"
+  archives: {
+    floor: "5",
+    x: 338,
+    y: 139,
+    width: 188,
+    height: 83,
+    message: "This item is located in the archives on the fifth floor.",
+    english: "Archives"
   },
-  leasedaud: {
+  atlascase: {
     floor: "2",
-    x: 131,
-    y: 156,
-    width: 103,
-    height: 11,
-    message: "This item is located on the low shelves just inside the main entrance, on the side facing the circulation/reserves desk.",
-    english: "Audio Books"
+    x: 264,
+    y: 184,
+    width: 33,
+    height: 18,
+    message: "Located in the atlas case near the main staircase on the second floor.",
+    english: "Atlas Case"
   },
-  newbooks: {
+  audio: {
+    floor: "3",
+    x: 462,
+    y: 271,
+    width: 79,
+    height: 60,
+    message: "Ask for this item at the music desk on the third floor.",
+    english: "Music Reference Desk"
+  },
+  cfe: {
     floor: "2",
-    x: 131,
-    y: 262,
-    width: 103,
-    height: 11,
-    message: "This item is located on the low shelves on the lake side of the main floor, on the side facing away from the circulation desk.",
-    english: "New Books"
+    x: 100,
+    y: 91,
+    width: 123,
+    height: 38,
+    message: "Request this item in the catalog, then pick up at the circulation/reserves desk on the second floor.",
+    english: "Circulation Desk"
+  },
+  circdesk: {
+    floor: "2",
+    x: 100,
+    y: 91,
+    width: 123,
+    height: 38,
+    message: "Ask for this item at the circulation/reserves desk on the second floor.",
+    english: "Circulation Desk"
+  },
+  citation: {
+    floor: "2",
+    x: 218,
+    y: 188,
+    width: 27,
+    height: 15,
+    message: "This item is located on a small bookcase on the right as you come in through the main entrance.",
+    english: "Citation Guides"
   },
   display: {
     floor: "2",
@@ -39,7 +66,58 @@ var staticLocations = {
     message: "This item is located to the right as you come in the main entrance.",
     english: "Display Shelf"
   },
-  circdesk: {
+  eaudio: { english: "Digital Audio" },
+  ebook: { english: "Ebooks" },
+  ejournal: { english: "Online Journals" },
+  eresource: { english: "Online Resources" },
+  escore: { english: "Online Scores" },
+  folio: {
+    floor: "5",
+    x: 329,
+    y: 187,
+    width: 14,
+    height: 36,
+    message: "This item is located in the central area of the fifth floor, near the archives.",
+    english: "Folio"
+  },
+  icebook: { english: "Ebooks" },
+  leasedbook: {
+    floor: "2",
+    x: 131,
+    y: 251,
+    width: 103,
+    height: 11,
+    message: "This item is located on the low shelves on the lake side of the main floor, on the side facing the circulation desk.",
+    english: "Popular Reading"
+  },
+  microfilm: {
+    floor: "4",
+    x: 483,
+    y: 59,
+    width: 39,
+    height: 64,
+    message: "This item is located in the metal cases in the southwest corner of the fourth floor, near the restrooms.",
+    english: "Microfilm"
+  },
+  miniscore: {
+    floor: "3",
+    x: 433,
+    y: 234,
+    width: 10,
+    height: 79,
+    message: "This item is located near the music desk in the NW corner of the third floor.",
+    english: "Mini scores"
+  },
+  mm_noILL: {
+    floor: "2",
+    x: 100,
+    y: 91,
+    width: 123,
+    height: 38,
+    message: "Request this item in the catalog, then pick up at the circulation/reserves desk on the second floor.",
+    english: "Circulation Desk"
+  },
+  mmreserve: {
     floor: "2",
     x: 100,
     y: 91,
@@ -57,68 +135,14 @@ var staticLocations = {
     message: "Request this item in the catalog, then pick up at the circulation/reserves desk on the second floor.",
     english: "Circulation Desk"
   },
-  mm_noILL: {
-    floor: "2",
-    x: 100,
-    y: 91,
-    width: 123,
-    height: 38,
-    message: "Request this item in the catalog, then pick up at the circulation/reserves desk on the second floor.",
-    english: "Circulation Desk"
-  },
-  cfe: {
-    floor: "2",
-    x: 100,
-    y: 91,
-    width: 123,
-    height: 38,
-    message: "Request this item in the catalog, then pick up at the circulation/reserves desk on the second floor.",
-    english: "Circulation Desk"
-  },
-  archives: {
-    floor: "5",
-    x: 338,
-    y: 139,
-    width: 188,
-    height: 83,
-    message: "This item is located in the archives on the fifth floor.",
-    english: "Archives"
-  },
-  serling: {
-    floor: "5",
-    x: 338,
-    y: 139,
-    width: 188,
-    height: 83,
-    message: "This item is located in the archives on the fifth floor.",
-    english: "Archives"
-  },
-  reference: {
-    floor: "4",
-    x: 266,
-    y: 50,
-    height: 80,
-    width: 18,
-    message: "This item is located on the towers side of the fourth floor",
-    english: "Reference"
-  },
-  microfilm: {
-    floor: "4",
-    x: 483,
-    y: 59,
-    width: 39,
-    height: 64,
-    message: "This item is located in the metal cases in the southwest corner of the fourth floor, near the restrooms.",
-    english: "Microfilm"
-  },
-  musper: {
+  musicfolio: {
     floor: "3",
-    x: 170,
-    y: 232,
-    width: 20,
-    height: 81,
-    message: "This item is located in the northeast corner of the third floor, near the administrative offices.",
-    english: "Music Periodicals"
+    x: 413,
+    y: 292,
+    width: 10,
+    height: 23,
+    message: "This item is located near the music desk in the NW corner of the third floor.",
+    english: "Music Folio"
   },
   musicref: {
     floor: "3",
@@ -129,23 +153,23 @@ var staticLocations = {
     message: "This item is located near the music desk in the NW corner of the third floor.",
     english: "Music Reference"
   },
-  miniscore: {
+  musper: {
     floor: "3",
-    x: 433,
-    y: 234,
-    width: 10,
-    height: 79,
-    message: "This item is located near the music desk in the NW corner of the third floor.",
-    english: "Mini scores"
+    x: 170,
+    y: 232,
+    width: 20,
+    height: 81,
+    message: "This item is located in the northeast corner of the third floor, near the administrative offices.",
+    english: "Music Periodicals"
   },
-  musicfolio: {
-    floor: "3",
-    x: 413,
-    y: 292,
-    width: 10,
-    height: 23,
-    message: "This item is located near the music desk in the NW corner of the third floor.",
-    english: "Music Folio"
+  newbooks: {
+    floor: "2",
+    x: 131,
+    y: 262,
+    width: 103,
+    height: 11,
+    message: "This item is located on the low shelves on the lake side of the main floor, on the side facing away from the circulation desk.",
+    english: "New Books"
   },
   oversize: {
     floor: "5",
@@ -156,14 +180,23 @@ var staticLocations = {
     message: "This item is located in the central area of the fifth floor, near the archives.",
     english: "Oversize"
   },
-  folio: {
-    floor: "5",
-    x: 329,
-    y: 187,
-    width: 14,
-    height: 36,
-    message: "This item is located in the central area of the fifth floor, near the archives.",
-    english: "Folio"
+  periodical: {
+    floor: "4",
+    x: "86",
+    y: "50",
+    height: "80",
+    width: "45",
+    message: "Located on the towers side of the fourth floor, near the elevator.",
+    english: "Periodicals"
+  },
+  reference: {
+    floor: "4",
+    x: 131,
+    y: 50,
+    height: 80,
+    width: 18,
+    message: "This item is located on the towers side of the fourth floor",
+    english: "Reference"
   },
   reserves: {
     floor: "2",
@@ -174,14 +207,14 @@ var staticLocations = {
     message: "Ask for this item at the circulation/reserves desk on the second floor.",
     english: "Circulation Desk"
   },
-  mmreserve: {
-    floor: "2",
-    x: 100,
-    y: 91,
-    width: 123,
-    height: 38,
-    message: "Ask for this item at the circulation/reserves desk on the second floor.",
-    english: "Circulation Desk"
+  serling: {
+    floor: "5",
+    x: 338,
+    y: 139,
+    width: 188,
+    height: 83,
+    message: "This item is located in the archives on the fifth floor.",
+    english: "Archives"
   },
   sheetmusic: {
     floor: "3",
@@ -191,40 +224,7 @@ var staticLocations = {
     height: 60,
     message: "Ask for this item at the music desk on the third floor.",
     english: "Sheet Music Collection"
-  },
-  audio: {
-    floor: "3",
-    x: 462,
-    y: 271,
-    width: 79,
-    height: 60,
-    message: "Ask for this item at the music desk on the third floor.",
-    english: "Music Reference Desk"
-  },
-  atlascase: {
-    floor: "2",
-    x: 264,
-    y: 184,
-    width: 33,
-    height: 18,
-    message: "Located in the atlas case near the main staircase on the second floor.",
-    english: "Atlas Case"
-  },
-  citation: {
-    floor: "2",
-    x: 218,
-    y: 188,
-    width: 27,
-    height: 15,
-    message: "This item is located on a small bookcase on the right as you come in through the main entrance.",
-    english: "Citation Guides"
-  },
-  ebook: { english: "Ebooks" },
-  icebook: { english: "Ebooks" },
-  eaudio: { english: "Digital Audio" },
-  ejournal: { english: "Online Journals" },
-  escore: { english: "Online Scores" },
-  eresource: { english: "Online Resources" }
+  }
 };
 
 var stacks = [{
@@ -1653,160 +1653,6 @@ var stacks = [{
   width: "9"
 }];
 
-var perStacks = [{
-  id: "4.P1.e",
-  start: "AG305 .N7",
-  end: "AP2 .N67",
-  x: "86",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P1.w",
-  start: "AP2 .P46",
-  end: "AP60 .R43",
-  x: "95",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P2.e",
-  start: "AP92 .T5",
-  end: "BF789 .D4 A53",
-  x: "104",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P2.w",
-  start: "BF789 .D4 O4",
-  end: "E151 .J8",
-  x: "114",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P3.e",
-  start: "E169.1 .J66",
-  end: "GN700 .J68",
-  x: "122",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P3.w",
-  start: "GR1 .I39",
-  end: "HM251 .J53",
-  x: "130",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P4.e",
-  start: "HM263 .P767",
-  end: "JN101 .P3",
-  x: "140",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P4.w",
-  start: "JN6501 .D45",
-  end: "LB2342.8 .J68",
-  x: "149",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P5.e",
-  start: "LB3062 .I48",
-  end: "N1 .I6",
-  x: "158",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P5.w",
-  start: "N1 .S9",
-  end: "P1 .A1",
-  x: "168",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P6.e",
-  start: "P1 .F72",
-  end: "PJ5120 .A2254",
-  x: "176",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P6.w",
-  start: "PN2 .C5",
-  end: "PN1993 .A1 F4",
-  x: "186",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P7.e",
-  start: "PN1993 .A617",
-  end: "PQ7081 .A1 H57",
-  x: "195",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P7.w",
-  start: "PQ7081 .A1 R4",
-  end: "Q1 .N2",
-  x: "204",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P8.e",
-  start: "QA1 .N28",
-  end: "QD1 .A67",
-  x: "212",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P8.w",
-  start: "QD1 .B55",
-  end: "QL750 .A5",
-  x: "221",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P9.e",
-  start: "QL755 .A1",
-  end: "QL755 .A2",
-  x: "230",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P9.w",
-  start: "QL757 .J68",
-  end: "QP1 .J72",
-  x: "239",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.P10.e",
-  start: "R11 .A87",
-  end: "Z119 .G87",
-  x: "249",
-  y: "50",
-  height: "80",
-  width: "9"
-}];
-
 var musicStacks = [{
   id: "3.M3.w",
   start: "M1 .A13 A4",
@@ -2292,25 +2138,23 @@ function sortLC() {
   return sortedList;
 }
 // Import jQuery
-// var jQueryScript = document.createElement("script");  
-// jQueryScript.src = "https://code.jquery.com/jquery-3.3.1.min.js";  
+// var jQueryScript = document.createElement("script");
+// jQueryScript.src = "https://code.jquery.com/jquery-3.3.1.min.js";
 // document.getElementsByTagName("head")[0].appendChild(jQueryScript);
 
+var app = angular.module("viewCustom", ["angularLoad", "ui.router", "customActions"]);
 
-var app = angular.module('viewCustom', ['angularLoad', 'ui.router', 'customActions']);
-
-app.filter('encode', function () {
+app.filter("encode", function () {
   return encodeURIComponent;
 });
 
 // Re-run search when the scope is changed
 // Dan got this code from St. Olaf College
-app.component('prmTabsAndScopesSelectorAfter', {
-  bindings: { parentCtrl: '<' },
+app.component("prmTabsAndScopesSelectorAfter", {
+  bindings: { parentCtrl: "<" },
   controller: function controller($scope) {
     this.$onInit = function () {
       setTimeout(function () {
-
         function activateSearch() {
           setTimeout(function () {
             document.getElementsByClassName("zero-margin button-confirm md-button md-primoExplore-theme")[0].click();
@@ -2330,37 +2174,37 @@ app.component('prmTabsAndScopesSelectorAfter', {
 });
 
 // External search links
-app.controller('ebscoLinkController', [function ($stateParams, $state) {
+app.controller("ebscoLinkController", [function ($stateParams, $state) {
   this.$onInit = function () {
     {
       var spaceToPlus = function spaceToPlus(str) {
-        return str.replace(/\s+/g, '+');
+        return str.replace(/\s+/g, "+");
       };
 
       var convertToEbsco = function convertToEbsco(primoSearch) {
-        var ebscoSearchString = '';
+        var ebscoSearchString = "";
         if (!Array.isArray(primoSearch)) {
           ebscoSearchString = spaceToPlus(primoSearch.split(/,/)[2]);
         } else {
           for (var i = 0; i < primoSearch.length; i++) {
             var searchTerms = spaceToPlus(primoSearch[i].split(/,/)[2]);
-            var conjunction = primoSearch[i].split(/,/)[3] || '';
+            var conjunction = primoSearch[i].split(/,/)[3] || "";
             switch (primoSearch[i].split(/,/)[0]) {
-              case 'title':
-                ebscoSearchString += 'TI+(' + searchTerms + ')';
+              case "title":
+                ebscoSearchString += "TI+(" + searchTerms + ")";
                 break;
-              case 'creator':
-                ebscoSearchString += 'AU+(' + searchTerms + ')';
+              case "creator":
+                ebscoSearchString += "AU+(" + searchTerms + ")";
                 break;
-              case 'sub':
-                ebscoSearchString += 'SU+(' + searchTerms + ')';
+              case "sub":
+                ebscoSearchString += "SU+(" + searchTerms + ")";
                 break;
               default:
                 // handles 'any' case
-                ebscoSearchString += '(' + searchTerms + ')';
+                ebscoSearchString += "(" + searchTerms + ")";
             }
             if (i !== primoSearch.length - 1) {
-              ebscoSearchString += '+' + conjunction + '+';
+              ebscoSearchString += "+" + conjunction + "+";
             }
           }
         }
@@ -2368,25 +2212,25 @@ app.controller('ebscoLinkController', [function ($stateParams, $state) {
       };
 
       var convertToWorldCat = function convertToWorldCat(primoSearch) {
-        var worldCatSearchString = '';
+        var worldCatSearchString = "";
         if (!Array.isArray(primoSearch)) {
           worldCatSearchString = spaceToPlus(primoSearch.split(/,/)[2]);
         } else {
           for (var i = 0; i < primoSearch.length; i++) {
             var searchTerms = spaceToPlus(primoSearch[i].split(/,/)[2]);
-            var conjunction = primoSearch[i].split(/,/)[3] || '';
+            var conjunction = primoSearch[i].split(/,/)[3] || "";
             switch (primoSearch[i].split(/,/)[0]) {
-              case 'title':
-                worldCatSearchString += 'ti:' + searchTerms;
+              case "title":
+                worldCatSearchString += "ti:" + searchTerms;
                 break;
-              case 'creator':
-                worldCatSearchString += 'au:' + searchTerms;
+              case "creator":
+                worldCatSearchString += "au:" + searchTerms;
                 break;
               default:
-                worldCatSearchString += 'kw:' + searchTerms;
+                worldCatSearchString += "kw:" + searchTerms;
             }
             if (i !== primoSearch.length - 1) {
-              worldCatSearchString += '+';
+              worldCatSearchString += "+";
             }
           }
         }
@@ -2394,16 +2238,16 @@ app.controller('ebscoLinkController', [function ($stateParams, $state) {
       };
 
       var convertToGoogle = function convertToGoogle(primoSearch) {
-        var googleSearchString = '';
+        var googleSearchString = "";
         if (!Array.isArray(primoSearch)) {
           googleSearchString = spaceToPlus(primoSearch.split(/,/)[2]);
         } else {
           for (var i = 0; i < primoSearch.length; i++) {
             var searchTerms = spaceToPlus(primoSearch[i].split(/,/)[2]);
-            var conjunction = primoSearch[i].split(/,/)[3] || '';
-            googleSearchString += '(' + searchTerms + ')';
+            var conjunction = primoSearch[i].split(/,/)[3] || "";
+            googleSearchString += "(" + searchTerms + ")";
             if (i !== primoSearch.length - 1) {
-              googleSearchString += '+' + conjunction + '+';
+              googleSearchString += "+" + conjunction + "+";
             }
           }
         }
@@ -2426,11 +2270,11 @@ app.controller('ebscoLinkController', [function ($stateParams, $state) {
       // get the view for image paths
       var queryString = window.location.search;
       var urlParams = new URLSearchParams(queryString);
-      this.view = urlParams.get('vid').replace(':', '-');
+      this.view = urlParams.get("vid").replace(":", "-");
 
       var primoSearch = this.parentCtrl.$stateParams.query; // can be a string OR array!
 
-      var proxyString = 'https://ezproxy.ithaca.edu/login?url=';
+      var proxyString = "https://ezproxy.ithaca.edu/login?url=";
 
       var ebscoSearchString = convertToEbsco(primoSearch);
       var googleSearchString = convertToGoogle(primoSearch);
@@ -2441,42 +2285,41 @@ app.controller('ebscoLinkController', [function ($stateParams, $state) {
       // const newspaperBase = 'https://ithaca.primo.exlibrisgroup.com/discovery/npsearch?vid=01ITHACACOL_INST:01ITHACACOL_V1&lang=en&search_scope=MyInst_and_CI';
       // this.newspaperSearchUrl = newspaperBase + '&query=' + npSearchString;
 
-      this.ebscoLabel = 'EBSCO';
-      var ebscoBaseUrl = 'https://search.ebscohost.com/login.aspx?direct=true&defaultdb=aph,gnh,apn,ahl,aft,air,ami,rfh,bvh,bxh,boh,buh,cin20,cms,nlebk,eric,hev,8gh,hch,hia,ibh,qth,lxh,lfh,ulh,cmedm,mth,mah,msn,nfh,ofs,phl,tfh,rgr,bwh,ram,rft,sih,s3h,trh,ser,e870sww,e872sww,mft,kah,mzh&type=1&searchMode=Standard&site=ehost-live&scope=site';
-      var ebscoSearchUrl = ebscoBaseUrl + '&bquery=' + ebscoSearchString;
+      this.ebscoLabel = "EBSCO";
+      var ebscoBaseUrl = "https://search.ebscohost.com/login.aspx?direct=true&defaultdb=aph,gnh,apn,ahl,aft,air,ami,rfh,bvh,bxh,boh,buh,cin20,cms,nlebk,eric,hev,8gh,hch,hia,ibh,qth,lxh,lfh,ulh,cmedm,mth,mah,msn,nfh,ofs,phl,tfh,rgr,bwh,ram,rft,sih,s3h,trh,ser,e870sww,e872sww,mft,kah,mzh&type=1&searchMode=Standard&site=ehost-live&scope=site";
+      var ebscoSearchUrl = ebscoBaseUrl + "&bquery=" + ebscoSearchString;
       this.ebscoProxiedSearchUrl = proxyString + ebscoSearchUrl;
 
-      this.googleLabel = 'Google Scholar';
-      var googleBaseUrl = 'https://scholar.google.com/scholar?hl=en&as_sdt=0%2C33&inst=7210957415625843320&q=';
+      this.googleLabel = "Google Scholar";
+      var googleBaseUrl = "https://scholar.google.com/scholar?hl=en&as_sdt=0%2C33&inst=7210957415625843320&q=";
       this.googleProxiedSearchUrl = googleBaseUrl + googleSearchString;
 
-      this.worldCatLabel = 'WorldCat';
-      var worldCatBaseUrl = 'https://www.worldcat.org/search?qt=worldcat_org_all&q=';
+      this.worldCatLabel = "WorldCat";
+      var worldCatBaseUrl = "https://www.worldcat.org/search?qt=worldcat_org_all&q=";
       this.worldCatProxiedSearchUrl = proxyString + worldCatBaseUrl + worldCatSearchString;
     }
   };
 }]);
-app.component('prmSearchResultSortByAfter', {
-  bindings: { parentCtrl: '<' },
-  controller: 'ebscoLinkController',
+app.component("prmSearchResultSortByAfter", {
+  bindings: { parentCtrl: "<" },
+  controller: "ebscoLinkController",
   template: '<div id="ic-external-links"><h3 ng-class="section-title-header"><span>Try My Search In&hellip;</span></h3><div id="ic-ebsco-link-block"><a href="{{$ctrl.ebscoProxiedSearchUrl}}" target="_blank" id="ic-ebsco-link"><img src="custom/{{$ctrl.view}}/img/ebsco.svg"> {{$ctrl.ebscoLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div><div id="ic-google-link-block"><a href="{{$ctrl.googleProxiedSearchUrl}}" target="_blank" id="ic-google-link"><img src="custom/{{$ctrl.view}}/img/google.svg"> {{$ctrl.googleLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div><div id="ic-worldcat-link-block"><a href="{{$ctrl.worldCatProxiedSearchUrl}}" target="_blank" id="ic-worldcat-link"><img src="custom/{{$ctrl.view}}/img/WorldCat.svg"> {{$ctrl.worldCatLabel}} <prm-icon svg-icon-set="primo-ui" icon-type="svg" icon-definition="open-in-new"></prm-icon></a></div></div>'
 });
 
 // Map stuff
 
-app.controller('mapController', [function () {
-
+app.controller("mapController", [function () {
   this.$onInit = function () {
     {
       var drawIndicator = function drawIndicator(mapHeight, mapWidth, x, y, h, w) {
-        var canvases = document.getElementsByClassName('ic-map-canvas');
+        var canvases = document.getElementsByClassName("ic-map-canvas");
         for (var _i = 0; _i < canvases.length; _i++) {
           var theCanvas = canvases.item(_i);
           theCanvas.height = mapHeight;
           theCanvas.width = mapWidth;
-          var ctx = theCanvas.getContext('2d');
+          var ctx = theCanvas.getContext("2d");
           ctx.globalAlpha = 0.6;
-          ctx.fillStyle = 'fuchsia';
+          ctx.fillStyle = "fuchsia";
           ctx.fillRect(x, y, w, h);
         }
       };
@@ -2485,7 +2328,7 @@ app.controller('mapController', [function () {
 
 
       try {
-        this.physical = Boolean(this.parentCtrl.item.delivery.GetIt1[0].category === 'Alma-P' || this.parentCtrl.item.delivery.GetIt1[1].category === 'Alma-P');
+        this.physical = Boolean(this.parentCtrl.item.delivery.GetIt1[0].category === "Alma-P" || this.parentCtrl.item.delivery.GetIt1[1].category === "Alma-P");
       } catch (e) {
         this.physical = false;
       }
@@ -2498,11 +2341,11 @@ app.controller('mapController', [function () {
 
       try {
         var theCallNumber = this.parentCtrl.item.delivery.bestlocation.callNumber;
-        theCallNumber = theCallNumber.replace(/^[(\s]+/, '');
-        theCallNumber = theCallNumber.replace(/[)\s]+$/, '');
+        theCallNumber = theCallNumber.replace(/^[(\s]+/, "");
+        theCallNumber = theCallNumber.replace(/[)\s]+$/, "");
         this.callNumber = theCallNumber;
       } catch (e) {
-        this.callNumber = '';
+        this.callNumber = "";
         this.mapError = true;
       }
 
@@ -2510,14 +2353,14 @@ app.controller('mapController', [function () {
         this.location = this.parentCtrl.item.delivery.bestlocation.subLocationCode;
         console.log(this.location);
       } catch (e) {
-        this.location = '';
+        this.location = "";
         this.mapError = true;
       }
 
       try {
         this.availability = this.parentCtrl.item.delivery.bestlocation.availabilityStatus;
       } catch (e) {
-        this.availability = '';
+        this.availability = "";
         this.mapError = true;
       }
 
@@ -2525,10 +2368,9 @@ app.controller('mapController', [function () {
       // this.needsMap = Boolean(( (this.availability === 'available' || this.availability === 'check_holdings') && this.callNumber && this.physical) || this.location === 'periodical');
 
       // Slightly different for COVID - reserves weirdness
-      this.needsMap = Boolean((this.availability === 'available' && this.location !== 'reserves' || this.availability === 'check_holdings') && this.callNumber && this.physical || this.location === 'periodical');
+      this.needsMap = Boolean((this.availability === "available" && this.location !== "reserves" || this.availability === "check_holdings") && this.callNumber && this.physical || this.location === "periodical");
 
       if (this.needsMap) {
-
         // are there multiple holdings?
         if (this.holding && this.holding.length > 1) {
           this.multipleHoldings = true;
@@ -2546,17 +2388,17 @@ app.controller('mapController', [function () {
         this.width = 0; // width of highlight box
         this.height = 0; // height of highlight box
         this.lookupArray = null;
-        this.coordinates = '';
-        this.locMessage = '';
-        this.side = '';
-        this.sideLong = '';
+        this.coordinates = "";
+        this.locMessage = "";
+        this.side = "";
+        this.sideLong = "";
         this.debug = false;
         // this.display = { display: 'block' };
         this.mapError = false;
         this.normalizeLC = normalizeLC;
         this.sortLC = sortLC;
 
-        this.containerWidth = document.getElementById('full-view-container').offsetWidth;
+        this.containerWidth = document.getElementById("full-view-container").offsetWidth;
 
         this.mapAreaRatio; // amount of containerWidth map will occupy
         if (this.containerWidth > 1400) {
@@ -2586,21 +2428,10 @@ app.controller('mapController', [function () {
         }
 
         if (!this.staticLocation) {
-
-          // where should we look for the item?
-          switch (this.location) {
-            case 'music':
-              this.lookupArray = musicStacks;
-              break;
-            case 'periodical':
-              this.lookupArray = perStacks;
-              break;
-            case 'general':
-              this.lookupArray = stacks;
-              break;
-            default:
-              this.lookupArray = null;
-              break;
+          if (this.location === "music") {
+            this.lookupArray = musicStacks;
+          } else {
+            this.lookupArray = stacks;
           }
 
           for (var _i3 = 0; _i3 < this.lookupArray.length; _i3++) {
@@ -2613,15 +2444,15 @@ app.controller('mapController', [function () {
           }
 
           if (this.coordinates) {
-            this.floor = this.coordinates.id.split('.')[0];
-            this.stack = this.coordinates.id.split('.')[1];
-            this.side = this.coordinates.id.split('.')[2];
-            if (this.side === 'e') {
-              this.sideLong = 'east';
+            this.floor = this.coordinates.id.split(".")[0];
+            this.stack = this.coordinates.id.split(".")[1];
+            this.side = this.coordinates.id.split(".")[2];
+            if (this.side === "e") {
+              this.sideLong = "east";
             } else {
-              this.sideLong = 'west';
+              this.sideLong = "west";
             }
-            this.locMessage = 'This item is available at stack ' + this.stack + ', ' + this.sideLong + ' side.';
+            this.locMessage = "This item is available at stack " + this.stack + ", " + this.sideLong + " side.";
 
             this.x = this.coordinates.x;
             this.y = this.coordinates.y;
@@ -2633,12 +2464,10 @@ app.controller('mapController', [function () {
         }
 
         if (this.multipleHoldings) {
-
-          this.locMessage += ' It may also be available in ';
+          this.locMessage += " It may also be available in ";
 
           // what locations are there that aren't the "bestlocation"?
           for (var i = 0; i < this.holdingsLocations.length; i++) {
-
             if (this.holdingsLocations[i] !== this.location) {
               var hl = this.holdingsLocations[i];
               this.staticLocations = "";
@@ -2650,18 +2479,21 @@ app.controller('mapController', [function () {
               }
 
               if (i === this.holdingsLocations.length - 1) {
-                this.locMessage += '.';
+                this.locMessage += ".";
               } else {
-                this.locMessage += ', ';
+                this.locMessage += ", ";
               }
             }
           }
         }
 
         // determine dimensions for the map image
-        var mapImage = document.getElementsByClassName('ic-map-img').item(0);
+        var mapImage = document.getElementsByClassName("ic-map-img").item(0);
         if (mapImage) {
-          this.mapDimensions = { height: this.mapHeight + 'px', width: this.mapWidth + 'px' };
+          this.mapDimensions = {
+            height: this.mapHeight + "px",
+            width: this.mapWidth + "px"
+          };
         }
 
         // make highlighted area proportional
@@ -2676,65 +2508,65 @@ app.controller('mapController', [function () {
   };
 }]);
 
-app.component('prmOpacAfter', {
-  bindings: { parentCtrl: '<' },
-  controller: 'mapController',
+app.component("prmOpacAfter", {
+  bindings: { parentCtrl: "<" },
+  controller: "mapController",
   template: '<div class="ic-map-error" ng-show="$ctrl.needsMap && $ctrl.mapError">SYSTEM ERROR: TRY REFRESHING THE PAGE</div><div class="ic-map-container" ng-style="$ctrl.mapDimensions"><p ng-show="$ctrl.showLocMessage" class="ic-loc-message">{{$ctrl.locMessage}}</p><div ng-show="$ctrl.needsMap" class="ic-map-div"><img class="ic-map-img" ng-src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png" ng-srcset="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png 1x, custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}@2x.png 2x" ng-style="$ctrl.mapDimensions" ng-show="$ctrl.needsMap"><canvas ng-show="$ctrl.needsMap" class="ic-map-canvas"></canvas></div></div>'
 });
 
 // Report a Problem action
 
-app.controller('prmActionListAfterController', [function () {
+app.controller("prmActionListAfterController", [function () {
   // console.log(this);
   this.$onInit = function () {
     {
       // build a permalink (for 'report a problem')
       try {
         var recordid = this.parentCtrl.item.pnx.control.recordid[0];
-        var start = 'https://ithaca.primo.exlibrisgroup.com/discovery/fulldisplay?docid=';
-        var end = '&context=PC&vid=01ITHACACOL_INST:01ITHACACOL_V1';
+        var start = "https://ithaca.primo.exlibrisgroup.com/discovery/fulldisplay?docid=";
+        var end = "&context=PC&vid=01ITHACACOL_INST:01ITHACACOL_V1";
         this.url = encodeURIComponent(start + recordid + end);
       } catch (e) {
-        this.recordid = '';
-        this.url = '';
+        this.recordid = "";
+        this.url = "";
       }
 
       // call number
       try {
         var theCallNumber = this.parentCtrl.item.delivery.bestlocation.callNumber;
-        theCallNumber = theCallNumber.replace(/^[(\s]+/, '');
-        theCallNumber = theCallNumber.replace(/[)\s]+$/, '');
+        theCallNumber = theCallNumber.replace(/^[(\s]+/, "");
+        theCallNumber = theCallNumber.replace(/[)\s]+$/, "");
         this.callNumber = theCallNumber;
       } catch (e) {
-        this.callNumber = '';
+        this.callNumber = "";
       }
 
       // title
       try {
         this.title = this.parentCtrl.item.pnx.display.title[0];
       } catch (e) {
-        this.title = '';
+        this.title = "";
       }
 
       // author
       try {
         this.author = this.parentCtrl.item.pnx.display.creator[0];
       } catch (e) {
-        this.author = '';
+        this.author = "";
       }
 
       // location
       try {
         this.location = this.parentCtrl.item.delivery.bestlocation.subLocationCode;
       } catch (e) {
-        this.location = '';
+        this.location = "";
       }
 
       // get all PNX addata (for 'report a problem')
       try {
         var addata = this.parentCtrl.item.pnx.addata;
-        var addataString = '';
-        this.reportFormUrl = 'https://library.ithaca.edu/forms/primo_problems.php?origin=primo&';
+        var addataString = "";
+        this.reportFormUrl = "https://library.ithaca.edu/forms/primo_problems.php?origin=primo&";
         var addataFields = Object.keys(addata);
         var _iteratorNormalCompletion = true;
         var _didIteratorError = false;
@@ -2744,8 +2576,8 @@ app.controller('prmActionListAfterController', [function () {
           for (var _iterator = addataFields[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
             var addataField = _step.value;
 
-            if (addataField !== 'abstract') {
-              addataString += '&' + addataField + '=' + addata[addataField];
+            if (addataField !== "abstract") {
+              addataString += "&" + addataField + "=" + addata[addataField];
             }
           }
         } catch (err) {
@@ -2767,10 +2599,10 @@ app.controller('prmActionListAfterController', [function () {
         this.reportFormUrl += addataString;
 
         // Add the call number for traces
-        this.reportFormUrl += '&callNumber=' + encodeURI(this.callNumber);
-        this.reportFormUrl += '&permalink=' + encodeURI(this.url);
+        this.reportFormUrl += "&callNumber=" + encodeURI(this.callNumber);
+        this.reportFormUrl += "&permalink=" + encodeURI(this.url);
       } catch (e) {
-        this.reportFormUrl = '';
+        this.reportFormUrl = "";
       }
 
       try {
@@ -2782,21 +2614,24 @@ app.controller('prmActionListAfterController', [function () {
     }
   };
 }]);
-app.component('prmActionListAfter', {
-  bindings: { parentCtrl: '<' },
-  controller: 'prmActionListAfterController',
+app.component("prmActionListAfter", {
+  bindings: { parentCtrl: "<" },
+  controller: "prmActionListAfterController",
   template: "<custom-action \n    name=\"report_a_problem\"\n    label=\"Report a Problem\"\n    index=8\n    icon=\"ic_report_problem_24px\"\n    icon-set=\"action\"\n    link=\"{{$ctrl.reportFormUrl}}\" \n    />"
 });
 
-app.component('prmGalleryCollectionsListAfter', {
+app.component("prmGalleryCollectionsListAfter", {
   template: '<p>For more information about our digital collections, see our <a href="https://libguides.ithaca.edu/digital_library">Digital Collections Guide</a> or contact <a href="mailto:digitalcollections@ithaca.edu">digitalcollections@ithaca.edu</a>. For information on submitting materials to the collection, see our <a href="https://library.ithaca.edu/policies/digitalcollections.php">Digital Collections Content Submission Policies and Guidelines</a>.</p>'
 });
 
 // LibAnswers chat widget
 (function () {
-  var lc = document.createElement('script');lc.type = 'text/javascript';lc.async = 'true';
-  lc.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'v2.libanswers.com/load_chat.php?hash=88261efafc9e5e717508101165503bda';
-  var s = document.getElementsByTagName('script')[0];s.parentNode.insertBefore(lc, s);
+  var lc = document.createElement("script");
+  lc.type = "text/javascript";
+  lc.async = "true";
+  lc.src = ("https:" == document.location.protocol ? "https://" : "http://") + "v2.libanswers.com/load_chat.php?hash=88261efafc9e5e717508101165503bda";
+  var s = document.getElementsByTagName("script")[0];
+  s.parentNode.insertBefore(lc, s);
 })();
 
 // Google Books Experiment for Mike Saunders
@@ -2854,6 +2689,7 @@ app.component('prmGalleryCollectionsListAfter', {
 //   controller: 'prmServiceDetailsAfterController',
 //   template: '<div id="viewerCanvas" style="height: 500px; width: 600px; border: 1px solid blue"></div>'
 // });
+
 'use strict';
 
 angular.module('customActions', []);
