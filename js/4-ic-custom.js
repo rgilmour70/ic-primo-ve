@@ -537,58 +537,60 @@ app.component("prmGalleryCollectionsListAfter", {
   s.parentNode.insertBefore(lc, s);
 })();
 
-// Google Books Experiment for Mike Saunders
-// Nat'l Library of Scotland
-// (function(){
-//   const gb = document.createElement('script');
-//   gb.type = 'text/javascript';
-//   gb.src = 'https://www.google.com/books/jsapi.js';
-//   gb.addEventListener('load', () => google.books.load());
-//   document.head.appendChild(gb);
-// })();
+// Begin BrowZine - Primo Integration...
+window.browzine = {
+  libraryId: "437",
+  apiKey: "b3cd8b08-4e87-44c3-82d5-d3557391cbb4",
 
-// function waitForElm(selector) {
-//   return new Promise(resolve => {
-//     if (document.querySelector(selector)) {
-//         return resolve(document.querySelector(selector));
-//     }
-//     const observer = new MutationObserver(mutations => {
-//         if (document.querySelector(selector)) {
-//             resolve(document.querySelector(selector));
-//         }
-//     });
-//     observer.observe(document.body, {
-//         childList: true,
-//         subtree: true
-//     });
-//   });
-// }
+  journalCoverImagesEnabled: true,
 
-// app.controller('prmServiceDetailsAfterController', [function() {
-//   this.$onInit = async function() {
-//     const frame = await waitForElm('#iFrameResizer0');
-//     fetch(frame.src)
-//       .then(res => res.text())
-//       .then(text => new DOMParser().parseFromString(text, 'text/html'))
-//       .then(document => {
-//         const bCode = document.getElementsByClassName('itemBarcode')[0].innerText || '';
-//         if (bCode) {
-//           // const canvas = document.getElementById('viewerCanvas');
-//           // const viewer = new google.books.DefaultViewer(canvas);
-//           // viewer.load('BARCODE:' + bCode);
-//           console.log(`BCODE: ${bCode}`);
-//         } else {
-//           console.log('No barcode');
-//         }
-//       })
-//       .catch( e => {
-//         console.log('ERROR', e);
-//       });
-//   }
-// }]);
+  journalBrowZineWebLinkTextEnabled: true,
+  journalBrowZineWebLinkText: "View Journal Contents",
 
-// app.component('prmServiceDetailsAfter', {
-//   bindings: { parentCtrl: '<' },
-//   controller: 'prmServiceDetailsAfterController',
-//   template: '<div id="viewerCanvas" style="height: 500px; width: 600px; border: 1px solid blue"></div>'
-// });
+  articleBrowZineWebLinkTextEnabled: true,
+  articleBrowZineWebLinkText: "View Issue Contents",
+
+  articlePDFDownloadLinkEnabled: true,
+  articlePDFDownloadLinkText: "Download PDF",
+
+  articleLinkEnabled: true,
+  articleLinkText: "Read Article",
+
+  printRecordsIntegrationEnabled: true,
+  showFormatChoice: true,
+  showLinkResolverLink: true,
+  enableLinkOptimizer: true,
+
+  articleRetractionWatchEnabled: true,
+  articleRetractionWatchText: "Retracted Article",
+
+  unpaywallEmailAddressKey: "enter-your-email@your-institution-domain.edu",
+  articlePDFDownloadViaUnpaywallEnabled: true,
+  articlePDFDownloadViaUnpaywallText: "Download PDF (via Unpaywall)",
+  articleLinkViaUnpaywallEnabled: true,
+  articleLinkViaUnpaywallText: "Read Article (via Unpaywall)",
+  articleAcceptedManuscriptPDFViaUnpaywallEnabled: false,
+  articleAcceptedManuscriptPDFViaUnpaywallText:
+    "Download PDF (Accepted Manuscript via Unpaywall)",
+  articleAcceptedManuscriptArticleLinkViaUnpaywallEnabled: false,
+  articleAcceptedManuscriptArticleLinkViaUnpaywallText:
+    "Read Article (Accepted Manuscript via Unpaywall)",
+};
+
+browzine.script = document.createElement("script");
+browzine.script.src =
+  "https://s3.amazonaws.com/browzine-adapters/primo/browzine-primo-adapter.js";
+document.head.appendChild(browzine.script);
+
+app.controller(
+  "prmSearchResultAvailabilityLineAfterController",
+  function ($scope) {
+    window.browzine.primo.searchResult($scope);
+  }
+);
+
+app.component("prmSearchResultAvailabilityLineAfter", {
+  bindings: { parentCtrl: "<" },
+  controller: "prmSearchResultAvailabilityLineAfterController",
+});
+// ... End BrowZine - Primo Integration
