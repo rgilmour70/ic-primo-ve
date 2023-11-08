@@ -380,12 +380,12 @@ mark,
 
 /* Hide the "Copy Citation to Clipboard" button b/c it doesn't 
 carry over italics */
-prm-citation prm-copy-clipboard-btn + span {
+/* prm-citation prm-copy-clipboard-btn + span {
   margin-top: 1em !important;
 }
 prm-citation prm-copy-clipboard-btn {
   display: none;
-}
+} */
 
 /* Make the ILL link look like a link */
 span[translate="AlmaResourceSharing"] {
