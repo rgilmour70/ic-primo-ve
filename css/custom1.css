@@ -424,6 +424,19 @@ prm-get-it-request .close {
   color: #999 !important;
 }
 
+/* Hide the open-access badge */
+.prm-open-access md-icon {
+  display: none;
+}
+.prm-open-access span {
+  display: none;
+}
+
+/* Hide browzine view issue contents link */
+.browzine-web-link {
+  display: none;
+}
+
 /*#lcs_slide_out_button-16220 {
 	padding-top: 2em;
 	transform: rotate(-90deg) translateX(-2px);
