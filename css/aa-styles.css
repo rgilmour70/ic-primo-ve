@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
+
 body {
   font-size: 16px;
 }
@@ -36,6 +38,32 @@ prm-search-result-list
 .layout-align-end-start,
 .layout-align-end-stretch {
   justify-content: flex-start;
+}
+
+/* The following 3 rules relate to the font used
+for areas containing call numbers */
+prm-location-items h6 + p {
+  font-family: Roboto;
+  font-size: 0.9em;
+}
+.availability-status {
+  font-family: Roboto;
+  font-size: 0.9em;
+}
+.prm-positive,
+.status-available,
+[class*="available"],
+[class*="FT"],
+.not_restricted,
+.ext_not_restricted,
+.fulltext,
+.fulltext_linktorsrc,
+.fulltext_newspaper,
+.fulltext_linktorsrc_newspaper,
+.fulltext_linktorsrc_topic,
+.fulltext_topic {
+  font-family: Roboto !important;
+  font-size: 1em;
 }
 
 /* hide "How to get it" header */
