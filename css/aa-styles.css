@@ -938,3 +938,7 @@ prm-rapido-no-offer-message .main_tile {
   font-size: 18px !important;
   font-family: Roboto, sans-serif !important;
 }
+
+#banner > a:hover {
+  background-color: inherit;
+}
