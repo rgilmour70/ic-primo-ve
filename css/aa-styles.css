@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap");
 
 body {
-  font-size: 16px;
+  font-size: 17px;
   background-color: #f7f7f7 !important;
 }
 
@@ -133,6 +133,14 @@ prm-topbar {
   height: 60px;
 }
 
+prm-topbar .top-nav-bar {
+  background-color: #003b71 !important;
+}
+
+prm-search-bar {
+  background-color: #003b71 !important;
+}
+
 .ic-map-div {
   position: relative;
   min-height: 500px;
@@ -190,7 +198,7 @@ h3.light-text {
   font-size: medium;
   padding-left: 1em;
 }
-h3.section-title-header span {
+/* h3.section-title-header span {
   color: #0277d6;
 }
 
@@ -205,7 +213,7 @@ prm-facet .sidebar-inner-wrapper .section-content .button-as-link {
 }
 .expand-section-button .button-as-link {
   color: #0277d6 !important;
-}
+} */
 
 prm-brief-result .item-title span {
   color: #0277d6 !important;
@@ -234,7 +242,6 @@ h3.section-title-header > button > span {
   padding-bottom: 1em;
 }
 #ic-external-links h3 {
-  color: #0277d6;
   font-size: 1.05rem;
   position: relative;
   left: -64px;
@@ -903,7 +910,31 @@ prm-search-result-thumbnail-container img {
 prm-search-result-tool-bar .md-toolbar-tools {
   background-color: transparent;
 }
+prm-ngrs-results-button {
+  margin-bottom: 0 !important;
+}
 prm-ngrs-results-button md-card.default-card {
   box-shadow: none !important;
   border: 1px dotted gray;
+}
+
+h3.section-title-header span {
+  color: black !important;
+}
+
+#beaconPlaceHolder {
+  display: none !important;
+}
+
+prm-rapido-no-offer-message .main_tile {
+  box-shadow: none !important;
+}
+
+.button-content span {
+  color: black !important;
+}
+
+#lcs_slide_out_button-18845 {
+  font-size: 18px !important;
+  font-family: Roboto, sans-serif !important;
 }

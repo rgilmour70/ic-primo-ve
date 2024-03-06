@@ -2511,7 +2511,7 @@ app.controller("mapController", [function () {
 app.component("prmOpacAfter", {
   bindings: { parentCtrl: "<" },
   controller: "mapController",
-  template: '<div class="ic-map-error" ng-show="$ctrl.needsMap && $ctrl.mapError">SYSTEM ERROR: TRY REFRESHING THE PAGE</div><div class="ic-map-container" ng-style="$ctrl.mapDimensions"><p ng-show="$ctrl.showLocMessage" class="ic-loc-message">{{$ctrl.locMessage}}</p><div ng-show="$ctrl.needsMap" class="ic-map-div"><img class="ic-map-img" ng-src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png" ng-srcset="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png 1x, custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}@2x.png 2x" ng-style="$ctrl.mapDimensions" ng-show="$ctrl.needsMap"><canvas ng-show="$ctrl.needsMap" class="ic-map-canvas"></canvas></div></div>'
+  template: '<div class="ic-map-error" ng-show="$ctrl.needsMap && $ctrl.mapError">SYSTEM ERROR: TRY REFRESHING THE PAGE</div><div class="ic-map-container" ng-style="$ctrl.mapDimensions"><p ng-show="$ctrl.showLocMessage" class="ic-loc-message">{{$ctrl.locMessage}}</p><div ng-show="$ctrl.needsMap" class="ic-map-div"><img class="ic-map-img" ng-src="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png" ng-srcset="custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}.png 1x, custom/01ITHACACOL_INST-01ITHACACOL_V1/img/floor_{{$ctrl.floor}}@2x.png 2x" ng-style="$ctrl.mapDimensions" ng-show="$ctrl.needsMap" ng-alt=""><canvas ng-show="$ctrl.needsMap" class="ic-map-canvas"></canvas></div></div>'
 });
 
 // Report a Problem action
