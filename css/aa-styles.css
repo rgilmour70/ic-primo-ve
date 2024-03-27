@@ -18,11 +18,16 @@ body {
 body.md-dialog-is-showing {
   overflow-x: visible !important;
 }
-
-md-content,
+.main-menu-button .md-subhead {
+  display: none;
+}
+.md-menu {
+  display: none;
+}
+/* md-content,
 md-content.md-primoExplore-theme {
   background-color: #f7f7f7 !important;
-}
+} */
 
 #banner > a:hover {
   background-color: #012949;
