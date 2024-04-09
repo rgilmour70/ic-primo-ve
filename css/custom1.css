@@ -18,16 +18,22 @@ body {
 body.md-dialog-is-showing {
   overflow-x: visible !important;
 }
-.main-menu-button .md-subhead {
-  display: none;
+
+/* Hides redundant history and pin icons */
+prm-search-bookmark-filter {
+  display: none !important;
 }
-.md-menu {
-  display: none;
+
+/* Makes the logout button more visible */
+#menu_container_2 md-menu-item > .user-menu-header button {
+  background-color: white !important;
+  color: #003b71;
 }
-/* md-content,
-md-content.md-primoExplore-theme {
-  background-color: #f7f7f7 !important;
-} */
+#menu_container_2 md-menu-item > .user-menu-header:hover button {
+  background-color: white !important;
+  color: #003b71;
+  border: 1px solid #003b71;
+}
 
 #banner > a:hover {
   background-color: #012949;
