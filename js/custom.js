@@ -104,7 +104,7 @@ var staticLocations = {
     x: 433,
     y: 234,
     width: 10,
-    height: 79,
+    height: 53,
     message: "This item is located near the music desk in the NW corner of the third floor.",
     english: "Mini scores"
   },
@@ -137,8 +137,8 @@ var staticLocations = {
   },
   musicfolio: {
     floor: "3",
-    x: 413,
-    y: 292,
+    x: 433,
+    y: 286,
     width: 10,
     height: 23,
     message: "This item is located near the music desk in the NW corner of the third floor.",
