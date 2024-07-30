@@ -1654,23 +1654,23 @@ var stacks = [{
 }];
 
 var musicStacks = [{
-  id: "3.M3.w",
+  id: "3.M2.w",
   start: "M1 .A13 A4",
   end: "M2 .R2384",
   x: "403",
-  y: "231",
+  y: "313",
   height: "84",
   width: "10"
 }, {
-  id: "3.M3.e",
+  id: "3.M2.e",
   start: "M2 .R2386",
   end: "M3 .G66",
-  x: "394",
+  x: "396",
   y: "230",
   height: "84",
   width: "10"
 }, {
-  id: "3.M4.w",
+  id: "3.M3.w",
   start: "M3 .G68",
   end: "M3 .S36",
   x: "384",
@@ -1678,15 +1678,15 @@ var musicStacks = [{
   height: "84",
   width: "10"
 }, {
-  id: "3.M4.e",
+  id: "3.M3.e",
   start: "M3 .S38242",
   end: "M8 .V66 S8",
-  x: "375",
+  x: "376",
   y: "230",
   height: "84",
   width: "10"
 }, {
-  id: "3.M5.w",
+  id: "3.M4.w",
   start: "M9 .A28 P5",
   end: "M228 .Z8 S4",
   x: "365",
@@ -1694,7 +1694,7 @@ var musicStacks = [{
   height: "84",
   width: "10"
 }, {
-  id: "3.M5.e",
+  id: "3.M4.e",
   start: "M229 .B66 C4 2009",
   end: "M1001 .E72 O9",
   x: "356",
@@ -1702,7 +1702,7 @@ var musicStacks = [{
   height: "84",
   width: "10"
 }, {
-  id: "3.M6.w",
+  id: "3.M5.w",
   start: "M1001 .F527",
   end: "M1375 .B631 S58",
   x: "346",
@@ -1710,7 +1710,7 @@ var musicStacks = [{
   height: "84",
   width: "10"
 }, {
-  id: "3.M6.e",
+  id: "3.M5.e",
   start: "M1378 .A184 S4 1983",
   end: "M1503 .S3635",
   x: "337",
@@ -1718,7 +1718,7 @@ var musicStacks = [{
   height: "84",
   width: "10"
 }, {
-  id: "3.M7.w",
+  id: "3.M6.w",
   start: "M1503 .S38 A4",
   end: "M1518 .S56",
   x: "326",
@@ -1726,7 +1726,7 @@ var musicStacks = [{
   height: "84",
   width: "10"
 }, {
-  id: "3.M7.e",
+  id: "3.M6.e",
   start: "M1520 .B5 F36",
   end: "M1622 .S66",
   x: "317",
@@ -1734,7 +1734,7 @@ var musicStacks = [{
   height: "84",
   width: "10"
 }, {
-  id: "3.M8.w",
+  id: "3.M7.w",
   start: "M1623 .S38 S5",
   end: "ML60 .T67 M8",
   x: "306",
@@ -1742,7 +1742,7 @@ var musicStacks = [{
   height: "84",
   width: "10"
 }, {
-  id: "3.M8.e",
+  id: "3.M7.e",
   start: "ML60 .V18",
   end: "ML285.5 .R7",
   x: "298",
@@ -1750,7 +1750,7 @@ var musicStacks = [{
   height: "84",
   width: "10"
 }, {
-  id: "3.M9.w",
+  id: "3.M8.w",
   start: "ML286 .C28 1991",
   end: "ML410 .G46 O813 1988",
   x: "254",
@@ -1758,7 +1758,7 @@ var musicStacks = [{
   height: "84",
   width: "10"
 }, {
-  id: "3.M9.e",
+  id: "3.M8.e",
   start: "ML410 .G5 A413 1962",
   end: "ML410 .S932 V38 2012",
   x: "245",
@@ -1766,7 +1766,7 @@ var musicStacks = [{
   height: "84",
   width: "10"
 }, {
-  id: "3.M10.w",
+  id: "3.M9.w",
   start: "ML410 .S932 V52 1967",
   end: "ML420 .M62 H7 1981",
   x: "235",
@@ -1774,7 +1774,7 @@ var musicStacks = [{
   height: "84",
   width: "10"
 }, {
-  id: "3.M10.e",
+  id: "3.M9.e",
   start: "ML420 .N37 B6 2010",
   end: "ML756 .H64 1993",
   x: "226",
@@ -1782,7 +1782,7 @@ var musicStacks = [{
   height: "84",
   width: "10"
 }, {
-  id: "3.M11.w",
+  id: "3.M10.w",
   start: "ML760 .A35 1991",
   end: "ML3475 .R66 B6 2008",
   x: "217",
@@ -1790,7 +1790,7 @@ var musicStacks = [{
   height: "84",
   width: "10"
 }, {
-  id: "3.M11.e",
+  id: "3.M10.e",
   start: "ML3477 .A48 1992",
   end: "ML3918 .U53 S9 2005",
   x: "208",
@@ -1798,7 +1798,7 @@ var musicStacks = [{
   height: "84",
   width: "10"
 }, {
-  id: "3.M12.w",
+  id: "3.M11.w",
   start: "ML3920 .A33 1996",
   end: "MT130 .Z34 G37 1999",
   x: "198",
@@ -1806,7 +1806,7 @@ var musicStacks = [{
   height: "84",
   width: "10"
 }, {
-  id: "3.M12.e",
+  id: "3.M11.e",
   start: "MT135 .C66 2003",
   end: "MT956 .S36 R6 2011",
   x: "189",
