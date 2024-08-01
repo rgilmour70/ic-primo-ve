@@ -2,6 +2,40 @@
 
 body {
   font-size: 17px;
+}
+.prm-background,
+html,
+body,
+prm-search .ui-blocker,
+prm-featured-results .horizontal-content-container .horizontal-content-control,
+prm-search-bar .simple-search-wrapper .search-options:after,
+prm-atoz-search-bar .simple-search-wrapper .search-options:after,
+prm-browse-search-bar .simple-search-wrapper .search-options:after,
+prm-tags-search-bar .simple-search-wrapper .search-options:after,
+prm-newspapers-search-bar .simple-search-wrapper .search-options:after,
+prm-search-bar .simple-search-wrapper .search-options md-divider,
+prm-atoz-search-bar .simple-search-wrapper .search-options md-divider,
+prm-browse-search-bar .simple-search-wrapper .search-options md-divider,
+prm-tags-search-bar .simple-search-wrapper .search-options md-divider,
+prm-newspapers-search-bar .simple-search-wrapper .search-options md-divider,
+.prm-view-overlay-inner,
+prm-facet.facets-on-iPad-mobile,
+.sidebar.facets-on-iPad-mobile,
+.available-facets .section-content .md-chips .md-chip .md-button:before,
+.multiselect-submit .multiselect-submit-inner,
+prm-favorites .mobile-toolbar-text,
+.__sm prm-favorites .sidebar,
+.__xs prm-favorites .sidebar,
+prm-full-view-cont prm-recomendation-item .media-on-hover .pin-button,
+prm-full-view-cont .recommendations-title:after,
+prm-full-view-cont .recommendations-title prm-icon,
+prm-databases-categorize .sticking-wrapper,
+prm-orgList-categorize .sticking-wrapper,
+md-virtual-repeat-container#prm-simple-search
+  .md-autocomplete-suggestions
+  md-divider,
+md-dialog md-toolbar:not(.md-menu-toolbar),
+md-card .card-content-block {
   background-color: #f7f7f7 !important;
 }
 
