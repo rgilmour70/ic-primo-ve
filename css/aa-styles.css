@@ -841,8 +841,9 @@ prm-gallery-collection:has(a[href*="81120680910004016"]) {
   );
 }
 
-/* Faculty Work */
-prm-gallery-collection:has(a[href*="81120410760004016"]) {
+/* Serling */
+prm-gallery-collection:has(a[href*="81120410760004016"]),
+prm-gallery-collection:has(a[href*="81137080960004016"]) {
   background: linear-gradient(
     to top,
     var(--maize-crayola-darker),
@@ -900,7 +901,8 @@ prm-gallery-collection .collection-overlay .item-info > p::before {
   position: absolute;
   left: 0;
   top: 0;
-  background: linear-gradient(transparent, white);
+  /* background: linear-gradient(transparent, white); */
+  background-color: white !important;
 }
 
 prm-gallery-collection .item-meta > span {
@@ -911,7 +913,7 @@ prm-gallery-collection .collection-images {
   display: none;
 }
 
-prm-gallery-collection .collection-overlay::before {
+/* prm-gallery-collection .collection-overlay::before {
   opacity: 1 !important;
   background-color: #f3f3f3 !important;
 }
@@ -925,7 +927,7 @@ prm-gallery-collection .collection-overlay::after {
   background: none !important;
   background-image: none !important;
   background-color: transparent !important;
-}
+} */
 
 /* Sub-collection */
 prm-collection-gallery-header > .collection-header-inner {
