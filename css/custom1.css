@@ -991,6 +991,14 @@ prm-rapido-no-offer-message .main_tile {
   background-color: inherit;
 }
 
+prm-copyrights button.close-copyrights {
+  width: 160px !important;
+}
+
+/* prm-collection-gallery-header > .collection-header-inner::before {
+  background-image: url("../img/paisley2.jpg");
+} */
+
 /* primary color hook */
 /* commenttttt*/
 .md-button {

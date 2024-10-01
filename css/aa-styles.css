@@ -930,6 +930,7 @@ prm-gallery-collection .collection-overlay::after {
 } */
 
 /* Sub-collection */
+/* Prevents an ugly default image from showing up in banner area */
 prm-collection-gallery-header > .collection-header-inner {
   background-image: none !important;
 }
@@ -990,3 +991,11 @@ prm-rapido-no-offer-message .main_tile {
 #banner > a:hover {
   background-color: inherit;
 }
+
+prm-copyrights button.close-copyrights {
+  width: 160px !important;
+}
+
+/* prm-collection-gallery-header > .collection-header-inner::before {
+  background-image: url("../img/paisley2.jpg");
+} */
