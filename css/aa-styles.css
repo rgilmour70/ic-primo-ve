@@ -882,6 +882,72 @@ prm-gallery-collection .collection-overlay {
   overflow: hidden;
 }
 
+/* Serling */
+prm-gallery-collection:has(a[href*="81120410760004016"])
+  .collection-overlay:hover::before,
+prm-gallery-collection:has(a[href*="81137080960004016"])
+  .collection-overlay:hover::before {
+  /* background-image: url("https://media.giphy.com/media/9bTjZrytydVRK/giphy.gif"); */
+  background-image: url("../img/space4.gif");
+  background-size: cover;
+}
+prm-gallery-collection:has(a[href*="81120410760004016"])
+  .collection-overlay::after,
+prm-gallery-collection:has(a[href*="81137080960004016"])
+  .collection-overlay::after {
+  background-image: none !important;
+}
+prm-gallery-collection:has(a[href*="81120410760004016"])
+  .collection-overlay:hover
+  .item-title
+  .collection-header,
+prm-gallery-collection:has(a[href*="81137080960004016"])
+  .collection-overlay:hover
+  .item-title
+  .collection-header {
+  color: white;
+}
+prm-gallery-collection:has(a[href*="81120410760004016"])
+  .collection-overlay:hover
+  .item-title
+  .collection-header
+  span,
+prm-gallery-collection:has(a[href*="81137080960004016"])
+  .collection-overlay:hover
+  .item-title
+  .collection-header
+  span {
+  color: white;
+  background-color: transparent !important;
+  box-shadow: none !important;
+}
+prm-gallery-collection:has(a[href*="81120410760004016"])
+  .collection-overlay:hover
+  .item-info,
+prm-gallery-collection:has(a[href*="81137080960004016"])
+  .collection-overlay:hover
+  .item-info {
+  color: white !important;
+}
+prm-gallery-collection:has(a[href*="81120410760004016"])
+  .collection-overlay:hover
+  .item-meta,
+prm-gallery-collection:has(a[href*="81137080960004016"])
+  .collection-overlay:hover
+  .item-meta {
+  background-color: transparent !important;
+}
+prm-gallery-collection:has(a[href*="81120410760004016"])
+  .item-actions
+  prm-save-to-favorites-button
+  .pin-button,
+prm-gallery-collection:has(a[href*="81137080960004016"])
+  .item-actions
+  prm-save-to-favorites-button
+  .pin-button {
+  color: white !important;
+}
+
 prm-gallery-collection .collection-overlay .item-title > h3 {
   font-size: 15px;
 }
@@ -901,8 +967,6 @@ prm-gallery-collection .collection-overlay .item-info > p::before {
   position: absolute;
   left: 0;
   top: 0;
-  /* background: linear-gradient(transparent, white); */
-  background-color: white !important;
 }
 
 prm-gallery-collection .item-meta > span {
@@ -996,6 +1060,7 @@ prm-copyrights button.close-copyrights {
   width: 160px !important;
 }
 
+/* Can't figure out how to make this work selectively for a particular collection */
 /* prm-collection-gallery-header > .collection-header-inner::before {
-  background-image: url("../img/paisley2.jpg");
+  background-image: url("../img/paisley2.jpg") !important;
 } */
