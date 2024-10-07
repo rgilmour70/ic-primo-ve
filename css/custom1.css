@@ -843,7 +843,8 @@ prm-gallery-collection:has(a[href*="81120680910004016"]) {
 
 /* Serling */
 prm-gallery-collection:has(a[href*="81120410760004016"]),
-prm-gallery-collection:has(a[href*="81137080960004016"]) {
+prm-gallery-collection:has(a[href*="81137080960004016"]),
+prm-gallery-collection:has(a[href*="81141890970004016"]) {
   background: linear-gradient(
     to top,
     var(--maize-crayola-darker),
@@ -886,14 +887,17 @@ prm-gallery-collection .collection-overlay {
 prm-gallery-collection:has(a[href*="81120410760004016"])
   .collection-overlay:hover::before,
 prm-gallery-collection:has(a[href*="81137080960004016"])
+  .collection-overlay:hover::before,
+prm-gallery-collection:has(a[href*="81141890970004016"])
   .collection-overlay:hover::before {
-  /* background-image: url("https://media.giphy.com/media/9bTjZrytydVRK/giphy.gif"); */
   background-image: url("../img/space4.gif");
   background-size: cover;
 }
 prm-gallery-collection:has(a[href*="81120410760004016"])
   .collection-overlay::after,
 prm-gallery-collection:has(a[href*="81137080960004016"])
+  .collection-overlay::after,
+prm-gallery-collection:has(a[href*="81141890970004016"])
   .collection-overlay::after {
   background-image: none !important;
 }
@@ -902,6 +906,10 @@ prm-gallery-collection:has(a[href*="81120410760004016"])
   .item-title
   .collection-header,
 prm-gallery-collection:has(a[href*="81137080960004016"])
+  .collection-overlay:hover
+  .item-title
+  .collection-header,
+prm-gallery-collection:has(a[href*="81141890970004016"])
   .collection-overlay:hover
   .item-title
   .collection-header {
@@ -916,6 +924,11 @@ prm-gallery-collection:has(a[href*="81137080960004016"])
   .collection-overlay:hover
   .item-title
   .collection-header
+  span,
+prm-gallery-collection:has(a[href*="81141890970004016"])
+  .collection-overlay:hover
+  .item-title
+  .collection-header
   span {
   color: white;
   background-color: transparent !important;
@@ -926,6 +939,9 @@ prm-gallery-collection:has(a[href*="81120410760004016"])
   .item-info,
 prm-gallery-collection:has(a[href*="81137080960004016"])
   .collection-overlay:hover
+  .item-info,
+prm-gallery-collection:has(a[href*="81141890970004016"])
+  .collection-overlay:hover
   .item-info {
   color: white !important;
 }
@@ -933,6 +949,9 @@ prm-gallery-collection:has(a[href*="81120410760004016"])
   .collection-overlay:hover
   .item-meta,
 prm-gallery-collection:has(a[href*="81137080960004016"])
+  .collection-overlay:hover
+  .item-meta,
+prm-gallery-collection:has(a[href*="81141890970004016"])
   .collection-overlay:hover
   .item-meta {
   background-color: transparent !important;
@@ -942,6 +961,10 @@ prm-gallery-collection:has(a[href*="81120410760004016"])
   prm-save-to-favorites-button
   .pin-button,
 prm-gallery-collection:has(a[href*="81137080960004016"])
+  .item-actions
+  prm-save-to-favorites-button
+  .pin-button,
+prm-gallery-collection:has(a[href*="81141890970004016"])
   .item-actions
   prm-save-to-favorites-button
   .pin-button {
