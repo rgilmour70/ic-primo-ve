@@ -833,7 +833,9 @@ prm-gallery-collection:has(a[href*="81120680950004016"]),
 prm-gallery-collection:has(a[href*="81120680940004016"]),
 prm-gallery-collection:has(a[href*="81120680930004016"]),
 prm-gallery-collection:has(a[href*="81120680920004016"]),
-prm-gallery-collection:has(a[href*="81120680910004016"]) {
+prm-gallery-collection:has(a[href*="81120680910004016"]),
+prm-gallery-collection:has(a[href*="81143901890004016"]),
+prm-gallery-collection:has(a[href*="81143901900004016"]) {
   background: linear-gradient(
     to top,
     var(--persian-green-darker),
