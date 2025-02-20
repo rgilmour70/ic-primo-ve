@@ -2525,6 +2525,7 @@ app.controller("prmActionListAfterController", [function () {
         var recordid = this.parentCtrl.item.pnx.control.recordid[0];
         var start = "https://ithaca.primo.exlibrisgroup.com/discovery/fulldisplay?docid=";
         var end = "&context=PC&vid=01ITHACACOL_INST:01ITHACACOL_V1";
+        this.mmsid = recordid.substring(4); // clip off "alma" at the beginning
         this.url = encodeURIComponent(start + recordid + end);
       } catch (e) {
         this.recordid = "";
@@ -2560,6 +2561,13 @@ app.controller("prmActionListAfterController", [function () {
         this.location = this.parentCtrl.item.delivery.bestlocation.subLocationCode;
       } catch (e) {
         this.location = "";
+      }
+
+      // format (pagination, size, etc.)
+      try {
+        this.format = this.parentCtrl.item.pnx.display.format[0];
+      } catch (e) {
+        this.format = "";
       }
 
       // get all PNX addata (for 'report a problem')
@@ -2601,6 +2609,8 @@ app.controller("prmActionListAfterController", [function () {
         // Add the call number for traces
         this.reportFormUrl += "&callNumber=" + encodeURI(this.callNumber);
         this.reportFormUrl += "&permalink=" + encodeURI(this.url);
+        this.reportFormUrl += "&format=" + encodeURI(this.format);
+        this.reportFormUrl += "&mmsid=" + encodeURI(this.mmsid);
       } catch (e) {
         this.reportFormUrl = "";
       }

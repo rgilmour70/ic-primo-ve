@@ -436,6 +436,7 @@ app.controller("prmActionListAfterController", [
           const start =
             "https://ithaca.primo.exlibrisgroup.com/discovery/fulldisplay?docid=";
           const end = "&context=PC&vid=01ITHACACOL_INST:01ITHACACOL_V1";
+          this.mmsid = recordid.substring(4); // clip off "alma" at the beginning
           this.url = encodeURIComponent(start + recordid + end);
         } catch (e) {
           this.recordid = "";
@@ -475,6 +476,13 @@ app.controller("prmActionListAfterController", [
           this.location = "";
         }
 
+        // format (pagination, size, etc.)
+        try {
+          this.format = this.parentCtrl.item.pnx.display.format[0];
+        } catch (e) {
+          this.format = "";
+        }
+
         // get all PNX addata (for 'report a problem')
         try {
           const addata = this.parentCtrl.item.pnx.addata;
@@ -493,6 +501,8 @@ app.controller("prmActionListAfterController", [
           // Add the call number for traces
           this.reportFormUrl += "&callNumber=" + encodeURI(this.callNumber);
           this.reportFormUrl += "&permalink=" + encodeURI(this.url);
+          this.reportFormUrl += "&format=" + encodeURI(this.format);
+          this.reportFormUrl += "&mmsid=" + encodeURI(this.mmsid);
         } catch (e) {
           this.reportFormUrl = "";
         }
