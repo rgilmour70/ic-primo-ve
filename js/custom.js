@@ -1105,16 +1105,16 @@ var stacks = [{
   end: "PG9621.K3 U713 1998",
   x: "528",
   y: "21",
-  height: "58",
-  width: "14"
+  height: "80",
+  width: "9"
 }, {
   id: "5.G57.e",
   start: "PH301 .A35",
   end: "PL3748 .Y6",
   x: "487",
   y: "248",
-  height: "58",
-  width: "14"
+  height: "80",
+  width: "9"
 }, {
   id: "5.G58.w",
   start: "PL4378.65 .E6 S59 2002",
