@@ -448,13 +448,13 @@ mark,
 }
 
 #lcs_slide_out_button-18845 {
-  padding-left: 3em;
-  border: 3px solid #fff !important;
+  border: 2px solid #000 !important;
   border-top: 0 !important;
-  background-image: url("../img/chat.svg");
-  background-size: 20%;
-  background-repeat: no-repeat;
-  background-position: 5% 50%;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  box-shadow: none;
+  padding: 10px 20px;
+  font-weight: bold;
 }
 
 .personalization-section {
