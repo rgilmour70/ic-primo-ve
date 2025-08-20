@@ -816,7 +816,8 @@ prm-gallery-collection:has(a[href*="81121200970004016"]) {
 prm-gallery-collection:has(a[href*="81120410770004016"]),
 prm-gallery-collection:has(a[href*="81120410620004016"]),
 prm-gallery-collection:has(a[href*="81120410600004016"]),
-prm-gallery-collection:has(a[href*="81120410610004016"]) {
+prm-gallery-collection:has(a[href*="81120410610004016"]),
+prm-gallery-collection:has(a[href*="81151267370004016"]) {
   background: linear-gradient(
     to top,
     var(--skobeloff-darker),
