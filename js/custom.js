@@ -262,22 +262,22 @@ var stacks = [{
 }, {
   id: "4.G3.e",
   start: "BF39 .B73 2016",
-  end: "BF410.C36 F5 2006",
+  end: "BF412 .B43 1957",
   x: "121",
   y: "222",
   height: "80",
   width: "9"
 }, {
   id: "4.G3.w",
-  start: "BF411 .B2613 1983",
-  end: "BF722.3 .R36 2002",
+  start: "BF412 .L66 2005",
+  end: "BF723 .C S54 1991",
   x: "131",
   y: "222",
   height: "80",
   width: "9"
 }, {
   id: "4.G4.e",
-  start: "BF723.A25 F68 1983",
+  start: "BF723 .C5 W33",
   end: "BJ1279 .S55",
   x: "139",
   y: "222",
@@ -302,7 +302,7 @@ var stacks = [{
 }, {
   id: "4.G5.w",
   start: "BL2527.M7 G63 2013",
-  end: "BP75.3 .C36 2010",
+  end: "BP75.3 .T65 2019",
   x: "167",
   y: "222",
   height: "80",
@@ -446,14 +446,14 @@ var stacks = [{
 }, {
   id: "4.G14.w",
   start: "DK274.A2 K4834 1983",
-  end: "DR381.M38 P3",
+  end: "DR370 .V8 C1",
   x: "366",
   y: "222",
   height: "80",
   width: "9"
 }, {
   id: "4.G15.e",
-  start: "DR417 .D48",
+  start: "DR381 .M38 P3",
   end: "DS118 .R6 1970",
   x: "374",
   y: "222",
@@ -510,7 +510,7 @@ var stacks = [{
 }, {
   id: "4.G18.w",
   start: "E169 .A36",
-  end: "E179.5 .M32 1997",
+  end: "E179.5 .W76 1993",
   x: "438",
   y: "222",
   height: "80",
@@ -606,7 +606,7 @@ var stacks = [{
 }, {
   id: "4.G24.e",
   start: "F1235 A84 2014",
-  end: "F2271 .S56 2004",
+  end: "F2271.52 .U6 L56 2018",
   x: "411",
   y: "50",
   height: "80",
@@ -622,14 +622,14 @@ var stacks = [{
 }, {
   id: "4.G25.e",
   start: "G1021 .S56 2003",
-  end: "GN23 .P9 1973",
+  end: "GN33 .E97 2003",
   x: "392",
   y: "50",
   height: "80",
   width: "9"
 }, {
   id: "4.G26.w",
-  start: "GN24 .B43",
+  start: "GN33 .H25 2013",
   end: "GN656 .K86 1982",
   x: "383",
   y: "50",
@@ -645,49 +645,33 @@ var stacks = [{
   width: "9"
 }, {
   id: "4.G27.w",
-  start: "GV183 .B57 1996",
-  end: "GV883 .C86 2009",
+  start: "GV182.8 .S45 2002",
+  end: "GV1041 .B536 2011",
   x: "366",
   y: "50",
   height: "80",
   width: "9"
 }, {
   id: "4.G27.e",
-  start: "GV884 .A1 A33 2017",
-  end: "H59 .W6 W63",
+  start: "GV1041 .B536 2011",
+  end: "HB75 .R46 1986",
   x: "356",
   y: "50",
   height: "80",
   width: "9"
 }, {
   id: "4.G28.w",
-  start: "H61 .A37",
-  end: "HB501.5 .C37 1983",
+  start: "HB75 .R6724 1990",
+  end: "HC79 .I55 T368 1996",
   x: "348",
   y: "50",
   height: "80",
   width: "9"
 }, {
   id: "4.G28.e",
-  start: "HB5523 .A27 1999",
-  end: "HC79.Z6 B38",
+  start: "HC79 .I55 T369 2010",
+  end: "HC960 .K55 1990",
   x: "338",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.G29.w",
-  start: "HC85 .F44 2001",
-  end: "HC125 .W34",
-  x: "330",
-  y: "50",
-  height: "80",
-  width: "9"
-}, {
-  id: "4.G29.e",
-  start: "HC130.E5 E58 1991",
-  end: "HC1060 .H47 1993",
-  x: "320",
   y: "50",
   height: "80",
   width: "9"
